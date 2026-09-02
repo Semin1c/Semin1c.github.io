@@ -36,7 +36,7 @@ PROJECTS = [
         accent="#9A6B1F",
         eyebrow="La Liga · 2023–24 · 380 matches",
         title="Where Home Advantage in La Liga Comes From",
-        lede="An effect everyone agrees exists, and the surprisingly short list of things that explain it.",
+        lede="An effect everyone agrees exists, and the short list of things that survive testing as an explanation.",
         body="Home sides create 1.484 expected goals to 1.121 while converting at an "
              "identical rate, so the edge is territorial rather than finishing. Attendance "
              "predicts home points until you control for who fills big stadiums, then it is "
@@ -53,12 +53,12 @@ PROJECTS = [
         accent="#00A87E",
         eyebrow="Premier League · 2017–18 to 2024–25 · 160 squads, 4,343 players",
         title="What Follows a Player to a New Club",
-        lede="Possession doesn't create chances. And the number clubs scout on "
-             "mostly doesn't survive a transfer.",
-        body="One variable — touches in the opposition box — matches all 23 possession "
-             "metrics combined, and beats them on clubs the model has never seen. At "
-             "player level, tracking 168 intra-league transfers, what a player does "
-             "carries across a move; what it produced mostly doesn't.",
+        lede="One number does the work of twenty-three. And the number clubs "
+             "scout on mostly doesn't survive a transfer.",
+        body="Touches in the opposition box match all 23 possession metrics combined, "
+             "and beat them on clubs the model has never seen. Some metrics turn out to be "
+             "built wrong rather than useless. And across 168 transfers, what a player "
+             "does carries to a new club while what it produced mostly doesn't.",
         stats=[("0.850 vs 0.848", "one variable against all 23 metrics"),
                ("r = 0.71", "final-third touches survive a transfer"),
                ("r = 0.26", "expected goals + assists do not")],
@@ -147,18 +147,19 @@ possession metrics survive a transfer.">
 <body>
 <div class="wrap">
 <header>
-  <h1>Xingyang (Simon) Chen</h1>
-  <p class="sub">Soccer analytics — competitive balance, home advantage, and what
-  possession data can and cannot tell you about a player.</p>
+  <h1>Simon Chen</h1>
+  <p class="sub">Soccer analytics &mdash; competitive balance, home advantage, and what
+  possession data can and cannot tell you about a team or a player.</p>
   <div class="meta">
     <span>MS Business Analytics, USC Marshall</span>
     <a href="mailto:xingyang@marshall.usc.edu">xingyang@marshall.usc.edu</a>
-    <a href="https://github.com/Semin1c">github.com/Semin1c</a>
+    <a href="https://www.linkedin.com/in/simonxy-chen">LinkedIn</a>
+    <a href="https://github.com/Semin1c">GitHub</a>
   </div>
-  <p class="note">Three projects. Each one rebuilt from its raw data, with the code and
-  every figure reproducible from the repository. In all three the original headline
-  number turned out to be an artefact — of class imbalance, of a mislabelled column, of
-  a preprocessing choice — and finding that is most of what the work is.</p>
+  <p class="note">Three projects, each rebuilt from its raw data with the code and every
+  figure reproducible from the repository. In all three, the headline number the original
+  analysis reported turned out to be an artefact &mdash; of class imbalance, of a mislabelled
+  column, of a preprocessing choice. Finding that is most of what the work is.</p>
 </header>
 {"".join(cards)}
 <footer>
