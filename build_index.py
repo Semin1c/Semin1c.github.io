@@ -15,7 +15,7 @@ BASE = Path("/Users/7ang/Desktop/Github Academic Project")
 
 PROJECTS = [
     dict(
-        accent="#2E9E5B",
+        accent="#D62828",
         eyebrow="Major League Soccer · Europe's big five · 2010–2024",
         title="MLS Has More Parity Than Europe's Big Five",
         lede="Fourteen seasons, six leagues, and two definitions of “competitive” "
@@ -33,15 +33,15 @@ PROJECTS = [
                    / "Git Version/figures/competitive_balance.png",
     ),
     dict(
-        accent="#A4133C",
+        accent="#9A6B1F",
         eyebrow="La Liga · 2023–24 · 380 matches",
-        title="Home Advantage Is Real. The Crowd Isn't Why.",
-        lede="Four explanations for the home edge went in. One came out.",
-        body="Home sides create 1.484 expected goals to 1.121, but convert at an "
-             "identical rate — the advantage is territorial, not finishing. Attendance "
-             "predicts home points until you control for who fills big stadiums, then "
-             "it is nothing. Referee spread and the club finishing table both sit inside "
-             "what chance alone produces.",
+        title="Where Home Advantage in La Liga Comes From",
+        lede="An effect everyone agrees exists, and the surprisingly short list of things that explain it.",
+        body="Home sides create 1.484 expected goals to 1.121 while converting at an "
+             "identical rate, so the edge is territorial rather than finishing. Attendance "
+             "predicts home points until you control for who fills big stadiums, then it is "
+             "nothing. The referee spread and the club finishing table both sit inside what "
+             "chance alone produces.",
         stats=[("+0.364 xG", "home edge, after controlling for club quality"),
                ("p = 0.54", "crowd effect once quality is held constant"),
                ("47%", "of random shuffles match the referee spread")],
@@ -54,7 +54,7 @@ PROJECTS = [
         eyebrow="Premier League · 2017–18 to 2024–25 · 160 squads, 4,343 players",
         title="What Follows a Player to a New Club",
         lede="Possession doesn't create chances. And the number clubs scout on "
-             "doesn't survive a transfer.",
+             "mostly doesn't survive a transfer.",
         body="One variable — touches in the opposition box — matches all 23 possession "
              "metrics combined, and beats them on clubs the model has never seen. At "
              "player level, tracking 168 intra-league transfers, what a player does "
