@@ -156,10 +156,6 @@ possession metrics survive a transfer.">
     <a href="https://www.linkedin.com/in/simonxy-chen">LinkedIn</a>
     <a href="https://github.com/Semin1c">GitHub</a>
   </div>
-  <p class="note">Three projects, each rebuilt from its raw data with the code and every
-  figure reproducible from the repository. In all three, the headline number the original
-  analysis reported turned out to be an artefact &mdash; of class imbalance, of a mislabelled
-  column, of a preprocessing choice. Finding that is most of what the work is.</p>
 </header>
 {"".join(cards)}
 <footer>
