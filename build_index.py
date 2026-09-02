@@ -35,7 +35,7 @@ PROJECTS = [
     dict(
         accent="#A4133C",
         eyebrow="La Liga · 2023–24 · 380 matches",
-        title="Home Advantage Is Real — the Crowd Isn't Why",
+        title="Home Advantage Is Real. The Crowd Isn't Why.",
         lede="Four explanations for the home edge went in. One came out.",
         body="Home sides create 1.484 expected goals to 1.121, but convert at an "
              "identical rate — the advantage is territorial, not finishing. Attendance "
@@ -47,7 +47,7 @@ PROJECTS = [
                ("47%", "of random shuffles match the referee spread")],
         repo="https://github.com/Semin1c/laliga-home-advantage",
         chart=BASE / "DSO 579 - First Goal Scoring Analysis (2025 Spring)"
-                   / "Git Version/figures/home_advantage_source.png",
+                   / "Git Version/figures/crowd_confound.png",
     ),
     dict(
         accent="#00A87E",
