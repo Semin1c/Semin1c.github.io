@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Simon Chen — Analytics Portfolio</title>
+<title>Simon Chen — Experience</title>
 <meta name="description" content="Simon Chen — analytics portfolio.">
 <style>
 *{box-sizing:border-box}
@@ -123,69 +123,45 @@ footer a{color:var(--muted)}
 <body>
 <header><div class="wrap bar">
   <a class="logo" href="index.html" data-keepmode>Simon <b>Chen</b></a>
-  <nav><a href="index.html" class="on" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
+  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" class="on" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
   <div class="modes"><span class="pill"></span><a href="?mode=analyst" data-mode="analyst">Data / Business</a><a href="?mode=sports" data-mode="sports">Sports</a></div>
 </div></header>
 <main class="wrap">
-<div data-mode-block="analyst" hidden><div class="hero">
+<div data-mode-block="analyst" hidden><div class="hero" style="padding-bottom:26px">
   <span class="eyebrow">Data &amp; Business Analytics</span>
-  <h1>I find the number that changes the decision.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Where I've done this</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall. I build the pipeline, run the model, then spend most of my time trying to break the answer before someone spends money on it.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
-  </div>
-</div></div><div data-mode-block="sports" hidden><div class="hero">
+</div>
+<div class="xp"><div class="xp-item">
+  <h4>Excel Sports Management</h4>
+  <div class="meta">Sports Performance Associate, Analytics · Irvine, CA · June 2025 – August 2025</div>
+  <ul><li>Built and validated an R/Python pipeline integrating 5+ data sources and APIs, automating extraction, cleaning, ID matching, metrics and reporting for 200+ athletes to cut recurring work by roughly 80%</li><li>Applied regression and clustering to performance data, turning behavioural patterns into athlete profiles that informed individualised training and monitoring decisions</li><li>Built R Shiny and Streamlit tools retained by the performance team, integrating performance, body-composition, nutrition and well-being data to support 3–10 weekly athlete reviews</li></ul>
+</div><div class="xp-item">
+  <h4>Trojans Sports Research Lab</h4>
+  <div class="meta">Program & Project Manager · Los Angeles, CA · January 2025 – Present</div>
+  <ul><li>Led hands-on Python and SQL analysis across performance, workload and demographic datasets, converting multi-source findings into decision-ready insights for research and operations stakeholders</li><li>Created reusable data-collection standards, templates, an illustrated guide and a recorded tutorial for 30+ members, clarifying field, quality and delivery requirements</li><li>Directed 5+ research and analytics projects of 5–10 members each while coordinating roughly 50 core contributors inside a 200+ member lab</li></ul>
+</div><div class="xp-item">
+  <h4>China Merchants Securities Co., Ltd</h4>
+  <div class="meta">Investment Banking Department Analyst Intern · Beijing, China · April 2023 – August 2023</div>
+  <ul><li>Analysed 2020–2023 financial and operating data for eight companies, then deep-dived two groups' support for subsidiary listings and their business, resource and capital synergies</li><li>Revised 2–3 client-facing convertible-bond and refinancing proposals, reconciling financial tables, company profiles, risk factors and financing logic; the changes carried into later review versions</li></ul>
+</div></div></div><div data-mode-block="sports" hidden><div class="hero" style="padding-bottom:26px">
   <span class="eyebrow">Sports Analytics</span>
-  <h1>Most of what we &ldquo;know&rdquo; about football doesn't survive a test.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Where I've done this</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall, with two seasons of work inside sports performance. I test the claims everyone repeats — possession, home advantage, competitive balance — and they usually don't hold.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
-  </div>
-</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
-<h2>Three that show the range</h2>
-<p class="prose">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/netflix-churn-engagement">
-  <div class="tag">Churn · Streaming</div>
-  <h3>Netflix Subscriber Churn</h3>
-  <p>Engagement is the only driver that matters. Strip viewing behaviour out and three different classifiers collapse to barely better than a coin flip.</p>
-  <div class="stat">5,000<small>subscribers modelled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/ibm-attrition-roi">
-  <div class="tag">People analytics · ROI</div>
-  <h3>Employee Attrition & Retention ROI</h3>
-  <p>Attrition concentrates hard enough that two segments cover a third of departures across a tenth of the workforce. The honest ROI is a fraction of the headline one.</p>
-  <div class="stat">0.85<small>held-out ROC-AUC</small></div>
-</a><a class="card" href="https://github.com/Semin1c/people-analytics-dashboards">
-  <div class="tag">BI · What-if modelling</div>
-  <h3>Sales Performance Dashboards</h3>
-  <p>Three Power BI dashboards on a $25.7M book, tracing a question from "how are we doing" to "what should we fund" — and finding the obvious answer loses money.</p>
-  <div class="stat">−15%<small>ROI on the training everyone wanted</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div><div data-mode-block="sports" hidden><div class="kicker">Selected work</div>
-<h2>Four findings that reversed the assumption</h2>
-<p class="prose">Possession, home advantage, competitive balance, and what a schedule is actually worth.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/pl-possession-and-box-entry">
-  <div class="tag">Premier League · 8 seasons</div>
-  <h3>Possession vs. Box Entry</h3>
-  <p>Possession share explains almost nothing. Touches in the box explain nearly everything — and 22 further metrics add no information on unseen clubs.</p>
-  <div class="stat">23<small>metrics beaten by one</small></div>
-</a><a class="card" href="https://github.com/Semin1c/laliga-home-advantage">
-  <div class="tag">La Liga · 380 matches</div>
-  <h3>Where Home Advantage Comes From</h3>
-  <p>The home edge is territorial, not finishing. Crowd size stops predicting anything once you account for who fills big stadiums.</p>
-  <div class="stat">p = 0.54<small>crowd effect, once quality is controlled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/mls-vs-european-leagues">
-  <div class="tag">MLS · Europe's big five</div>
-  <h3>Competitive Balance, Reversed</h3>
-  <p>On parity, MLS beats every one of Europe's big five — on two independent measures, across fourteen seasons.</p>
-  <div class="stat">0.315<small>points-per-match spread, lowest of six</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div></section>
+</div>
+<div class="xp"><div class="xp-item">
+  <h4>Excel Sports Management</h4>
+  <div class="meta">Sports Performance Associate, Analytics · Irvine, CA · June 2025 – August 2025</div>
+  <ul><li>Built and validated an R/Python pipeline integrating 5+ performance data sources and APIs, automating extraction, cleaning, ID matching, metrics and reporting for 200+ athletes to cut recurring work by roughly 80%</li><li>Modelled relationships among neuromuscular, sprint, strength, pitch-speed and bat-speed measures, helping performance staff interpret athlete drivers and support individualised training discussions</li><li>Integrated performance, body-composition, nutrition and well-being data against age- and level-based benchmarks, helping coaches identify gaps and set priorities across 3–10 weekly reviews</li><li>Built R Shiny and Streamlit dashboards retained by the performance team, centralising athlete trends and readiness indicators for recurring coach-facing review</li></ul>
+</div><div class="xp-item">
+  <h4>Trojans Sports Research Lab</h4>
+  <div class="meta">Program & Project Manager · Los Angeles, CA · January 2025 – Present</div>
+  <ul><li>Managed 5+ sports and analytics research projects of 5–10 members each inside a 200+ member lab, adapting assignments and timelines to keep milestones moving</li><li>Created reusable data-collection standards, templates, an illustrated guide and a recorded tutorial for 30+ members, clarifying field, quality and delivery requirements</li><li>Supported analysis and validation across three sports research projects, with two abstracts accepted by ACSM; presented both posters and findings on site</li></ul>
+</div><div class="xp-item">
+  <h4>China Merchants Securities Co., Ltd</h4>
+  <div class="meta">Investment Banking Department Analyst Intern · Beijing, China · April 2023 – August 2023</div>
+  <ul><li>Analysed 2020–2023 financial and operating data for eight companies and deep-dived two groups' subsidiary-listing support and internal synergies to inform opportunity assessment</li></ul>
+</div></div></div>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·

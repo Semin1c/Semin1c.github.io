@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Simon Chen — Analytics Portfolio</title>
+<title>Simon Chen — About</title>
 <meta name="description" content="Simon Chen — analytics portfolio.">
 <style>
 *{box-sizing:border-box}
@@ -123,69 +123,33 @@ footer a{color:var(--muted)}
 <body>
 <header><div class="wrap bar">
   <a class="logo" href="index.html" data-keepmode>Simon <b>Chen</b></a>
-  <nav><a href="index.html" class="on" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
+  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" class="on" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
   <div class="modes"><span class="pill"></span><a href="?mode=analyst" data-mode="analyst">Data / Business</a><a href="?mode=sports" data-mode="sports">Sports</a></div>
 </div></header>
 <main class="wrap">
-<div data-mode-block="analyst" hidden><div class="hero">
+<div data-mode-block="analyst" hidden><div class="hero" style="padding-bottom:30px">
   <span class="eyebrow">Data &amp; Business Analytics</span>
-  <h1>I find the number that changes the decision.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Analytics that survives being checked</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall. I build the pipeline, run the model, then spend most of my time trying to break the answer before someone spends money on it.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
-  </div>
-</div></div><div data-mode-block="sports" hidden><div class="hero">
+</div>
+<div class="prose"><p>Most analysis fails quietly. The model scores well, the deck gets approved, and nobody notices the number was measuring the wrong thing. I've found that in my own work often enough that checking it has become the habit rather than the afterthought.</p><p>A retention program I'd sized at a 13x return came back closer to 1.2x once the costs were built from the actual headcount instead of an industry benchmark. A claim-status model scoring 0.83 AUC turned out to be predicting whether someone had <em>ever</em> filed a claim, not whether they would this year. Both were mine to catch.</p><p>That's the part I'd want a team to hire. Producing a number is straightforward. Knowing whether it holds up is the job.</p></div>
+<section><div class="kicker">What I work on</div><div class="grid2"><div class="mini"><h4>Churn and retention</h4><p>Who leaves, what actually drives it, and what keeping them is worth.</p></div><div class="mini"><h4>Pricing and risk</h4><p>Loss modelling on heavily skewed distributions where the average is useless.</p></div><div class="mini"><h4>BI and reporting</h4><p>Power BI dashboards with what-if scenarios that survive contact with a real budget.</p></div><div class="mini"><h4>Data pipelines</h4><p>Multi-source ingestion, ID matching, and validation that runs without babysitting.</p></div></div></section>
+<section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>SQL · Python · R · Regression · Classification · Clustering · Forecasting · A/B testing</span></div><div class="row"><span>BI & reporting</span><span>Power BI · Tableau · R Shiny · Streamlit · Excel · KPI development</span></div><div class="row"><span>Data & platforms</span><span>PostgreSQL · ETL · APIs · Data modelling · Data quality · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div><div data-mode-block="sports" hidden><div class="hero" style="padding-bottom:30px">
   <span class="eyebrow">Sports Analytics</span>
-  <h1>Most of what we &ldquo;know&rdquo; about football doesn't survive a test.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Testing the things everyone assumes</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall, with two seasons of work inside sports performance. I test the claims everyone repeats — possession, home advantage, competitive balance — and they usually don't hold.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
-  </div>
-</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
-<h2>Three that show the range</h2>
-<p class="prose">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/netflix-churn-engagement">
-  <div class="tag">Churn · Streaming</div>
-  <h3>Netflix Subscriber Churn</h3>
-  <p>Engagement is the only driver that matters. Strip viewing behaviour out and three different classifiers collapse to barely better than a coin flip.</p>
-  <div class="stat">5,000<small>subscribers modelled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/ibm-attrition-roi">
-  <div class="tag">People analytics · ROI</div>
-  <h3>Employee Attrition & Retention ROI</h3>
-  <p>Attrition concentrates hard enough that two segments cover a third of departures across a tenth of the workforce. The honest ROI is a fraction of the headline one.</p>
-  <div class="stat">0.85<small>held-out ROC-AUC</small></div>
-</a><a class="card" href="https://github.com/Semin1c/people-analytics-dashboards">
-  <div class="tag">BI · What-if modelling</div>
-  <h3>Sales Performance Dashboards</h3>
-  <p>Three Power BI dashboards on a $25.7M book, tracing a question from "how are we doing" to "what should we fund" — and finding the obvious answer loses money.</p>
-  <div class="stat">−15%<small>ROI on the training everyone wanted</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div><div data-mode-block="sports" hidden><div class="kicker">Selected work</div>
-<h2>Four findings that reversed the assumption</h2>
-<p class="prose">Possession, home advantage, competitive balance, and what a schedule is actually worth.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/pl-possession-and-box-entry">
-  <div class="tag">Premier League · 8 seasons</div>
-  <h3>Possession vs. Box Entry</h3>
-  <p>Possession share explains almost nothing. Touches in the box explain nearly everything — and 22 further metrics add no information on unseen clubs.</p>
-  <div class="stat">23<small>metrics beaten by one</small></div>
-</a><a class="card" href="https://github.com/Semin1c/laliga-home-advantage">
-  <div class="tag">La Liga · 380 matches</div>
-  <h3>Where Home Advantage Comes From</h3>
-  <p>The home edge is territorial, not finishing. Crowd size stops predicting anything once you account for who fills big stadiums.</p>
-  <div class="stat">p = 0.54<small>crowd effect, once quality is controlled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/mls-vs-european-leagues">
-  <div class="tag">MLS · Europe's big five</div>
-  <h3>Competitive Balance, Reversed</h3>
-  <p>On parity, MLS beats every one of Europe's big five — on two independent measures, across fourteen seasons.</p>
-  <div class="stat">0.315<small>points-per-match spread, lowest of six</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div></section>
+</div>
+<div class="prose"><p>Football analysis is full of claims nobody checks. Possession wins matches. The crowd drives home advantage. Europe's big five are more competitive than MLS. Each is testable, and each one weakens or reverses when you actually run it.</p><p>My own work included. One project started from an assumption printed on slide two of the original deck — that European leagues are inherently more competitive. I coded it straight into the target variable, then went back, tested it properly, and found the data said the opposite. The accuracy figure I'd reported was riding an 85.6% majority class.</p><p>Alongside that, two seasons inside sports performance: athlete pipelines, readiness monitoring, and tooling that coaching staff actually kept using.</p></div>
+<section><div class="kicker">What I work on</div><div class="grid2"><div class="mini"><h4>Match and season analysis</h4><p>Possession, chance creation, home advantage, competitive balance.</p></div><div class="mini"><h4>Player and roster evaluation</h4><p>What transfers across clubs, and what was only ever context.</p></div><div class="mini"><h4>Athlete performance data</h4><p>Workload, readiness and testing data turned into coach-facing tools.</p></div><div class="mini"><h4>Schedule and travel</h4><p>Rest, compression and opponent sequencing separated from team quality.</p></div></div></section>
+<section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling</span></div><div class="row"><span>Sports data</span><span>Team & player evaluation · Match analysis · Performance & tracking data · Schedule and travel analysis</span></div><div class="row"><span>Tooling & BI</span><span>Power BI · Tableau · R Shiny · Streamlit · APIs · ETL · Data validation · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div><section><div class="kicker">Education</div><h2>Where I trained</h2><div class="xp"><div class="xp-item">
+  <h4>University of Southern California, Marshall School of Business</h4>
+  <div class="meta">Master of Science in Business Analytics (STEM) · Los Angeles, CA · May 2026</div>
+  <ul><li>GPA 3.78 · Dean's Honor List, 3 semesters</li></ul>
+</div><div class="xp-item">
+  <h4>University of California, Irvine</h4>
+  <div class="meta">Bachelor of Arts in Business Economics, Minor in Management · Irvine, CA · June 2024</div>
+  <ul><li>GPA 3.92 · Dean's Honor List, 9 quarters · Phi Beta Kappa</li></ul>
+</div></div></section>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·

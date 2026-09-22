@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Simon Chen — Analytics Portfolio</title>
+<title>Simon Chen — Projects</title>
 <meta name="description" content="Simon Chen — analytics portfolio.">
 <style>
 *{box-sizing:border-box}
@@ -123,69 +123,90 @@ footer a{color:var(--muted)}
 <body>
 <header><div class="wrap bar">
   <a class="logo" href="index.html" data-keepmode>Simon <b>Chen</b></a>
-  <nav><a href="index.html" class="on" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
+  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" class="on" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
   <div class="modes"><span class="pill"></span><a href="?mode=analyst" data-mode="analyst">Data / Business</a><a href="?mode=sports" data-mode="sports">Sports</a></div>
 </div></header>
 <main class="wrap">
-<div data-mode-block="analyst" hidden><div class="hero">
+<div data-mode-block="analyst" hidden><div class="hero" style="padding-bottom:26px">
   <span class="eyebrow">Data &amp; Business Analytics</span>
-  <h1>I find the number that changes the decision.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Three that show the range</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall. I build the pipeline, run the model, then spend most of my time trying to break the answer before someone spends money on it.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
+  <p class="lede">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
+</div>
+<div class="entry"><div class="shot"><img src="assets/analyst_churn_by_engagement.png" alt="Netflix Subscriber Churn"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Churn · Streaming</div>
+    <h3>Netflix Subscriber Churn</h3>
+    <div class="stack">Python · scikit-learn · XGBoost</div>
+    <div class="figures"><div class="stat">5,000<small>subscribers modelled</small></div></div>
+    <p>Across 5,000 subscribers, how much someone watches separates churners from stayers so cleanly that everything else is noise. The retention play targets disengaged Basic-plan subscribers specifically, because that's where spend has somewhere to go.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/netflix-churn-engagement">View the repository →</a>
   </div>
-</div></div><div data-mode-block="sports" hidden><div class="hero">
+</div><div class="entry"><div class="shot"><img src="assets/analyst_step3_segment_playbook_onepager.png" alt="Employee Attrition & Retention ROI"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">People analytics · ROI</div>
+    <h3>Employee Attrition & Retention ROI</h3>
+    <div class="stack">Python · scikit-learn · statsmodels</div>
+    <div class="figures"><div class="stat">0.85<small>held-out ROC-AUC</small></div></div>
+    <p>1,470 employees, 31 features, regularised logistic regression. Business travel, overtime and promotion timing carry the signal. Turning risk scores into a 156-employee pilot covers 35% of predicted departures — and re-costing the programme per employee and per role replaced a benchmark-driven 13x with a defensible $83K.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/ibm-attrition-roi">View the repository →</a>
+  </div>
+</div><div class="entry"><div class="shot"><img src="assets/analyst_what_actually_drives_sales.png" alt="Sales Performance Dashboards"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">BI · What-if modelling</div>
+    <h3>Sales Performance Dashboards</h3>
+    <div class="stack">Power BI · DAX · What-if parameters</div>
+    <div class="figures"><div class="stat">−15%<small>ROI on the training everyone wanted</small></div></div>
+    <p>Training looks like a driver in a decomposition tree, so the instinct is to fund it. Tested directly, rep attributes correlate near zero with sales per rep. What separates reps is who they report to — a $134K supervisor gap. Both costings of the training programme come back negative.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/people-analytics-dashboards">View the repository →</a>
+  </div>
+</div>
+<div class="note">Every project here has a repository with the code, the data where it can be
+shared, and a full write-up. More at <a href="https://github.com/Semin1c">github.com/Semin1c</a>.</div></div><div data-mode-block="sports" hidden><div class="hero" style="padding-bottom:26px">
   <span class="eyebrow">Sports Analytics</span>
-  <h1>Most of what we &ldquo;know&rdquo; about football doesn't survive a test.</h1>
+  <h1 style="font-size:clamp(28px,4vw,42px)">Four findings that reversed the assumption</h1>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall, with two seasons of work inside sports performance. I test the claims everyone repeats — possession, home advantage, competitive balance — and they usually don't hold.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
+  <p class="lede">Possession, home advantage, competitive balance, and what a schedule is actually worth.</p>
+</div>
+<div class="entry"><div class="shot"><img src="assets/sports_what_predicts_chances.png" alt="Possession vs. Box Entry"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Premier League · 8 seasons</div>
+    <h3>Possession vs. Box Entry</h3>
+    <div class="stack">Python · cross-validation · recruitment analytics</div>
+    <div class="figures"><div class="stat">23<small>metrics beaten by one</small></div></div>
+    <p>Across 160 Premier League squad-seasons, one variable outperformed the full metric set out of sample, which argues for a simpler chance-creation KPI than most models use. Comparing 168 transfers against same-position benchmarks, final-third involvement held up across clubs better than xG+xAG output did.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/pl-possession-and-box-entry">View the repository →</a>
   </div>
-</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
-<h2>Three that show the range</h2>
-<p class="prose">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/netflix-churn-engagement">
-  <div class="tag">Churn · Streaming</div>
-  <h3>Netflix Subscriber Churn</h3>
-  <p>Engagement is the only driver that matters. Strip viewing behaviour out and three different classifiers collapse to barely better than a coin flip.</p>
-  <div class="stat">5,000<small>subscribers modelled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/ibm-attrition-roi">
-  <div class="tag">People analytics · ROI</div>
-  <h3>Employee Attrition & Retention ROI</h3>
-  <p>Attrition concentrates hard enough that two segments cover a third of departures across a tenth of the workforce. The honest ROI is a fraction of the headline one.</p>
-  <div class="stat">0.85<small>held-out ROC-AUC</small></div>
-</a><a class="card" href="https://github.com/Semin1c/people-analytics-dashboards">
-  <div class="tag">BI · What-if modelling</div>
-  <h3>Sales Performance Dashboards</h3>
-  <p>Three Power BI dashboards on a $25.7M book, tracing a question from "how are we doing" to "what should we fund" — and finding the obvious answer loses money.</p>
-  <div class="stat">−15%<small>ROI on the training everyone wanted</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div><div data-mode-block="sports" hidden><div class="kicker">Selected work</div>
-<h2>Four findings that reversed the assumption</h2>
-<p class="prose">Possession, home advantage, competitive balance, and what a schedule is actually worth.</p>
-<div class="cards"><a class="card" href="https://github.com/Semin1c/pl-possession-and-box-entry">
-  <div class="tag">Premier League · 8 seasons</div>
-  <h3>Possession vs. Box Entry</h3>
-  <p>Possession share explains almost nothing. Touches in the box explain nearly everything — and 22 further metrics add no information on unseen clubs.</p>
-  <div class="stat">23<small>metrics beaten by one</small></div>
-</a><a class="card" href="https://github.com/Semin1c/laliga-home-advantage">
-  <div class="tag">La Liga · 380 matches</div>
-  <h3>Where Home Advantage Comes From</h3>
-  <p>The home edge is territorial, not finishing. Crowd size stops predicting anything once you account for who fills big stadiums.</p>
-  <div class="stat">p = 0.54<small>crowd effect, once quality is controlled</small></div>
-</a><a class="card" href="https://github.com/Semin1c/mls-vs-european-leagues">
-  <div class="tag">MLS · Europe's big five</div>
-  <h3>Competitive Balance, Reversed</h3>
-  <p>On parity, MLS beats every one of Europe's big five — on two independent measures, across fourteen seasons.</p>
-  <div class="stat">0.315<small>points-per-match spread, lowest of six</small></div>
-</a></div>
-<div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div></section>
+</div><div class="entry"><div class="shot"><img src="assets/sports_crowd_confound.png" alt="Where Home Advantage Comes From"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">La Liga · 380 matches</div>
+    <h3>Where Home Advantage Comes From</h3>
+    <div class="stack">Python · permutation testing · xG</div>
+    <div class="figures"><div class="stat">p = 0.54<small>crowd effect, once quality is controlled</small></div></div>
+    <p>Home sides create 1.484 expected goals to 1.121 while converting at an identical rate — so the advantage is about where the ball goes, not what happens when it arrives. Attendance looks like an explanation until club quality is held constant. The referee spread sits inside what random shuffling produces.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/laliga-home-advantage">View the repository →</a>
+  </div>
+</div><div class="entry"><div class="shot"><img src="assets/sports_competitive_balance.png" alt="Competitive Balance, Reversed"></div>
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">MLS · Europe's big five</div>
+    <h3>Competitive Balance, Reversed</h3>
+    <div class="stack">Python · scikit-learn · SHAP</div>
+    <div class="figures"><div class="stat">0.315<small>points-per-match spread, lowest of six</small></div></div>
+    <p>The project started by assuming the opposite and coding it into the target variable. Tested properly, MLS runs the tightest spread of the six leagues while Bayern took 11 of 14 Bundesliga titles. The classifier I first reported at 88–90% accuracy was riding an 85.6% majority class; corrected, it reaches 0.954 AUC.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c/mls-vs-european-leagues">View the repository →</a>
+  </div>
+</div><div class="entry">
+  <div class="meat">
+    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">NBA · 10 seasons</div>
+    <h3>Schedule, Travel & Rest</h3>
+    <div class="stack">Python · schedule modelling</div>
+    <div class="figures"><div class="stat">~61%<small>win rate with a 2+ day rest edge</small></div></div>
+    <p>Rest advantage, back-to-backs and schedule compression translate into differences of up to roughly five wins across a regular season — enough to matter for planning and for reading a standings table honestly.</p>
+    <a class="btn btn-ghost" href="https://github.com/Semin1c">View the repository →</a>
+  </div>
+</div>
+<div class="note">Every project here has a repository with the code, the data where it can be
+shared, and a full write-up. More at <a href="https://github.com/Semin1c">github.com/Semin1c</a>.</div></div>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·
