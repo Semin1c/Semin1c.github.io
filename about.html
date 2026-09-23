@@ -91,14 +91,45 @@ h3{letter-spacing:-.015em}
 .entry p{margin:0 0 16px;color:#334155}
 .entry .figures{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px}
 
-.xp{border-left:2px solid var(--line);padding-left:22px;margin-top:22px}
-.xp-item{margin-bottom:28px;position:relative}
-.xp-item::before{content:"";position:absolute;left:-28px;top:6px;width:11px;height:11px;border-radius:50%;
-  background:var(--gold);border:2px solid var(--accent);transition:border-color var(--swap),background var(--swap)}
-.xp-item h4{margin:0 0 2px;font-size:16.5px}
-.xp-item .meta{font-size:13.5px;color:var(--muted);margin-bottom:9px}
-.xp-item ul{margin:0;padding-left:18px}
-.xp-item li{margin-bottom:7px;color:#334155;font-size:15px}
+.xp{margin-top:26px}
+.job{display:grid;grid-template-columns:132px 1fr;gap:22px;padding:22px;margin:0 -22px 6px;
+  border-radius:12px;transition:background .2s ease}
+.job:hover{background:var(--card)}
+.job .when{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);padding-top:4px}
+.job h4{margin:0 0 9px;font-size:17px;letter-spacing:-.012em}
+.job h4 .at{color:var(--accent);transition:color var(--swap)}
+.job p{margin:0 0 13px;color:#475569;font-size:15.5px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+  padding:5px 10px;border-radius:999px;transition:color var(--swap),background var(--swap)}
+.todo{display:block;background:#FEF9C3;border-left:3px solid #CA8A04;padding:13px 15px;
+  border-radius:0 8px 8px 0;font-size:14.5px;color:#713F12;font-style:italic}
+.post{display:block;text-decoration:none;color:inherit;padding:22px;margin:0 -22px;
+  border-radius:12px;border-bottom:1px solid var(--line);transition:background .2s ease}
+.post:hover{background:var(--card)}
+.post .head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.post h3{font-size:19px;margin:0;letter-spacing:-.015em}
+.post .status{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+.post p{margin:0;color:var(--muted);font-size:15px;max-width:660px}
+
+/* native web chart — scales crisply, picks up the mode accent, animates in */
+.viz{padding:30px 28px;background:var(--card);border-bottom:1px solid var(--line)}
+.viz .vtitle{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+.viz .vsub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.bars{display:grid;gap:11px}
+.brow{display:grid;grid-template-columns:118px 1fr 62px;align-items:center;gap:14px}
+.brow .bl{font-size:13.5px;color:var(--muted);text-align:right;font-weight:500}
+.btrack{background:#E7EBF0;border-radius:5px;height:24px;overflow:hidden}
+.bfill{height:100%;border-radius:5px;background:#C3CAD3;width:0;
+  transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.brow.hot .bl{color:var(--ink);font-weight:700}
+.brow.hot .bfill{background:var(--accent)}
+.brow .bv{font-size:15px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.brow.hot .bv{color:var(--accent)}
+.vnote{margin-top:18px;font-size:13.5px;color:#475569;border-left:3px solid var(--gold);padding-left:12px}
+@media(max-width:620px){.brow{grid-template-columns:96px 1fr 54px;gap:9px}.brow .bl{font-size:12px}}
 
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:22px}
 .mini h4{margin:0 0 5px;font-size:15.5px}
@@ -114,6 +145,8 @@ footer a{color:var(--muted)}
 
 @media(max-width:760px){
   nav{display:none}
+  .job{grid-template-columns:1fr;gap:8px;padding:18px;margin:0 0 10px}
+  .job .when{padding-top:0}
   .bar{gap:12px}
   .modes a{padding:8px 11px;font-size:12px}
   .hero{padding:48px 0 38px}
@@ -123,7 +156,7 @@ footer a{color:var(--muted)}
 <body>
 <header><div class="wrap bar">
   <a class="logo" href="index.html" data-keepmode>Simon <b>Chen</b></a>
-  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" class="on" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
+  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" class="on" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" data-keepmode>Projects</a><a href="writing.html" data-keepmode>Writing</a><a href="contact.html" data-keepmode>Contact</a></nav>
   <div class="modes"><span class="pill"></span><a href="?mode=analyst" data-mode="analyst">Data / Business</a><a href="?mode=sports" data-mode="sports">Sports</a></div>
 </div></header>
 <main class="wrap">
@@ -132,14 +165,14 @@ footer a{color:var(--muted)}
   <h1 style="font-size:clamp(28px,4vw,42px)">Analytics that survives being checked</h1>
   <div class="rule"></div>
 </div>
-<div class="prose"><p>Most analysis fails quietly. The model scores well, the deck gets approved, and nobody notices the number was measuring the wrong thing. I've found that in my own work often enough that checking it has become the habit rather than the afterthought.</p><p>A retention program I'd sized at a 13x return came back closer to 1.2x once the costs were built from the actual headcount instead of an industry benchmark. A claim-status model scoring 0.83 AUC turned out to be predicting whether someone had <em>ever</em> filed a claim, not whether they would this year. Both were mine to catch.</p><p>That's the part I'd want a team to hire. Producing a number is straightforward. Knowing whether it holds up is the job.</p></div>
+<div class="prose"><p>I studied economics at UC Irvine and assumed I'd end up in finance. A summer in investment banking in Beijing taught me I liked the analysis and not much else about it, so I went to USC for analytics instead.</p><p>What I've ended up caring about is the checking. Analysis rarely fails loudly — the model scores well, the deck gets approved, and nobody notices the number was measuring the wrong thing. I've found that in my own work often enough that it's become the first thing I do rather than the last.</p><p>A retention programme I'd sized at a 13x return was worth about 1.2x once I costed it against real headcount instead of an industry benchmark. A claim model scoring 0.83 AUC turned out to be predicting whether someone had <em>ever</em> filed a claim, not whether they'd file this year. Nobody caught either of those for me.</p><p><span class='todo'>[Simon — your paragraph. What you're like outside this: what you watch, play, argue about. Brittany Chiang's version is "climbing, playing tennis, hanging out with my wife and two cats, and running around Hyrule searching for Korok seeds." Specific beats impressive. This is the paragraph people remember.]</span></p></div>
 <section><div class="kicker">What I work on</div><div class="grid2"><div class="mini"><h4>Churn and retention</h4><p>Who leaves, what actually drives it, and what keeping them is worth.</p></div><div class="mini"><h4>Pricing and risk</h4><p>Loss modelling on heavily skewed distributions where the average is useless.</p></div><div class="mini"><h4>BI and reporting</h4><p>Power BI dashboards with what-if scenarios that survive contact with a real budget.</p></div><div class="mini"><h4>Data pipelines</h4><p>Multi-source ingestion, ID matching, and validation that runs without babysitting.</p></div></div></section>
 <section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>SQL · Python · R · Regression · Classification · Clustering · Forecasting · A/B testing</span></div><div class="row"><span>BI & reporting</span><span>Power BI · Tableau · R Shiny · Streamlit · Excel · KPI development</span></div><div class="row"><span>Data & platforms</span><span>PostgreSQL · ETL · APIs · Data modelling · Data quality · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div><div data-mode-block="sports" hidden><div class="hero" style="padding-bottom:30px">
   <span class="eyebrow">Sports Analytics</span>
   <h1 style="font-size:clamp(28px,4vw,42px)">Testing the things everyone assumes</h1>
   <div class="rule"></div>
 </div>
-<div class="prose"><p>Football analysis is full of claims nobody checks. Possession wins matches. The crowd drives home advantage. Europe's big five are more competitive than MLS. Each is testable, and each one weakens or reverses when you actually run it.</p><p>My own work included. One project started from an assumption printed on slide two of the original deck — that European leagues are inherently more competitive. I coded it straight into the target variable, then went back, tested it properly, and found the data said the opposite. The accuracy figure I'd reported was riding an 85.6% majority class.</p><p>Alongside that, two seasons inside sports performance: athlete pipelines, readiness monitoring, and tooling that coaching staff actually kept using.</p></div>
+<div class="prose"><p><span class='todo'>[Simon — the origin story. Why sports, and why you kept choosing it when the economics degree pointed somewhere else. Which teams, which moment made this stick. Two or three sentences, specific. This is the one a club will read twice.]</span></p><p>Football analysis is full of claims nobody checks. Possession wins matches. The crowd drives home advantage. Europe's big five out-compete MLS. Each of those is testable, and each one weakens or reverses when you actually run it.</p><p>My own work included. One project opened from an assumption printed on slide two of the deck — that European leagues are inherently more competitive. I coded it straight into the target variable. Going back and testing it properly is what produced everything worth reading in that project, and it also meant admitting the accuracy figure I'd reported was riding an 85.6% majority class.</p><p>Alongside that, two seasons inside sports performance — athlete pipelines, readiness monitoring, and tooling the coaching staff kept using after I left.</p></div>
 <section><div class="kicker">What I work on</div><div class="grid2"><div class="mini"><h4>Match and season analysis</h4><p>Possession, chance creation, home advantage, competitive balance.</p></div><div class="mini"><h4>Player and roster evaluation</h4><p>What transfers across clubs, and what was only ever context.</p></div><div class="mini"><h4>Athlete performance data</h4><p>Workload, readiness and testing data turned into coach-facing tools.</p></div><div class="mini"><h4>Schedule and travel</h4><p>Rest, compression and opponent sequencing separated from team quality.</p></div></div></section>
 <section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling</span></div><div class="row"><span>Sports data</span><span>Team & player evaluation · Match analysis · Performance & tracking data · Schedule and travel analysis</span></div><div class="row"><span>Tooling & BI</span><span>Power BI · Tableau · R Shiny · Streamlit · APIs · ETL · Data validation · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div><section><div class="kicker">Education</div><h2>Where I trained</h2><div class="xp"><div class="xp-item">
   <h4>University of Southern California, Marshall School of Business</h4>
@@ -197,6 +230,10 @@ try{start=new URL(location.href).searchParams.get('mode')}catch(e){}
 if(!ACCENTS[start]){try{start=localStorage.getItem('mode')}catch(e){}}
 applyMode(ACCENTS[start]?start:'analyst',false);
 addEventListener('resize',()=>{const a=document.querySelector('.modes a[aria-current="true"]');if(a)movePill(a)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.querySelectorAll('.bfill').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*70));
+  io.unobserve(e.target);}}),{threshold:.35});
+document.querySelectorAll('.viz').forEach(v=>io.observe(v));
 </script>
 </body>
 </html>

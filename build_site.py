@@ -21,7 +21,7 @@ OUT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 ASSETS = OUT / "assets"
 
 PAGES = [("index", "Home"), ("about", "About"), ("experience", "Experience"),
-         ("projects", "Projects"), ("contact", "Contact")]
+         ("projects", "Projects"), ("writing", "Writing"), ("contact", "Contact")]
 
 
 # --------------------------------------------------------------------- assets
@@ -134,14 +134,45 @@ h3{letter-spacing:-.015em}
 .entry p{margin:0 0 16px;color:#334155}
 .entry .figures{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px}
 
-.xp{border-left:2px solid var(--line);padding-left:22px;margin-top:22px}
-.xp-item{margin-bottom:28px;position:relative}
-.xp-item::before{content:"";position:absolute;left:-28px;top:6px;width:11px;height:11px;border-radius:50%;
-  background:var(--gold);border:2px solid var(--accent);transition:border-color var(--swap),background var(--swap)}
-.xp-item h4{margin:0 0 2px;font-size:16.5px}
-.xp-item .meta{font-size:13.5px;color:var(--muted);margin-bottom:9px}
-.xp-item ul{margin:0;padding-left:18px}
-.xp-item li{margin-bottom:7px;color:#334155;font-size:15px}
+.xp{margin-top:26px}
+.job{display:grid;grid-template-columns:132px 1fr;gap:22px;padding:22px;margin:0 -22px 6px;
+  border-radius:12px;transition:background .2s ease}
+.job:hover{background:var(--card)}
+.job .when{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);padding-top:4px}
+.job h4{margin:0 0 9px;font-size:17px;letter-spacing:-.012em}
+.job h4 .at{color:var(--accent);transition:color var(--swap)}
+.job p{margin:0 0 13px;color:#475569;font-size:15.5px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+  padding:5px 10px;border-radius:999px;transition:color var(--swap),background var(--swap)}
+.todo{display:block;background:#FEF9C3;border-left:3px solid #CA8A04;padding:13px 15px;
+  border-radius:0 8px 8px 0;font-size:14.5px;color:#713F12;font-style:italic}
+.post{display:block;text-decoration:none;color:inherit;padding:22px;margin:0 -22px;
+  border-radius:12px;border-bottom:1px solid var(--line);transition:background .2s ease}
+.post:hover{background:var(--card)}
+.post .head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.post h3{font-size:19px;margin:0;letter-spacing:-.015em}
+.post .status{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+.post p{margin:0;color:var(--muted);font-size:15px;max-width:660px}
+
+/* native web chart — scales crisply, picks up the mode accent, animates in */
+.viz{padding:30px 28px;background:var(--card);border-bottom:1px solid var(--line)}
+.viz .vtitle{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+.viz .vsub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.bars{display:grid;gap:11px}
+.brow{display:grid;grid-template-columns:118px 1fr 62px;align-items:center;gap:14px}
+.brow .bl{font-size:13.5px;color:var(--muted);text-align:right;font-weight:500}
+.btrack{background:#E7EBF0;border-radius:5px;height:24px;overflow:hidden}
+.bfill{height:100%;border-radius:5px;background:#C3CAD3;width:0;
+  transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.brow.hot .bl{color:var(--ink);font-weight:700}
+.brow.hot .bfill{background:var(--accent)}
+.brow .bv{font-size:15px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.brow.hot .bv{color:var(--accent)}
+.vnote{margin-top:18px;font-size:13.5px;color:#475569;border-left:3px solid var(--gold);padding-left:12px}
+@media(max-width:620px){.brow{grid-template-columns:96px 1fr 54px;gap:9px}.brow .bl{font-size:12px}}
 
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:22px}
 .mini h4{margin:0 0 5px;font-size:15.5px}
@@ -157,6 +188,8 @@ footer a{color:var(--muted)}
 
 @media(max-width:760px){
   nav{display:none}
+  .job{grid-template-columns:1fr;gap:8px;padding:18px;margin:0 0 10px}
+  .job .when{padding-top:0}
   .bar{gap:12px}
   .modes a{padding:8px 11px;font-size:12px}
   .hero{padding:48px 0 38px}
@@ -164,7 +197,7 @@ footer a{color:var(--muted)}
 """
 
 JS = """
-const ACCENTS=%(accents)s;
+const ACCENTS=__ACCENTS__;
 function applyMode(m,animate){
   const c=ACCENTS[m]; if(!c) return;
   const go=()=>{
@@ -203,6 +236,10 @@ try{start=new URL(location.href).searchParams.get('mode')}catch(e){}
 if(!ACCENTS[start]){try{start=localStorage.getItem('mode')}catch(e){}}
 applyMode(ACCENTS[start]?start:'analyst',false);
 addEventListener('resize',()=>{const a=document.querySelector('.modes a[aria-current="true"]');if(a)movePill(a)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.querySelectorAll('.bfill').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*70));
+  io.unobserve(e.target);}}),{threshold:.35});
+document.querySelectorAll('.viz').forEach(v=>io.observe(v));
 """
 
 
@@ -251,7 +288,7 @@ def shell(title, active, body):
   <a href="{SHARED['linkedin']}">LinkedIn</a> ·
   <a href="mailto:{SHARED['email']}">{SHARED['email']}</a></div>
 </footer>
-<script>{JS % {"accents": accents}}</script>
+<script>{JS.replace("__ACCENTS__", accents)}</script>
 </body>
 </html>"""
 
@@ -272,7 +309,12 @@ def card(p):
 
 
 def entry(p):
-    shot = f'<div class="shot"><img src="{p["img"]}" alt="{p["title"]}"></div>' if p.get("img") else ""
+    if p.get("viz"):
+        shot = barchart(p["viz"])
+    elif p.get("img"):
+        shot = f'<div class="shot"><img src="{p["img"]}" alt="{p["title"]}"></div>'
+    else:
+        shot = ""
     return f"""<div class="entry">{shot}
   <div class="meat">
     <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">{p['tag']}</div>
@@ -286,11 +328,35 @@ def entry(p):
 
 
 def xp_item(e):
-    lis = "".join(f"<li>{b}</li>" for b in e["bullets"])
-    return f"""<div class="xp-item">
-  <h4>{e['org']}</h4>
-  <div class="meta">{e['role']} · {e['place']} · {e['date']}</div>
-  <ul>{lis}</ul>
+    chips = "".join(f'<span class="chip">{c}</span>' for c in e.get("tags", []))
+    return f"""<div class="job">
+  <div class="when">{e['date']}</div>
+  <div>
+    <h4>{e['role']} <span class="at">· {e['org']}</span></h4>
+    <p>{e['prose']}</p>
+    <div class="chips">{chips}</div>
+  </div>
+</div>"""
+
+
+def barchart(v):
+    rows = ""
+    for label, val, shown, hot in v["rows"]:
+        pct = val / v["max"] * 100
+        rows += (f'<div class="brow{" hot" if hot else ""}">'
+                 f'<div class="bl">{label}</div>'
+                 f'<div class="btrack"><div class="bfill" data-w="{pct:.1f}"></div></div>'
+                 f'<div class="bv">{shown}</div></div>')
+    note = f'<div class="vnote">{v["note"]}</div>' if v.get("note") else ""
+    return (f'<div class="viz"><div class="vtitle">{v["title"]}</div>'
+            f'<div class="vsub">{v["sub"]}</div>'
+            f'<div class="bars">{rows}</div>{note}</div>')
+
+
+def post(w):
+    return f"""<div class="post">
+  <div class="head"><h3>{w['title']}</h3><span class="status">{w['status']}</span></div>
+  <p>{w['desc']}</p>
 </div>"""
 
 
@@ -395,7 +461,20 @@ def page_contact():
     return shell("Contact", "contact", per_mode(block) + rows)
 
 
-BUILDERS = {"index": page_index, "about": page_about, "experience": page_experience,
+def page_writing():
+    def block(m):
+        return f"""<div class="hero" style="padding-bottom:22px">
+  <span class="eyebrow">{m['eyebrow']}</span>
+  <h1 style="font-size:clamp(28px,4vw,42px)">{m['writing_title']}</h1>
+  <div class="rule"></div>
+  <p class="lede">{m['writing_lede']}</p>
+</div>
+{''.join(post(w) for w in m['writing'])}"""
+
+    return shell("Writing", "writing", per_mode(block))
+
+
+BUILDERS = {"index": page_index, "writing": page_writing, "about": page_about, "experience": page_experience,
             "projects": page_projects, "contact": page_contact}
 
 if __name__ == "__main__":

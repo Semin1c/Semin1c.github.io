@@ -38,15 +38,21 @@ MODES = {
 
     about_title="Analytics that survives being checked",
     about=[
-        "Most analysis fails quietly. The model scores well, the deck gets approved, and nobody "
-        "notices the number was measuring the wrong thing. I've found that in my own work often "
-        "enough that checking it has become the habit rather than the afterthought.",
-        "A retention program I'd sized at a 13x return came back closer to 1.2x once the costs "
-        "were built from the actual headcount instead of an industry benchmark. A claim-status "
-        "model scoring 0.83 AUC turned out to be predicting whether someone had <em>ever</em> "
-        "filed a claim, not whether they would this year. Both were mine to catch.",
-        "That's the part I'd want a team to hire. Producing a number is straightforward. Knowing "
-        "whether it holds up is the job.",
+        "I studied economics at UC Irvine and assumed I'd end up in finance. A summer in "
+        "investment banking in Beijing taught me I liked the analysis and not much else about it, "
+        "so I went to USC for analytics instead.",
+        "What I've ended up caring about is the checking. Analysis rarely fails loudly — the model "
+        "scores well, the deck gets approved, and nobody notices the number was measuring the wrong "
+        "thing. I've found that in my own work often enough that it's become the first thing I do "
+        "rather than the last.",
+        "A retention programme I'd sized at a 13x return was worth about 1.2x once I costed it "
+        "against real headcount instead of an industry benchmark. A claim model scoring 0.83 AUC "
+        "turned out to be predicting whether someone had <em>ever</em> filed a claim, not whether "
+        "they'd file this year. Nobody caught either of those for me.",
+        "<span class='todo'>[Simon — your paragraph. What you're like outside this: what you watch, "
+        "play, argue about. Brittany Chiang's version is \"climbing, playing tennis, hanging out with "
+        "my wife and two cats, and running around Hyrule searching for Korok seeds.\" Specific beats "
+        "impressive. This is the paragraph people remember.]</span>",
     ],
     about_kicker="What I work on",
     about_list=[
@@ -58,23 +64,51 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
-        dict(org="Excel Sports Management", place="Irvine, CA", date="June 2025 – August 2025",
-             role="Sports Performance Associate, Analytics", bullets=[
-             "Built and validated an R/Python pipeline integrating 5+ data sources and APIs, automating extraction, cleaning, ID matching, metrics and reporting for 200+ athletes to cut recurring work by roughly 80%",
-             "Applied regression and clustering to performance data, turning behavioural patterns into athlete profiles that informed individualised training and monitoring decisions",
-             "Built R Shiny and Streamlit tools retained by the performance team, integrating performance, body-composition, nutrition and well-being data to support 3–10 weekly athlete reviews",
-             ]),
-        dict(org="Trojans Sports Research Lab", place="Los Angeles, CA", date="January 2025 – Present",
-             role="Program & Project Manager", bullets=[
-             "Led hands-on Python and SQL analysis across performance, workload and demographic datasets, converting multi-source findings into decision-ready insights for research and operations stakeholders",
-             "Created reusable data-collection standards, templates, an illustrated guide and a recorded tutorial for 30+ members, clarifying field, quality and delivery requirements",
-             "Directed 5+ research and analytics projects of 5–10 members each while coordinating roughly 50 core contributors inside a 200+ member lab",
-             ]),
-        dict(org="China Merchants Securities Co., Ltd", place="Beijing, China", date="April 2023 – August 2023",
-             role="Investment Banking Department Analyst Intern", bullets=[
-             "Analysed 2020–2023 financial and operating data for eight companies, then deep-dived two groups' support for subsidiary listings and their business, resource and capital synergies",
-             "Revised 2–3 client-facing convertible-bond and refinancing proposals, reconciling financial tables, company profiles, risk factors and financing logic; the changes carried into later review versions",
-             ]),
+        dict(org="Excel Sports Management", date="Jun — Aug 2025",
+             role="Sports Performance Associate, Analytics",
+             prose="Built the pipeline the performance team ran on — five-plus sources and APIs pulled "
+                   "together, cleaned, ID-matched and turned into reporting for 200+ athletes, which took "
+                   "about 80% of the recurring work out. I also built the R Shiny and Streamlit tools they "
+                   "kept using after I left, which I care about more than the percentage.",
+             tags=["R", "Python", "APIs", "ETL", "R Shiny", "Streamlit"]),
+        dict(org="Trojans Sports Research Lab", date="Jan 2025 — Present",
+             role="Program & Project Manager",
+             prose="I run analytics projects inside a 200+ member lab — five or more at a time, five to ten "
+                   "people each. Most of the job is unglamorous: writing the data-collection standards, "
+                   "building the templates, recording the tutorial so thirty-odd people stop asking the same "
+                   "question. Getting that right is what makes the analysis possible.",
+             tags=["Python", "SQL", "Data standards", "Project management"]),
+        dict(org="China Merchants Securities", date="Apr — Aug 2023",
+             role="Investment Banking Analyst Intern",
+             prose="A summer in investment banking in Beijing. I went through 2020–2023 financials for eight "
+                   "companies, then dug properly into two of them — subsidiary listings, and whether the "
+                   "business, resource and capital synergies were actually there. I also rewrote parts of "
+                   "two or three convertible-bond and refinancing proposals, which is where I learned how "
+                   "much of finance is formatting.",
+             tags=["Financial analysis", "Excel", "Valuation"]),
+    ],
+
+    writing_title="Things I've been working out",
+    writing_lede="Findings from my own work, written as arguments rather than project pages. "
+                 "Drafts in progress — the analysis is done, the writing isn't.",
+    writing=[
+        dict(title="How I talked myself out of a 13x return",
+             desc="A retention programme priced against an industry benchmark looked like a money printer. "
+                  "Priced against the actual headcount it was worth $83K. The arithmetic that makes the "
+                  "difference is embarrassingly simple.",
+             status="Draft"),
+        dict(title="Your accuracy score is probably measuring your majority class",
+             desc="I reported 88–90% accuracy on a classifier and felt good about it. The majority class "
+                  "was 85.6%. What I'd actually built was barely better than answering the same way every time.",
+             status="Draft"),
+        dict(title="A metric can be right and still be useless",
+             desc="A composite score reproduced its own specification perfectly, ranked listings sensibly, "
+                  "and produced a city ranking where first place won by 0.005 points. Precision isn't signal.",
+             status="Outline"),
+        dict(title="What I got wrong in my first year of analytics",
+             desc="Reading an interaction coefficient without its main effect. Trusting a target variable's "
+                  "label. Three or four mistakes I made that nobody flagged, and how I caught them.",
+             status="Idea"),
     ],
 
     proj_title="Three that show the range",
@@ -132,15 +166,19 @@ MODES = {
 
     about_title="Testing the things everyone assumes",
     about=[
+        "<span class='todo'>[Simon — the origin story. Why sports, and why you kept choosing it when "
+        "the economics degree pointed somewhere else. Which teams, which moment made this stick. Two "
+        "or three sentences, specific. This is the one a club will read twice.]</span>",
         "Football analysis is full of claims nobody checks. Possession wins matches. The crowd drives "
-        "home advantage. Europe's big five are more competitive than MLS. Each is testable, and each "
-        "one weakens or reverses when you actually run it.",
-        "My own work included. One project started from an assumption printed on slide two of the "
-        "original deck — that European leagues are inherently more competitive. I coded it straight "
-        "into the target variable, then went back, tested it properly, and found the data said the "
-        "opposite. The accuracy figure I'd reported was riding an 85.6% majority class.",
-        "Alongside that, two seasons inside sports performance: athlete pipelines, readiness "
-        "monitoring, and tooling that coaching staff actually kept using.",
+        "home advantage. Europe's big five out-compete MLS. Each of those is testable, and each one "
+        "weakens or reverses when you actually run it.",
+        "My own work included. One project opened from an assumption printed on slide two of the deck "
+        "— that European leagues are inherently more competitive. I coded it straight into the target "
+        "variable. Going back and testing it properly is what produced everything worth reading in that "
+        "project, and it also meant admitting the accuracy figure I'd reported was riding an 85.6% "
+        "majority class.",
+        "Alongside that, two seasons inside sports performance — athlete pipelines, readiness "
+        "monitoring, and tooling the coaching staff kept using after I left.",
     ],
     about_kicker="What I work on",
     about_list=[
@@ -152,23 +190,48 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
-        dict(org="Excel Sports Management", place="Irvine, CA", date="June 2025 – August 2025",
-             role="Sports Performance Associate, Analytics", bullets=[
-             "Built and validated an R/Python pipeline integrating 5+ performance data sources and APIs, automating extraction, cleaning, ID matching, metrics and reporting for 200+ athletes to cut recurring work by roughly 80%",
-             "Modelled relationships among neuromuscular, sprint, strength, pitch-speed and bat-speed measures, helping performance staff interpret athlete drivers and support individualised training discussions",
-             "Integrated performance, body-composition, nutrition and well-being data against age- and level-based benchmarks, helping coaches identify gaps and set priorities across 3–10 weekly reviews",
-             "Built R Shiny and Streamlit dashboards retained by the performance team, centralising athlete trends and readiness indicators for recurring coach-facing review",
-             ]),
-        dict(org="Trojans Sports Research Lab", place="Los Angeles, CA", date="January 2025 – Present",
-             role="Program & Project Manager", bullets=[
-             "Managed 5+ sports and analytics research projects of 5–10 members each inside a 200+ member lab, adapting assignments and timelines to keep milestones moving",
-             "Created reusable data-collection standards, templates, an illustrated guide and a recorded tutorial for 30+ members, clarifying field, quality and delivery requirements",
-             "Supported analysis and validation across three sports research projects, with two abstracts accepted by ACSM; presented both posters and findings on site",
-             ]),
-        dict(org="China Merchants Securities Co., Ltd", place="Beijing, China", date="April 2023 – August 2023",
-             role="Investment Banking Department Analyst Intern", bullets=[
-             "Analysed 2020–2023 financial and operating data for eight companies and deep-dived two groups' subsidiary-listing support and internal synergies to inform opportunity assessment",
-             ]),
+        dict(org="Excel Sports Management", date="Jun — Aug 2025",
+             role="Sports Performance Associate, Analytics",
+             prose="A summer inside a performance team, modelling how neuromuscular, sprint, strength, "
+                   "pitch-speed and bat-speed measures actually relate to each other, and building the "
+                   "pipeline that fed three to ten athlete reviews a week for 200+ athletes. The R Shiny "
+                   "and Streamlit dashboards I built are still in use, which is the part I'd point at.",
+             tags=["R", "Python", "Athlete monitoring", "R Shiny", "Streamlit"]),
+        dict(org="Trojans Sports Research Lab", date="Jan 2025 — Present",
+             role="Program & Project Manager",
+             prose="I manage sports research projects inside a 200+ member lab — five or more at a time, "
+                   "five to ten people each, built around student schedules. Two of the projects I worked "
+                   "on had abstracts accepted by ACSM, and I presented both posters on site.",
+             tags=["Python", "SQL", "Research design", "ACSM"]),
+        dict(org="China Merchants Securities", date="Apr — Aug 2023",
+             role="Investment Banking Analyst Intern",
+             prose="A summer in investment banking in Beijing, going through 2020–2023 financials for eight "
+                   "companies and digging properly into two of them. Not sports, but it's where I learned to "
+                   "be suspicious of a number before repeating it.",
+             tags=["Financial analysis", "Excel", "Valuation"]),
+    ],
+
+    writing_title="Things I've been working out",
+    writing_lede="Findings from my own work, written as arguments rather than project pages. "
+                 "Drafts in progress — the analysis is done, the writing isn't.",
+    writing=[
+        dict(title="Possession is a bad KPI. Box touches are a better one.",
+             desc="Across 160 Premier League squad-seasons, one variable beat the full 23-metric set on "
+                  "clubs the model had never seen. Most of what we measure about possession is describing "
+                  "the same thing twice.",
+             status="Draft"),
+        dict(title="MLS has more parity than the Premier League",
+             desc="Two independent measures, fourteen seasons, and a result that reverses the thing "
+                  "everybody says. Bayern won 11 of 14 Bundesliga titles over the same span.",
+             status="Draft"),
+        dict(title="Your accuracy score is probably measuring your majority class",
+             desc="I reported 88–90% accuracy on a classifier and felt good about it. The majority class "
+                  "was 85.6%. What I'd actually built was barely better than answering the same way every time.",
+             status="Draft"),
+        dict(title="The crowd isn't why home teams win",
+             desc="Attendance predicts home points right up until you control for which clubs fill big "
+                  "stadiums. Then it's nothing. The referees aren't it either.",
+             status="Outline"),
     ],
 
     proj_title="Four findings that reversed the assumption",
@@ -203,7 +266,19 @@ MODES = {
                   "11 of 14 Bundesliga titles. The classifier I first reported at 88–90% accuracy was "
                   "riding an 85.6% majority class; corrected, it reaches 0.954 AUC.",
              fig=f"{BASE}/DSO 579 - MLS vs European League Analysis (2025 Spring)/Git Version/figures/competitive_balance.png",
-             repo="https://github.com/Semin1c/mls-vs-european-leagues", stack="Python · scikit-learn · SHAP"),
+             repo="https://github.com/Semin1c/mls-vs-european-leagues", stack="Python · scikit-learn · SHAP",
+             viz=dict(
+                 title="How evenly matched is each league?",
+                 sub="Spread of points per match within a season, averaged 2010–2023. Lower means closer.",
+                 max=0.50,
+                 rows=[("MLS", 0.315, "0.315", True),
+                       ("Ligue 1", 0.415, "0.415", False),
+                       ("Bundesliga", 0.449, "0.449", False),
+                       ("La Liga", 0.464, "0.464", False),
+                       ("Premier League", 0.473, "0.473", False),
+                       ("Serie A", 0.476, "0.476", False)],
+                 note="Points <em>per match</em>, because MLS and the Bundesliga play 34 games "
+                      "while the rest play 38. Over the same period Bayern won 11 of 14 Bundesliga titles.")),
         dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
              stat="~61%", label="win rate with a 2+ day rest edge",
              desc="Separating travel, rest and opponent sequencing from team quality across 300 "
