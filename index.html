@@ -51,6 +51,17 @@ body.swapping [data-swap]{opacity:0;transform:translateY(7px)}
   transition:color var(--swap),background var(--swap)}
 h1{font-size:clamp(33px,5.2vw,54px);line-height:1.08;letter-spacing:-.033em;margin:0 0 18px;font-weight:700}
 .rule{width:58px;height:5px;border-radius:3px;background:var(--gold);margin:0 0 22px;transition:background var(--swap)}
+.greet{font-size:clamp(17px,2.2vw,21px);color:var(--muted);margin:0 0 6px;font-weight:500}
+.greet .zh{color:var(--accent);font-weight:700;transition:color var(--swap)}
+.role{font-size:clamp(15px,1.9vw,18px);font-weight:600;color:var(--accent);margin:0 0 20px;
+  letter-spacing:.01em;transition:color var(--swap)}
+.brings{display:grid;gap:0;margin-top:26px;border-top:1px solid var(--line)}
+.bring{display:grid;grid-template-columns:38px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);
+  align-items:start}
+.bring .n{font-size:14px;font-weight:700;color:var(--accent);padding-top:2px;transition:color var(--swap);
+  font-variant-numeric:tabular-nums}
+.bring h4{margin:0 0 6px;font-size:17px;letter-spacing:-.012em}
+.bring p{margin:0;color:var(--muted);font-size:15.5px;max-width:640px}
 .lede{font-size:clamp(17px,2.05vw,19.5px);color:var(--muted);max-width:640px;margin:0 0 30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14.5px;
@@ -175,24 +186,26 @@ footer a{color:var(--muted)}
 </div></header>
 <main class="wrap">
 <div data-mode-block="analyst" hidden><div class="hero">
-  <span class="eyebrow">Data &amp; Business Analytics</span>
-  <h1>I find the number that changes the decision.</h1>
+  <p class="greet">Hi, I'm <span class='zh'>『Xingyang』</span></p>
+  <h1>Simon Chen</h1>
+  <p class="role">Data Analyst &amp; Scientist</p>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall. I build the pipeline, run the model, then spend most of my time trying to break the answer before someone spends money on it.</p>
+  <p class="lede">A team-oriented analyst who values data and technology, but believes the real foundation is still human insight, judgment and interaction. Right now I'm finishing a Master's in Business Analytics at USC Marshall.</p>
   <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
+    <a class="btn btn-primary" href="about.html" data-keepmode>More about me</a>
+    <a class="btn btn-ghost" href="projects.html" data-keepmode>Selected work</a>
   </div>
 </div></div><div data-mode-block="sports" hidden><div class="hero">
-  <span class="eyebrow">Sports Analytics</span>
-  <h1>Most of what we &ldquo;know&rdquo; about football doesn't survive a test.</h1>
+  <p class="greet">Hi, I'm <span class='zh'>『Xingyang』</span></p>
+  <h1>Simon Chen</h1>
+  <p class="role">Sports Analytics</p>
   <div class="rule"></div>
-  <p class="lede">Master's in Business Analytics at USC Marshall, with two seasons of work inside sports performance. I test the claims everyone repeats — possession, home advantage, competitive balance — and they usually don't hold.</p>
+  <p class="lede">Two seasons inside sports performance and a Master's in Business Analytics at USC Marshall. I work on team and player questions, and I care as much about whether a finding is usable by a coach as whether it holds up statistically.</p>
   <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
+    <a class="btn btn-primary" href="about.html" data-keepmode>More about me</a>
+    <a class="btn btn-ghost" href="projects.html" data-keepmode>Selected work</a>
   </div>
-</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
+</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">What I bring</div><h2>Beyond tools and titles</h2><p class="prose">This is the kind of perspective I bring to the work.</p><div class="brings"><div class="bring"><div class="n">01</div><div><h4>Structured problem solving</h4><p>Starting from the decision someone actually needs to make, then working back to what the data has to answer — rather than starting from whatever is in the file.</p></div></div><div class="bring"><div class="n">02</div><div><h4>Data with context</h4><p>A number means little without knowing how it was collected, what it leaves out, and who is going to act on it. I spend as much time on that as on the modelling.</p></div></div><div class="bring"><div class="n">03</div><div><h4>Communication that translates</h4><p>Most of the people who need an answer aren't analysts. Getting a finding across to a coach, a manager or a room that doesn't share your vocabulary is part of the job, not an extra.</p></div></div><div class="bring"><div class="n">04</div><div><h4>Collaborative mindset</h4><p>I've worked inside performance teams and run projects across a 200+ member lab. The useful work almost always comes from the conversation, not from someone analysing alone.</p></div></div><div class="bring"><div class="n">05</div><div><h4>Curiosity that keeps expanding</h4><p>Sports, business, performance, new tooling. I'd rather learn a new domain properly than stay in one lane, and most of what I've found interesting came from that.</p></div></div></div></div><div data-mode-block="sports" hidden><div class="kicker">What I bring</div><h2>Beyond tools and titles</h2><p class="prose">This is the kind of perspective I bring to the work.</p><div class="brings"><div class="bring"><div class="n">01</div><div><h4>Structured problem solving</h4><p>Starting from the decision someone actually needs to make, then working back to what the data has to answer — rather than starting from whatever is in the file.</p></div></div><div class="bring"><div class="n">02</div><div><h4>Data with context</h4><p>A number means little without knowing how it was collected, what it leaves out, and who is going to act on it. I spend as much time on that as on the modelling.</p></div></div><div class="bring"><div class="n">03</div><div><h4>Communication that translates</h4><p>Most of the people who need an answer aren't analysts. Getting a finding across to a coach, a manager or a room that doesn't share your vocabulary is part of the job, not an extra.</p></div></div><div class="bring"><div class="n">04</div><div><h4>Collaborative mindset</h4><p>I've worked inside performance teams and run projects across a 200+ member lab. The useful work almost always comes from the conversation, not from someone analysing alone.</p></div></div><div class="bring"><div class="n">05</div><div><h4>Curiosity that keeps expanding</h4><p>Sports, business, performance, new tooling. I'd rather learn a new domain properly than stay in one lane, and most of what I've found interesting came from that.</p></div></div></div></div></section><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
 <h2>Three that show the range</h2>
 <p class="prose">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
 <div class="cards"><a class="card" href="https://github.com/Semin1c/netflix-churn-engagement">
@@ -256,13 +269,16 @@ function applyMode(m,animate){
       a.setAttribute('aria-current',on);
       if(on) movePill(a);
     });
+    let ed=null; try{ed=new URL(location.href).searchParams.get('edit')}catch(e){}
     document.querySelectorAll('a[data-keepmode]').forEach(a=>{
       try{const u=new URL(a.href,location.href);u.searchParams.set('mode',m);
+          if(ed==='1') u.searchParams.set('edit','1');
           a.href=u.pathname.split('/').pop()+u.search;}catch(e){}
     });
     document.title=document.title.replace(/ — .*$/,'') + ' — ' + c.title;
     try{localStorage.setItem('mode',m)}catch(e){}
     try{const u=new URL(location.href);u.searchParams.set('mode',m);
+        if(ed==='1') u.searchParams.set('edit','1');
         history.replaceState({},'',u);}catch(e){}
   };
   if(!animate){go();return;}

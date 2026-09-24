@@ -94,6 +94,17 @@ body.swapping [data-swap]{opacity:0;transform:translateY(7px)}
   transition:color var(--swap),background var(--swap)}
 h1{font-size:clamp(33px,5.2vw,54px);line-height:1.08;letter-spacing:-.033em;margin:0 0 18px;font-weight:700}
 .rule{width:58px;height:5px;border-radius:3px;background:var(--gold);margin:0 0 22px;transition:background var(--swap)}
+.greet{font-size:clamp(17px,2.2vw,21px);color:var(--muted);margin:0 0 6px;font-weight:500}
+.greet .zh{color:var(--accent);font-weight:700;transition:color var(--swap)}
+.role{font-size:clamp(15px,1.9vw,18px);font-weight:600;color:var(--accent);margin:0 0 20px;
+  letter-spacing:.01em;transition:color var(--swap)}
+.brings{display:grid;gap:0;margin-top:26px;border-top:1px solid var(--line)}
+.bring{display:grid;grid-template-columns:38px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);
+  align-items:start}
+.bring .n{font-size:14px;font-weight:700;color:var(--accent);padding-top:2px;transition:color var(--swap);
+  font-variant-numeric:tabular-nums}
+.bring h4{margin:0 0 6px;font-size:17px;letter-spacing:-.012em}
+.bring p{margin:0;color:var(--muted);font-size:15.5px;max-width:640px}
 .lede{font-size:clamp(17px,2.05vw,19.5px);color:var(--muted);max-width:640px;margin:0 0 30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14.5px;
@@ -226,13 +237,16 @@ function applyMode(m,animate){
       a.setAttribute('aria-current',on);
       if(on) movePill(a);
     });
+    let ed=null; try{ed=new URL(location.href).searchParams.get('edit')}catch(e){}
     document.querySelectorAll('a[data-keepmode]').forEach(a=>{
       try{const u=new URL(a.href,location.href);u.searchParams.set('mode',m);
+          if(ed==='1') u.searchParams.set('edit','1');
           a.href=u.pathname.split('/').pop()+u.search;}catch(e){}
     });
     document.title=document.title.replace(/ — .*$/,'') + ' — ' + c.title;
     try{localStorage.setItem('mode',m)}catch(e){}
     try{const u=new URL(location.href);u.searchParams.set('mode',m);
+        if(ed==='1') u.searchParams.set('edit','1');
         history.replaceState({},'',u);}catch(e){}
   };
   if(!animate){go();return;}
@@ -398,6 +412,14 @@ def xp_item(e):
 </div>"""
 
 
+def brings(m):
+    rows = ""
+    for i, (title, body) in enumerate(m["brings"], 1):
+        rows += (f'<div class="bring"><div class="n">{i:02d}</div>'
+                 f'<div><h4>{title}</h4><p>{body}</p></div></div>')
+    return f'<div class="brings">{rows}</div>'
+
+
 def barchart(v):
     rows = ""
     for label, val, shown, hot in v["rows"]:
@@ -422,16 +444,24 @@ def post(w):
 # ---------------------------------------------------------------------- pages
 def page_index():
     def hero(m):
+        pre = m["name_pre"].replace("『Xingyang』", "<span class='zh'>『Xingyang』</span>")
         return f"""<div class="hero">
-  <span class="eyebrow">{m['eyebrow']}</span>
+  <p class="greet">{pre}</p>
   <h1>{m['headline']}</h1>
+  <p class="role">{m['role']}</p>
   <div class="rule"></div>
   <p class="lede">{m['lede']}</p>
   <div class="cta">
-    <a class="btn btn-primary" href="projects.html" data-keepmode>Selected work</a>
-    <a class="btn btn-ghost" href="about.html" data-keepmode>About me</a>
+    <a class="btn btn-primary" href="about.html" data-keepmode>More about me</a>
+    <a class="btn btn-ghost" href="projects.html" data-keepmode>Selected work</a>
   </div>
 </div>"""
+
+    def what_i_bring(m):
+        return (f'<div class="kicker">{m["about_kicker"]}</div>'
+                f'<h2>Beyond tools and titles</h2>'
+                f'<p class="prose">This is the kind of perspective I bring to the work.</p>'
+                f'{brings(m)}')
 
     def feat(m):
         return f"""<div class="kicker">Selected work</div>
@@ -442,14 +472,15 @@ def page_index():
 a portfolio should be read, not scrolled past.</div>"""
 
     return shell("Analytics Portfolio", "index",
-                 per_mode(hero) + "<section>" + per_mode(feat) + "</section>")
+                 per_mode(hero)
+                 + "<section>" + per_mode(what_i_bring) + "</section>"
+                 + "<section>" + per_mode(feat) + "</section>")
 
 
 def page_about():
     def block(m):
         paras = "".join(f"<p>{p}</p>" for p in m["about"])
-        minis = "".join(
-            f'<div class="mini"><h4>{t}</h4><p>{d}</p></div>' for t, d in m["about_list"])
+        minis = brings(m)
         skills = "".join(
             f'<div class="row"><span>{t}</span><span>{d}</span></div>' for t, d in m["skills"])
         return f"""<div class="hero" style="padding-bottom:30px">
@@ -458,7 +489,7 @@ def page_about():
   <div class="rule"></div>
 </div>
 <div class="prose">{paras}</div>
-<section><div class="kicker">{m['about_kicker']}</div><div class="grid2">{minis}</div></section>
+<section><div class="kicker">{m['about_kicker']}</div><h2>Beyond tools and titles</h2>{minis}</section>
 <section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows">{skills}</div></section>"""
 
     edu = "".join(f"""<div class="xp-item">

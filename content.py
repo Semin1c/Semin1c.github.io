@@ -31,30 +31,51 @@ MODES = {
 "analyst": dict(
     key="analyst", label="Data / Business", accent="#990000", gold="#FFCC00",
     school="USC", eyebrow="Data &amp; Business Analytics",
-    headline="I find the number that changes the decision.",
-    lede="Master's in Business Analytics at USC Marshall. I build the pipeline, run the model, "
-         "then spend most of my time trying to break the answer before someone spends money on it.",
+    headline="Simon Chen",
+    name_pre="Hi, I'm 『Xingyang』",
+    role="Data Analyst &amp; Scientist",
+    lede="A team-oriented analyst who values data and technology, but believes the real foundation "
+         "is still human insight, judgment and interaction. Right now I'm finishing a Master's in "
+         "Business Analytics at USC Marshall.",
     nav_tag="Data &amp; Business Analytics",
 
-    about_title="Analytics that survives being checked",
+    about_title="Data is the tool. The judgment around it is the work.",
     about=[
-        "I studied economics at UC Irvine and assumed I'd end up in finance. A summer in "
-        "investment banking in Beijing taught me I liked the analysis and not much else about it, "
-        "so I went to USC for analytics instead.",
-        "What I've ended up caring about is the checking. Analysis rarely fails loudly — the model "
-        "scores well, the deck gets approved, and nobody notices the number was measuring the wrong "
-        "thing. I've found that in my own work often enough that it's become the first thing I do "
-        "rather than the last.",
-        "A retention programme I'd sized at a 13x return was worth about 1.2x once I costed it "
-        "against real headcount instead of an industry benchmark. A claim model scoring 0.83 AUC "
-        "turned out to be predicting whether someone had <em>ever</em> filed a claim, not whether "
-        "they'd file this year. Nobody caught either of those for me.",
+        "My background is in business analytics and economics, and I'm especially interested in "
+        "work across business, sports, performance and decision-making. I enjoy using data, "
+        "visualization and new technology to make sense of problems and move toward better answers. "
+        "But to me the work is never just about tools — it's also about communication, context, "
+        "domain understanding, and knowing how to turn analysis into something useful in the real world.",
+        "I don't see AI as an enemy, but as a partner — something to learn with, experiment with, "
+        "and use alongside human perspective to build better insight and better decisions.",
+        "The habit I've built along the way is checking my own work before anyone else has to. "
+        "A retention programme I'd sized at a 13x return was worth closer to 1.2x once I costed it "
+        "against real headcount. A model scoring well turned out to be answering a different question "
+        "than the one we'd asked. Catching those myself matters more to me than the first number "
+        "looking good.",
         "<span class='todo'>[Simon — your paragraph. What you're like outside this: what you watch, "
         "play, argue about. Brittany Chiang's version is \"climbing, playing tennis, hanging out with "
         "my wife and two cats, and running around Hyrule searching for Korok seeds.\" Specific beats "
         "impressive. This is the paragraph people remember.]</span>",
     ],
-    about_kicker="What I work on",
+    about_kicker="What I bring",
+    brings=[
+        ("Structured problem solving",
+         "Starting from the decision someone actually needs to make, then working back to what the "
+         "data has to answer — rather than starting from whatever is in the file."),
+        ("Data with context",
+         "A number means little without knowing how it was collected, what it leaves out, and who "
+         "is going to act on it. I spend as much time on that as on the modelling."),
+        ("Communication that translates",
+         "Most of the people who need an answer aren't analysts. Getting a finding across to a coach, "
+         "a manager or a room that doesn't share your vocabulary is part of the job, not an extra."),
+        ("Collaborative mindset",
+         "I've worked inside performance teams and run projects across a 200+ member lab. The useful "
+         "work almost always comes from the conversation, not from someone analysing alone."),
+        ("Curiosity that keeps expanding",
+         "Sports, business, performance, new tooling. I'd rather learn a new domain properly than "
+         "stay in one lane, and most of what I've found interesting came from that."),
+    ],
     about_list=[
         ("Churn and retention", "Who leaves, what actually drives it, and what keeping them is worth."),
         ("Pricing and risk", "Loss modelling on heavily skewed distributions where the average is useless."),
@@ -158,29 +179,48 @@ MODES = {
 "sports": dict(
     key="sports", label="Sports", accent="#0064A4", gold="#FFD200",
     school="UC Irvine", eyebrow="Sports Analytics",
-    headline="Most of what we &ldquo;know&rdquo; about football doesn't survive a test.",
-    lede="Master's in Business Analytics at USC Marshall, with two seasons of work inside sports "
-         "performance. I test the claims everyone repeats — possession, home advantage, competitive "
-         "balance — and they usually don't hold.",
+    headline="Simon Chen",
+    name_pre="Hi, I'm 『Xingyang』",
+    role="Sports Analytics",
+    lede="Two seasons inside sports performance and a Master's in Business Analytics at USC Marshall. "
+         "I work on team and player questions, and I care as much about whether a finding is usable by "
+         "a coach as whether it holds up statistically.",
     nav_tag="Sports Analytics",
 
-    about_title="Testing the things everyone assumes",
+    about_title="The data matters. So does knowing the game around it.",
     about=[
         "<span class='todo'>[Simon — the origin story. Why sports, and why you kept choosing it when "
         "the economics degree pointed somewhere else. Which teams, which moment made this stick. Two "
         "or three sentences, specific. This is the one a club will read twice.]</span>",
-        "Football analysis is full of claims nobody checks. Possession wins matches. The crowd drives "
-        "home advantage. Europe's big five out-compete MLS. Each of those is testable, and each one "
-        "weakens or reverses when you actually run it.",
-        "My own work included. One project opened from an assumption printed on slide two of the deck "
-        "— that European leagues are inherently more competitive. I coded it straight into the target "
-        "variable. Going back and testing it properly is what produced everything worth reading in that "
-        "project, and it also meant admitting the accuracy figure I'd reported was riding an 85.6% "
-        "majority class.",
-        "Alongside that, two seasons inside sports performance — athlete pipelines, readiness "
-        "monitoring, and tooling the coaching staff kept using after I left.",
+        "A lot of football analysis rests on claims nobody has actually checked — that possession wins "
+        "matches, that the crowd drives home advantage, that Europe's big five out-compete MLS. Each of "
+        "those is testable, and each one weakens or reverses when you run it properly. I find that more "
+        "interesting than confirming what people already believe.",
+        "That includes my own work. One project opened from an assumption printed on slide two of the "
+        "deck, and I coded it straight into the target variable before going back and finding the data "
+        "said the opposite. Admitting that is what made the project worth anything.",
+        "Alongside the analysis, two seasons inside sports performance — building athlete pipelines, "
+        "working on readiness monitoring, and making tools the coaching staff kept using after I left. "
+        "That part taught me that a finding nobody can act on isn't finished.",
     ],
-    about_kicker="What I work on",
+    about_kicker="What I bring",
+    brings=[
+        ("Structured problem solving",
+         "Starting from the decision someone actually needs to make, then working back to what the "
+         "data has to answer — rather than starting from whatever is in the file."),
+        ("Data with context",
+         "A number means little without knowing how it was collected, what it leaves out, and who "
+         "is going to act on it. I spend as much time on that as on the modelling."),
+        ("Communication that translates",
+         "Most of the people who need an answer aren't analysts. Getting a finding across to a coach, "
+         "a manager or a room that doesn't share your vocabulary is part of the job, not an extra."),
+        ("Collaborative mindset",
+         "I've worked inside performance teams and run projects across a 200+ member lab. The useful "
+         "work almost always comes from the conversation, not from someone analysing alone."),
+        ("Curiosity that keeps expanding",
+         "Sports, business, performance, new tooling. I'd rather learn a new domain properly than "
+         "stay in one lane, and most of what I've found interesting came from that."),
+    ],
     about_list=[
         ("Match and season analysis", "Possession, chance creation, home advantage, competitive balance."),
         ("Player and roster evaluation", "What transfers across clubs, and what was only ever context."),
