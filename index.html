@@ -105,6 +105,20 @@ h3{letter-spacing:-.015em}
   padding:5px 10px;border-radius:999px;transition:color var(--swap),background var(--swap)}
 .todo{display:block;background:#FEF9C3;border-left:3px solid #CA8A04;padding:13px 15px;
   border-radius:0 8px 8px 0;font-size:14.5px;color:#713F12;font-style:italic}
+
+/* ---- edit mode: add ?edit=1 to any page ---- */
+body.editing [data-ed]{outline:1px dashed #94A3B8;outline-offset:4px;border-radius:3px}
+body.editing [data-ed]:hover{outline-color:var(--accent);background:#FFFBEB}
+body.editing [data-ed]:focus{outline:2px solid var(--accent);background:#fff}
+body.editing [data-ed].dirty{background:#ECFDF5;outline-color:#059669}
+#edbar{position:fixed;left:0;right:0;bottom:0;z-index:999;display:flex;align-items:center;gap:14px;
+  padding:12px 20px;background:#0F172A;color:#fff;font-size:13.5px;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+#edbar b{color:var(--gold)}
+#edbar .sp{margin-left:auto;display:flex;gap:9px}
+#edbar button{font:600 13px/1 inherit;padding:9px 15px;border-radius:8px;border:0;cursor:pointer}
+#edbar .save{background:var(--gold);color:#0F172A}
+#edbar .reset{background:transparent;color:#94A3B8;border:1px solid #334155}
 .post{display:block;text-decoration:none;color:inherit;padding:22px;margin:0 -22px;
   border-radius:12px;border-bottom:1px solid var(--line);transition:background .2s ease}
 .post:hover{background:var(--card)}
@@ -270,6 +284,51 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
   e.target.querySelectorAll('.bfill').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*70));
   io.unobserve(e.target);}}),{threshold:.35});
 document.querySelectorAll('.viz').forEach(v=>io.observe(v));
+
+/* ---------------- edit mode ---------------- */
+(function(){
+  let on=false; try{on=new URL(location.href).searchParams.get('edit')==='1'}catch(e){}
+  if(!on) return;
+  const PAGE=(location.pathname.split('/').pop()||'index.html').replace('.html','');
+  const SEL='h1,h2,.lede,.prose p,.job p,.job h4,.post h3,.post p,.card h3,.card p,'+
+            '.entry p,.vtitle,.vsub,.vnote,.mini p,.mini h4,.todo,.note';
+  const key=(m,i)=>'ed:'+PAGE+':'+m+':'+i;
+  function mark(){
+    document.querySelectorAll('[data-mode-block]').forEach(blk=>{
+      const m=blk.dataset.modeBlock;
+      blk.querySelectorAll(SEL).forEach((el,i)=>{
+        if(el.dataset.ed) return;
+        el.dataset.ed=key(m,i); el.contentEditable='true'; el.spellcheck=true;
+        const saved=localStorage.getItem(el.dataset.ed);
+        if(saved!==null){el.innerHTML=saved;el.classList.add('dirty');}
+        el.addEventListener('input',()=>{
+          localStorage.setItem(el.dataset.ed,el.innerHTML); el.classList.add('dirty');
+        });
+      });
+    });
+  }
+  document.body.classList.add('editing'); mark();
+  new MutationObserver(mark).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
+
+  const bar=document.createElement('div'); bar.id='edbar';
+  bar.innerHTML='<span><b>Edit mode</b> — click any text and type. Saved in this browser.</span>'+
+    '<span class="sp"><button class="reset">Discard</button>'+
+    '<button class="save">Download my edits</button></span>';
+  document.body.appendChild(bar);
+  bar.querySelector('.save').onclick=()=>{
+    const out={};
+    for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
+      if(k.startsWith('ed:'))out[k]=localStorage.getItem(k);}
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
+    a.download='simon-site-edits.json'; a.click();
+  };
+  bar.querySelector('.reset').onclick=()=>{
+    if(!confirm('Discard every edit saved in this browser?')) return;
+    Object.keys(localStorage).filter(k=>k.startsWith('ed:')).forEach(k=>localStorage.removeItem(k));
+    location.reload();
+  };
+})();
 </script>
 </body>
 </html>
