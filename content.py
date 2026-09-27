@@ -24,6 +24,7 @@ SHARED = dict(
     affiliations=[
         ("USC Marshall", "MS Business Analytics"),
         ("UC Irvine", "BA Business Economics"),
+        ("Ontario Jr. Reign", "Video analytics · ops"),
         ("Excel Sports Management", "Performance analytics"),
         ("Trojans Sports Research Lab", "Program manager"),
         ("China Merchants Securities", "Investment banking"),
@@ -139,6 +140,24 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
+        dict(org="Ontario Jr. Reign", date="Aug 2026 — Present",
+             role="Video Analytics Intern · Digital Operations",
+             prose="Three affiliated hockey programs, and a job that runs from data standards to "
+                   "revenue. I'm co-leading Shopify and Printful storefronts across all three — 30+ "
+                   "products, catalogues, fulfilment workflows — to open a direct-to-fan channel that "
+                   "didn't exist, while centralising schedules and public information. I'm also "
+                   "building an event-tracking framework with GMs and coaches so future performance "
+                   "data is collected consistently rather than rebuilt each year.",
+             tags=["Shopify", "Ops", "Data standards", "Stakeholders"]),
+        dict(org="Sportswear brand · independent consulting", date="Sep 2026 — Present",
+             role="B2C Growth & Inventory Diagnostic",
+             prose="A growth and inventory diagnostic for a sportswear brand, connecting traffic, "
+                   "acquisition, fulfilment and SKU-level data across 4,000+ orders and 3,000+ "
+                   "customers. The finding that changed the plan was geographic: penetration sat at "
+                   "1–2%, but conversion ran about 2.1x higher inside 25-kilometre customer clusters, "
+                   "which argued for geo-targeted acquisition tests before anything broader. I also "
+                   "flagged the CRM and inventory constraints that would cap whatever we tried.",
+             tags=["Growth", "Segmentation", "Inventory", "E-commerce"]),
         dict(org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="Built the pipeline the performance team ran on — five-plus sources and APIs pulled "
@@ -289,6 +308,23 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
+        dict(org="Ontario Jr. Reign", date="Aug 2026 — Present",
+             role="Video Analytics Intern · Digital Operations",
+             prose="Working across three affiliated junior hockey programs. The part I care most about "
+                   "is building an in-game event-tracking framework with the GMs and coaches — agreeing "
+                   "what actually gets recorded, so there's a foundation for real performance analysis "
+                   "instead of starting from nothing every season. Alongside that, the unglamorous "
+                   "operational side: schedules, team sites, and standing up merchandise storefronts.",
+             tags=["Event tracking", "Hockey", "Ops", "Shopify"]),
+        dict(org="Sportswear brand · independent consulting", date="Sep 2026 — Present",
+             role="B2C Growth & Inventory Diagnostic",
+             prose="A growth and inventory diagnostic for a sportswear brand, connecting traffic, "
+                   "acquisition, fulfilment and SKU-level data across 4,000+ orders and 3,000+ "
+                   "customers. The finding that changed the plan was geographic: penetration sat at "
+                   "1–2%, but conversion ran about 2.1x higher inside 25-kilometre customer clusters, "
+                   "which argued for geo-targeted acquisition tests before anything broader. I also "
+                   "flagged the CRM and inventory constraints that would cap whatever we tried.",
+             tags=["Growth", "Segmentation", "Inventory", "E-commerce"]),
         dict(org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="A summer inside a performance team, modelling how neuromuscular, sprint, strength, "
