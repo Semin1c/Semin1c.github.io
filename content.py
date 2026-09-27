@@ -14,10 +14,10 @@ SHARED = dict(
     currently_updated="Updated September 2026",
     currently=[
         ("Finishing", "My Master's at USC Marshall — graduating May 2026."),
-        ("Looking for", "Analyst roles starting next summer, in business or sports."),
-        ("Watching", "[Simon — which league, which team, what you actually have on. Be specific.]"),
-        ("Reading", "[Simon — a book, a newsletter, an analytics blog. Anything real.]"),
-        ("Off the clock", "[Simon — what you do that has nothing to do with data.]"),
+        ("Looking for", "Analyst roles starting next summer, in business or in sport."),
+        ("Watching", "Real Madrid, and whatever else is on. I'll take a live game over almost anything."),
+        ("Weekends", "A pickup game, football or basketball. A film in an actual cinema. A good meal."),
+        ("Recently", "The 2026 World Cup, in person."),
     ],
     portrait='<div class="portrait ph">Photo of Simon goes here — drop a file in '
              'assets/ and point this at it</div>',
@@ -45,11 +45,16 @@ SHARED = dict(
          "<span class='todo'>[Simon — answer this plainly. It's the first thing a US recruiter checks, "
          "and being upfront saves everyone a round of email.]</span>"),
         ("What are you like to work with?",
-         "<span class='todo'>[Simon — your words. Maybe something about how you work in a team, what "
-         "you're like when a project goes sideways, what people come to you for.]</span>"),
+         "Team-first, and not an aggressive person — which I've stopped treating as something to "
+         "apologise for. People get to do these roles their own way, and the useful thing is knowing "
+         "what your strengths actually are and building around them rather than performing someone "
+         "else's version of the job. I'm meticulous about the work and I care a lot about the people "
+         "around me being alright."),
         ("Why both business and sports?",
-         "<span class='todo'>[Simon — this is the question everyone will have. Worth answering in your "
-         "own voice rather than mine.]</span>"),
+         "I came into analytics expecting to go into finance, because that's what people said to do. "
+         "What actually changed things was putting the analysis next to something I already cared "
+         "about. The methods are the same either way — the difference is whether I'm interested at "
+         "eleven at night, and with sport I always am."),
     ],
     email="xingyang@marshall.usc.edu",
     phone="(949) 591-3777",
@@ -93,10 +98,19 @@ MODES = {
         "against real headcount. A model scoring well turned out to be answering a different question "
         "than the one we'd asked. Catching those myself matters more to me than the first number "
         "looking good.",
-        "<span class='todo'>[Simon — your paragraph. What you're like outside this: what you watch, "
-        "play, argue about. Brittany Chiang's version is \"climbing, playing tennis, hanging out with "
-        "my wife and two cats, and running around Hyrule searching for Korok seeds.\" Specific beats "
-        "impressive. This is the paragraph people remember.]</span>",
+        "I started at UC Irvine at eighteen, in the middle of Covid, assuming I'd go back to China "
+        "after graduating and head into finance because that's where everyone said the money was. "
+        "That's changed. I still miss home and my family, but putting the work next to something I "
+        "actually care about turned out to feel completely different, and I'd rather keep going that way.",
+        "Outside of work I care about staying healthy, physically and mentally, and about the people "
+        "I keep around me. A free weekend is usually a pickup game — football or basketball — a film "
+        "in an actual cinema, live games with friends and family, and a good meal. There's music on "
+        "most of the day.",
+        "Growing up in China and studying in the US gave me two registers and I use both. The Chinese "
+        "side is where the humility and the team-first instinct come from, and why I'm meticulous "
+        "about work and careful in relationships. The US side is where I picked up the confidence and "
+        "the ability to stay relaxed. Moving between the two is genuinely useful when the same finding "
+        "has to land in two very different rooms.",
     ],
     about_kicker="What I bring",
     brings=[
@@ -229,9 +243,14 @@ MODES = {
 
     about_title="The data matters. So does knowing the game around it.",
     about=[
-        "<span class='todo'>[Simon — the origin story. Why sports, and why you kept choosing it when "
-        "the economics degree pointed somewhere else. Which teams, which moment made this stick. Two "
-        "or three sentences, specific. This is the one a club will read twice.]</span>",
+        "Football came from my family before it came from me. My dad and my cousin are the kind of "
+        "enthusiasts who plan the week around fixtures, and they're the reason I started playing. My "
+        "first real memory of watching is the 2010 World Cup — I saw Ronaldo and I was genuinely "
+        "shocked. He's been my idol ever since, and he's how I ended up with Real Madrid.",
+        "I've tried to see as much of it live as I can since: Bayern against Arsenal in Shanghai, "
+        "Real Madrid's preseason in Vegas and LA, Euro 2024, the 2026 World Cup — and somewhere in "
+        "all that, finally watching Ronaldo play in person. I still follow my hometown club, and I've "
+        "still got the photo with their player of the year.",
         "A lot of football analysis rests on claims nobody has actually checked — that possession wins "
         "matches, that the crowd drives home advantage, that Europe's big five out-compete MLS. Each of "
         "those is testable, and each one weakens or reverses when you run it properly. I find that more "
