@@ -11,6 +11,16 @@ BASE = "/Users/7ang/Desktop/Github Academic Project"
 
 SHARED = dict(
     name="Simon Chen",
+    currently_updated="Updated September 2026",
+    currently=[
+        ("Finishing", "My Master's at USC Marshall — graduating May 2026."),
+        ("Looking for", "Analyst roles starting next summer, in business or sports."),
+        ("Watching", "[Simon — which league, which team, what you actually have on. Be specific.]"),
+        ("Reading", "[Simon — a book, a newsletter, an analytics blog. Anything real.]"),
+        ("Off the clock", "[Simon — what you do that has nothing to do with data.]"),
+    ],
+    portrait='<div class="portrait ph">Photo of Simon goes here — drop a file in '
+             'assets/ and point this at it</div>',
     affiliations=[
         ("USC Marshall", "MS Business Analytics"),
         ("UC Irvine", "BA Business Economics"),

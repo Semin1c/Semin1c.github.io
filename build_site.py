@@ -21,7 +21,7 @@ OUT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 ASSETS = OUT / "assets"
 
 PAGES = [("index", "Home"), ("about", "About"), ("experience", "Experience"),
-         ("projects", "Projects"), ("writing", "Writing"), ("contact", "Contact")]
+         ("projects", "Projects"), ("contact", "Contact")]
 
 
 # --------------------------------------------------------------------- assets
@@ -161,6 +161,22 @@ h3{letter-spacing:-.015em}
 .aff:hover{border-color:var(--accent);transform:translateY(-2px)}
 .aff b{display:block;font-size:14px;letter-spacing:-.01em}
 .aff span{font-size:12px;color:var(--muted)}
+.now{border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:var(--card);margin-top:26px}
+.now .nowhead{display:flex;align-items:baseline;gap:11px;margin-bottom:18px;flex-wrap:wrap}
+.now h3{margin:0;font-size:18px;letter-spacing:-.015em}
+.now .when{font-size:12px;color:var(--muted)}
+.now .dot{width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;
+  box-shadow:0 0 0 3px #16A34A22}
+.nowlist{display:grid;gap:13px}
+.nowrow{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:baseline}
+.nowrow dt{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.nowrow dd{margin:0;font-size:15.5px;color:#334155}
+.portrait{width:150px;height:150px;border-radius:16px;object-fit:cover;border:1px solid var(--line);
+  float:right;margin:0 0 20px 26px;background:var(--card)}
+.portrait.ph{display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--muted);
+  text-align:center;padding:14px;line-height:1.45}
+@media(max-width:620px){.nowrow{grid-template-columns:1fr;gap:3px}
+  .portrait{float:none;margin:0 0 20px}}
 .faq{margin-top:24px;border-top:1px solid var(--line)}
 .q{border-bottom:1px solid var(--line)}
 .q summary{cursor:pointer;padding:19px 34px 19px 0;font-size:16.5px;font-weight:600;
@@ -443,6 +459,16 @@ def xp_item(e):
 </div>"""
 
 
+def currently():
+    rows = "".join(f'<div class="nowrow"><dt>{k}</dt><dd>{v}</dd></div>'
+                   for k, v in SHARED["currently"])
+    return f"""<div class="now">
+  <div class="nowhead"><span class="dot"></span><h3>Currently</h3>
+    <span class="when">{SHARED['currently_updated']}</span></div>
+  <div class="nowlist">{rows}</div>
+</div>"""
+
+
 def brings(m):
     rows = ""
     for i, (title, body) in enumerate(m["brings"], 1):
@@ -505,7 +531,9 @@ a portfolio should be read, not scrolled past.</div>"""
     return shell("Analytics Portfolio", "index",
                  per_mode(hero)
                  + "<section>" + per_mode(what_i_bring) + "</section>"
-                 + "<section>" + per_mode(feat) + "</section>")
+                 + "<section>" + per_mode(feat) + "</section>"
+                 + '<section><div class="kicker">Outside the work</div>'
+                   '<h2>What I\'m up to right now</h2>' + currently() + "</section>")
 
 
 def page_about():
@@ -519,12 +547,14 @@ def page_about():
   <h1 style="font-size:clamp(28px,4vw,42px)">{m['about_title']}</h1>
   <div class="rule"></div>
 </div>
-<div class="prose">{paras}</div>
+<div class="prose">{SHARED['portrait']}{paras}</div>
 <section><div class="kicker">{m['about_kicker']}</div><h2>Beyond tools and titles</h2>{minis}</section>
 <section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows">{skills}</div></section>"""
 
 
-    return shell("About", "about", per_mode(block))
+    return shell("About", "about", per_mode(block)
+                 + '<section><div class="kicker">Outside the work</div>'
+                   '<h2>What I\'m up to right now</h2>' + currently() + "</section>")
 
 
 def page_experience():
@@ -592,20 +622,7 @@ def page_contact():
                    f'<h2>Before you write</h2><div class="faq">{faq}</div></section>')
 
 
-def page_writing():
-    def block(m):
-        return f"""<div class="hero" style="padding-bottom:22px">
-  <span class="eyebrow">{m['eyebrow']}</span>
-  <h1 style="font-size:clamp(28px,4vw,42px)">{m['writing_title']}</h1>
-  <div class="rule"></div>
-  <p class="lede">{m['writing_lede']}</p>
-</div>
-{''.join(post(w) for w in m['writing'])}"""
-
-    return shell("Writing", "writing", per_mode(block))
-
-
-BUILDERS = {"index": page_index, "writing": page_writing, "about": page_about, "experience": page_experience,
+BUILDERS = {"index": page_index, "about": page_about, "experience": page_experience,
             "projects": page_projects, "contact": page_contact}
 
 if __name__ == "__main__":

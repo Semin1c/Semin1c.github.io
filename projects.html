@@ -118,6 +118,22 @@ h3{letter-spacing:-.015em}
 .aff:hover{border-color:var(--accent);transform:translateY(-2px)}
 .aff b{display:block;font-size:14px;letter-spacing:-.01em}
 .aff span{font-size:12px;color:var(--muted)}
+.now{border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:var(--card);margin-top:26px}
+.now .nowhead{display:flex;align-items:baseline;gap:11px;margin-bottom:18px;flex-wrap:wrap}
+.now h3{margin:0;font-size:18px;letter-spacing:-.015em}
+.now .when{font-size:12px;color:var(--muted)}
+.now .dot{width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;
+  box-shadow:0 0 0 3px #16A34A22}
+.nowlist{display:grid;gap:13px}
+.nowrow{display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:baseline}
+.nowrow dt{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.nowrow dd{margin:0;font-size:15.5px;color:#334155}
+.portrait{width:150px;height:150px;border-radius:16px;object-fit:cover;border:1px solid var(--line);
+  float:right;margin:0 0 20px 26px;background:var(--card)}
+.portrait.ph{display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--muted);
+  text-align:center;padding:14px;line-height:1.45}
+@media(max-width:620px){.nowrow{grid-template-columns:1fr;gap:3px}
+  .portrait{float:none;margin:0 0 20px}}
 .faq{margin-top:24px;border-top:1px solid var(--line)}
 .q{border-bottom:1px solid var(--line)}
 .q summary{cursor:pointer;padding:19px 34px 19px 0;font-size:16.5px;font-weight:600;
@@ -200,7 +216,7 @@ footer a{color:var(--muted)}
 <body>
 <header><div class="wrap bar">
   <a class="logo" href="index.html" data-keepmode>Simon <b>Chen</b></a>
-  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" class="on" data-keepmode>Projects</a><a href="writing.html" data-keepmode>Writing</a><a href="contact.html" data-keepmode>Contact</a></nav>
+  <nav><a href="index.html" data-keepmode>Home</a><a href="about.html" data-keepmode>About</a><a href="experience.html" data-keepmode>Experience</a><a href="projects.html" class="on" data-keepmode>Projects</a><a href="contact.html" data-keepmode>Contact</a></nav>
   <div class="modes"><span class="pill"></span><a href="?mode=analyst" data-mode="analyst">Data / Business</a><a href="?mode=sports" data-mode="sports">Sports</a></div>
 </div></header>
 <main class="wrap">
