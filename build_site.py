@@ -133,8 +133,11 @@ h3{letter-spacing:-.015em}
   margin-bottom:9px;transition:color var(--swap)}
 .card h3{font-size:17.5px;margin:0 0 9px;line-height:1.3}
 .card p{font-size:14.5px;color:var(--muted);margin:0 0 16px;flex:1}
-.stat{font-size:25px;font-weight:700;color:var(--accent);letter-spacing:-.02em;transition:color var(--swap)}
-.stat small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:3px}
+.took{border-top:1px solid var(--line);padding-top:13px;font-size:14px;color:#475569;line-height:1.55}
+.took span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:5px;transition:color var(--swap)}
+.entry .took{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:15px 17px;margin-top:4px}
 
 .entry{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:26px;background:#fff}
 .entry .shot{background:var(--card);border-bottom:1px solid var(--line);padding:20px;text-align:center}
@@ -151,6 +154,22 @@ h3{letter-spacing:-.015em}
 .job:hover{background:var(--card)}
 .job .when{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
   color:var(--muted);padding-top:4px}
+.job.edu h4 .at{color:var(--muted)}
+.affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
+.aff{border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:var(--card);
+  transition:border-color .2s ease,transform .2s ease}
+.aff:hover{border-color:var(--accent);transform:translateY(-2px)}
+.aff b{display:block;font-size:14px;letter-spacing:-.01em}
+.aff span{font-size:12px;color:var(--muted)}
+.faq{margin-top:24px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q summary{cursor:pointer;padding:19px 34px 19px 0;font-size:16.5px;font-weight:600;
+  list-style:none;position:relative;letter-spacing:-.012em}
+.q summary::-webkit-details-marker{display:none}
+.q summary::after{content:'+';position:absolute;right:4px;top:17px;font-size:21px;font-weight:400;
+  color:var(--accent);transition:transform .25s ease}
+.q[open] summary::after{transform:rotate(45deg)}
+.q .a{padding:0 30px 20px 0;color:#475569;font-size:15.5px;max-width:680px}
 .job h4{margin:0 0 9px;font-size:17px;letter-spacing:-.012em}
 .job h4 .at{color:var(--accent);transition:color var(--swap)}
 .job p{margin:0 0 13px;color:#475569;font-size:15.5px}
@@ -273,36 +292,48 @@ document.querySelectorAll('.viz').forEach(v=>io.observe(v));
 (function(){
   let on=false; try{on=new URL(location.href).searchParams.get('edit')==='1'}catch(e){}
   if(!on) return;
-  const PAGE=(location.pathname.split('/').pop()||'index.html').replace('.html','');
-  const SEL='h1,h2,.lede,.prose p,.job p,.job h4,.post h3,.post p,.card h3,.card p,'+
-            '.entry p,.vtitle,.vsub,.vnote,.mini p,.mini h4,.todo,.note';
-  const key=(m,i)=>'ed:'+PAGE+':'+m+':'+i;
-  function mark(){
+  const PAGE=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
+  const INLINE=new Set(['EM','STRONG','B','I','SPAN','A','SMALL','CODE','BR','SUP','SUB','MARK']);
+  const SKIP=new Set(['SCRIPT','STYLE','SVG','PATH','IMG','BUTTON']);
+  /* key off the original wording, so edits survive layout changes */
+  function sig(s){let h=0;s=s.replace(/\s+/g,' ').trim().slice(0,160);
+    for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}return (h>>>0).toString(36);}
+
+  function scan(){
     document.querySelectorAll('[data-mode-block]').forEach(blk=>{
       const m=blk.dataset.modeBlock;
-      blk.querySelectorAll(SEL).forEach((el,i)=>{
+      blk.querySelectorAll('*').forEach(el=>{
         if(el.dataset.ed) return;
-        el.dataset.ed=key(m,i); el.contentEditable='true'; el.spellcheck=true;
-        const saved=localStorage.getItem(el.dataset.ed);
-        if(saved!==null){el.innerHTML=saved;el.classList.add('dirty');}
-        el.addEventListener('input',()=>{
-          localStorage.setItem(el.dataset.ed,el.innerHTML); el.classList.add('dirty');
-        });
+        if(SKIP.has(el.tagName)) return;
+        if(el.closest('#edbar')) return;
+        if(el.classList.contains('btrack')||el.classList.contains('bfill')) return;
+        const txt=el.textContent.trim();
+        if(!txt) return;
+        const blocked=[...el.children].some(c=>!INLINE.has(c.tagName)&&c.textContent.trim());
+        if(blocked) return;
+        const k='ed:'+PAGE+':'+m+':'+sig(txt);
+        el.dataset.ed=k; el.contentEditable='true'; el.spellcheck=true;
+        const saved=localStorage.getItem(k);
+        if(saved!==null&&saved!==el.innerHTML){el.innerHTML=saved;el.classList.add('dirty');}
+        el.addEventListener('input',()=>{localStorage.setItem(k,el.innerHTML);el.classList.add('dirty');});
+        el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&el.tagName!=='P'){e.preventDefault();el.blur();}});
       });
     });
   }
-  document.body.classList.add('editing'); mark();
-  new MutationObserver(mark).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
+  document.body.classList.add('editing'); scan();
+  new MutationObserver(scan).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
 
   const bar=document.createElement('div'); bar.id='edbar';
-  bar.innerHTML='<span><b>Edit mode</b> — click any text and type. Saved in this browser.</span>'+
-    '<span class="sp"><button class="reset">Discard</button>'+
+  const n=()=>Object.keys(localStorage).filter(k=>k.startsWith('ed:')).length;
+  bar.innerHTML='<span><b>Edit mode</b> — click any text and type. <i id="edn"></i></span>'+
+    '<span class="sp"><button class="reset">Discard all</button>'+
     '<button class="save">Download my edits</button></span>';
   document.body.appendChild(bar);
+  const tick=()=>document.getElementById('edn').textContent=n()+' edited so far, saved in this browser.';
+  tick(); setInterval(tick,1500);
   bar.querySelector('.save').onclick=()=>{
     const out={};
-    for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
-      if(k.startsWith('ed:'))out[k]=localStorage.getItem(k);}
+    Object.keys(localStorage).filter(k=>k.startsWith('ed:')).forEach(k=>out[k]=localStorage.getItem(k));
     const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
     a.download='simon-site-edits.json'; a.click();
@@ -375,9 +406,9 @@ def per_mode(render):
 def card(p):
     return f"""<a class="card" href="{p['repo']}">
   <div class="tag">{p['tag']}</div>
-  <h3>{p['title']}</h3>
+  <h3>{p['question']}</h3>
   <p>{p['desc']}</p>
-  <div class="stat">{p['stat']}<small>{p['label']}</small></div>
+  <div class="took"><span>What I took from it</span>{p['took']}</div>
 </a>"""
 
 
@@ -391,10 +422,10 @@ def entry(p):
     return f"""<div class="entry">{shot}
   <div class="meat">
     <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">{p['tag']}</div>
-    <h3>{p['title']}</h3>
-    <div class="stack">{p['stack']}</div>
-    <div class="figures"><div class="stat">{p['stat']}<small>{p['label']}</small></div></div>
+    <h3>{p['question']}</h3>
+    <div class="stack">{p['title']} · {p['stack']}</div>
     <p>{p['body']}</p>
+    <div class="took"><span>What I took from it</span>{p['took']}</div>
     <a class="btn btn-ghost" href="{p['repo']}">View the repository →</a>
   </div>
 </div>"""
@@ -492,19 +523,21 @@ def page_about():
 <section><div class="kicker">{m['about_kicker']}</div><h2>Beyond tools and titles</h2>{minis}</section>
 <section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows">{skills}</div></section>"""
 
-    edu = "".join(f"""<div class="xp-item">
-  <h4>{e['school']}</h4>
-  <div class="meta">{e['degree']} · {e['place']} · {e['date']}</div>
-  <ul><li>{e['note']}</li></ul>
-</div>""" for e in SHARED["education"])
 
-    return shell("About", "about",
-                 per_mode(block) +
-                 f'<section><div class="kicker">Education</div><h2>Where I trained</h2>'
-                 f'<div class="xp">{edu}</div></section>')
+    return shell("About", "about", per_mode(block))
 
 
 def page_experience():
+    aff = "".join(f'<div class="aff"><b>{n}</b><span>{r}</span></div>'
+                  for n, r in SHARED["affiliations"])
+    edu = "".join(f"""<div class="job edu">
+  <div class="when">{e['date']}</div>
+  <div>
+    <h4>{e['degree']} <span class="at">· {e['school'].split(',')[0]}</span></h4>
+    <p>{e['note']}</p>
+  </div>
+</div>""" for e in SHARED["education"])
+
     def block(m):
         items = "".join(xp_item(e) for e in m["experience"])
         return f"""<div class="hero" style="padding-bottom:26px">
@@ -512,9 +545,13 @@ def page_experience():
   <h1 style="font-size:clamp(28px,4vw,42px)">{m['xp_title']}</h1>
   <div class="rule"></div>
 </div>
+<div class="affil">{aff}</div>
 <div class="xp">{items}</div>"""
 
-    return shell("Experience", "experience", per_mode(block))
+    return shell("Experience", "experience",
+                 per_mode(block)
+                 + f'<section><div class="kicker">Education</div><h2>Where I trained</h2>'
+                   f'<div class="xp">{edu}</div></section>')
 
 
 def page_projects():
@@ -548,7 +585,11 @@ def page_contact():
   <div class="row"><span>LinkedIn</span><span><a href="{SHARED['linkedin']}">linkedin.com/in/simonxy-chen</a></span></div>
   <div class="row"><span>GitHub</span><span><a href="{SHARED['github']}">github.com/Semin1c</a></span></div>
 </div>"""
-    return shell("Contact", "contact", per_mode(block) + rows)
+    faq = "".join(f'<details class="q"><summary>{q}</summary><div class="a">{a}</div></details>'
+                  for q, a in SHARED["faq"])
+    return shell("Contact", "contact", per_mode(block) + rows
+                 + f'<section><div class="kicker">Questions people ask</div>'
+                   f'<h2>Before you write</h2><div class="faq">{faq}</div></section>')
 
 
 def page_writing():

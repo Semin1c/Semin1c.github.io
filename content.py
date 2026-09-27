@@ -11,6 +11,36 @@ BASE = "/Users/7ang/Desktop/Github Academic Project"
 
 SHARED = dict(
     name="Simon Chen",
+    affiliations=[
+        ("USC Marshall", "MS Business Analytics"),
+        ("UC Irvine", "BA Business Economics"),
+        ("Excel Sports Management", "Performance analytics"),
+        ("Trojans Sports Research Lab", "Program manager"),
+        ("China Merchants Securities", "Investment banking"),
+    ],
+    faq=[
+        ("What kind of role are you looking for?",
+         "Analyst roles where the work reaches a decision — data or business analytics on one side, "
+         "sports and performance analytics on the other. I've kept both tracks live because the work "
+         "is genuinely similar and I'd rather be honest about that than pretend I only want one."),
+        ("What do you actually do day to day?",
+         "Pull data from wherever it lives and get it into a usable state, which is most of it. Then "
+         "the analysis, and then the part that decides whether any of it mattered — explaining it to "
+         "someone who has to act on it."),
+        ("You're still in school. What can you actually do?",
+         "I've spent two summers and an ongoing role doing this work for real — building the pipeline "
+         "a performance team ran on, and running analytics projects across a 200+ member lab. The "
+         "coursework is where I experiment; the jobs are where I learned what holds up."),
+        ("Do you need visa sponsorship?",
+         "<span class='todo'>[Simon — answer this plainly. It's the first thing a US recruiter checks, "
+         "and being upfront saves everyone a round of email.]</span>"),
+        ("What are you like to work with?",
+         "<span class='todo'>[Simon — your words. Maybe something about how you work in a team, what "
+         "you're like when a project goes sideways, what people come to you for.]</span>"),
+        ("Why both business and sports?",
+         "<span class='todo'>[Simon — this is the question everyone will have. Worth answering in your "
+         "own voice rather than mine.]</span>"),
+    ],
     email="xingyang@marshall.usc.edu",
     phone="(949) 591-3777",
     location="Los Angeles, CA",
@@ -136,18 +166,18 @@ MODES = {
     proj_lede="Churn, workforce economics, and the dashboard that talked a budget out of being spent.",
     projects=[
         dict(tag="Churn · Streaming", title="Netflix Subscriber Churn",
-             stat="5,000", label="subscribers modelled",
-             desc="Engagement is the only driver that matters. Strip viewing behaviour out and three "
-                  "different classifiers collapse to barely better than a coin flip.",
+             question="Who actually cancels a streaming subscription?",
+             desc="I expected price and plan tier to matter most. They barely register — how much someone watches separates leavers from stayers so cleanly that taking viewing behaviour out collapses three different models to near guesswork.",
+             took="Feature importance can be a warning, not a win. When one input carries everything, the interesting question is why the others don't.",
              body="Across 5,000 subscribers, how much someone watches separates churners from stayers "
                   "so cleanly that everything else is noise. The retention play targets disengaged "
                   "Basic-plan subscribers specifically, because that's where spend has somewhere to go.",
              fig=f"{BASE}/MKT 566 - Netflix Churn Prediction (2025 Fall)/Git Version/figures/churn_by_engagement.png",
              repo="https://github.com/Semin1c/netflix-churn-engagement", stack="Python · scikit-learn · XGBoost"),
         dict(tag="People analytics · ROI", title="Employee Attrition & Retention ROI",
-             stat="0.85", label="held-out ROC-AUC",
-             desc="Attrition concentrates hard enough that two segments cover a third of departures "
-                  "across a tenth of the workforce. The honest ROI is a fraction of the headline one.",
+             question="Is it worth paying to keep people?",
+             desc="Attrition concentrates far harder than I assumed — two employee groups account for about a third of departures. The part I got wrong first was the money: my initial return was built on an industry benchmark and it was off by an order of magnitude.",
+             took="Costing something properly is slower and less flattering than benchmarking it, and it's the only version you could defend to a CFO.",
              body="1,470 employees, 31 features, regularised logistic regression. Business travel, "
                   "overtime and promotion timing carry the signal. Turning risk scores into a "
                   "156-employee pilot covers 35% of predicted departures — and re-costing the programme "
@@ -155,9 +185,9 @@ MODES = {
              fig=f"{BASE}/DSO 550 - IBM Employee Attrition ROI (2026 Spring)/Git Version/outputs/figures/exec/step3_segment_playbook_onepager.png",
              repo="https://github.com/Semin1c/ibm-attrition-roi", stack="Python · scikit-learn · statsmodels"),
         dict(tag="BI · What-if modelling", title="Sales Performance Dashboards",
-             stat="−15%", label="ROI on the training everyone wanted",
-             desc="Three Power BI dashboards on a $25.7M book, tracing a question from \"how are we "
-                  "doing\" to \"what should we fund\" — and finding the obvious answer loses money.",
+             question="Would training this sales team actually pay for itself?",
+             desc="Training looks like the answer in a decomposition tree, so I built the case for funding it. Tested directly, rep attributes barely correlate with performance at all. What separates reps is which manager they report to.",
+             took="A dashboard that talks you out of spending money is doing its job. It just doesn't feel like a win while you're building it.",
              body="Training looks like a driver in a decomposition tree, so the instinct is to fund it. "
                   "Tested directly, rep attributes correlate near zero with sales per rep. What "
                   "separates reps is who they report to — a $134K supervisor gap. Both costings of the "
@@ -278,9 +308,9 @@ MODES = {
     proj_lede="Possession, home advantage, competitive balance, and what a schedule is actually worth.",
     projects=[
         dict(tag="Premier League · 8 seasons", title="Possession vs. Box Entry",
-             stat="23", label="metrics beaten by one",
-             desc="Possession share explains almost nothing. Touches in the box explain nearly "
-                  "everything — and 22 further metrics add no information on unseen clubs.",
+             question="Does having the ball more actually create more chances?",
+             desc="I tested 23 possession metrics across eight Premier League seasons. On clubs the model hadn't seen, touches in the opposition box alone did better than the whole set together.",
+             took="Most of what we measure about possession is describing the same thing several times over.",
              body="Across 160 Premier League squad-seasons, one variable outperformed the full metric "
                   "set out of sample, which argues for a simpler chance-creation KPI than most models "
                   "use. Comparing 168 transfers against same-position benchmarks, final-third "
@@ -288,9 +318,9 @@ MODES = {
              fig=f"{BASE}/DSO 579 - Premier League Possession Analysis (2025 Spring)/Git Version/figures/what_predicts_chances.png",
              repo="https://github.com/Semin1c/pl-possession-and-box-entry", stack="Python · cross-validation · recruitment analytics"),
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
-             stat="p = 0.54", label="crowd effect, once quality is controlled",
-             desc="The home edge is territorial, not finishing. Crowd size stops predicting anything "
-                  "once you account for who fills big stadiums.",
+             question="Is home advantage the crowd, or the referee, or something else?",
+             desc="Neither, as far as I can tell. Attendance predicts home points right up until you account for which clubs fill big stadiums. The referee spread sits inside what random shuffling produces. What's left is territorial — home sides create more, they don't finish better.",
+             took="Two of the three explanations everyone repeats didn't survive a control and a shuffle test.",
              body="Home sides create 1.484 expected goals to 1.121 while converting at an identical "
                   "rate — so the advantage is about where the ball goes, not what happens when it "
                   "arrives. Attendance looks like an explanation until club quality is held constant. "
@@ -298,9 +328,9 @@ MODES = {
              fig=f"{BASE}/DSO 579 - First Goal Scoring Analysis (2025 Spring)/Git Version/figures/crowd_confound.png",
              repo="https://github.com/Semin1c/laliga-home-advantage", stack="Python · permutation testing · xG"),
         dict(tag="MLS · Europe's big five", title="Competitive Balance, Reversed",
-             stat="0.315", label="points-per-match spread, lowest of six",
-             desc="On parity, MLS beats every one of Europe's big five — on two independent measures, "
-                  "across fourteen seasons.",
+             question="Are Europe's big five really more competitive than MLS?",
+             desc="I assumed yes, and coded that assumption straight into the target variable before I thought to test it. On parity MLS is the tightest of the six leagues — while Bayern took 11 of 14 Bundesliga titles over the same stretch.",
+             took="The assumption I never questioned was the one doing the most damage. Going back to check it is where the whole project came from.",
              body="The project started by assuming the opposite and coding it into the target variable. "
                   "Tested properly, MLS runs the tightest spread of the six leagues while Bayern took "
                   "11 of 14 Bundesliga titles. The classifier I first reported at 88–90% accuracy was "
@@ -320,9 +350,9 @@ MODES = {
                  note="Points <em>per match</em>, because MLS and the Bundesliga play 34 games "
                       "while the rest play 38. Over the same period Bayern won 11 of 14 Bundesliga titles.")),
         dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
-             stat="~61%", label="win rate with a 2+ day rest edge",
-             desc="Separating travel, rest and opponent sequencing from team quality across 300 "
-                  "team-seasons, to see what the calendar is worth before a ball is thrown.",
+             question="How much of a result is decided by the calendar?",
+             desc="Across ten NBA seasons, separating rest, travel and opponent sequencing from how good a team actually is. A meaningful rest edge is worth a lot more than I'd have guessed.",
+             took="Some of what looks like form is just scheduling, and it's measurable before tip-off.",
              body="Rest advantage, back-to-backs and schedule compression translate into differences "
                   "of up to roughly five wins across a regular season — enough to matter for planning "
                   "and for reading a standings table honestly.",

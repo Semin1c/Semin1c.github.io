@@ -90,8 +90,11 @@ h3{letter-spacing:-.015em}
   margin-bottom:9px;transition:color var(--swap)}
 .card h3{font-size:17.5px;margin:0 0 9px;line-height:1.3}
 .card p{font-size:14.5px;color:var(--muted);margin:0 0 16px;flex:1}
-.stat{font-size:25px;font-weight:700;color:var(--accent);letter-spacing:-.02em;transition:color var(--swap)}
-.stat small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:3px}
+.took{border-top:1px solid var(--line);padding-top:13px;font-size:14px;color:#475569;line-height:1.55}
+.took span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:5px;transition:color var(--swap)}
+.entry .took{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:15px 17px;margin-top:4px}
 
 .entry{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:26px;background:#fff}
 .entry .shot{background:var(--card);border-bottom:1px solid var(--line);padding:20px;text-align:center}
@@ -108,6 +111,22 @@ h3{letter-spacing:-.015em}
 .job:hover{background:var(--card)}
 .job .when{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
   color:var(--muted);padding-top:4px}
+.job.edu h4 .at{color:var(--muted)}
+.affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
+.aff{border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:var(--card);
+  transition:border-color .2s ease,transform .2s ease}
+.aff:hover{border-color:var(--accent);transform:translateY(-2px)}
+.aff b{display:block;font-size:14px;letter-spacing:-.01em}
+.aff span{font-size:12px;color:var(--muted)}
+.faq{margin-top:24px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q summary{cursor:pointer;padding:19px 34px 19px 0;font-size:16.5px;font-weight:600;
+  list-style:none;position:relative;letter-spacing:-.012em}
+.q summary::-webkit-details-marker{display:none}
+.q summary::after{content:'+';position:absolute;right:4px;top:17px;font-size:21px;font-weight:400;
+  color:var(--accent);transition:transform .25s ease}
+.q[open] summary::after{transform:rotate(45deg)}
+.q .a{padding:0 30px 20px 0;color:#475569;font-size:15.5px;max-width:680px}
 .job h4{margin:0 0 9px;font-size:17px;letter-spacing:-.012em}
 .job h4 .at{color:var(--accent);transition:color var(--swap)}
 .job p{margin:0 0 13px;color:#475569;font-size:15.5px}
@@ -199,15 +218,7 @@ footer a{color:var(--muted)}
 </div>
 <div class="prose"><p><span class='todo'>[Simon — the origin story. Why sports, and why you kept choosing it when the economics degree pointed somewhere else. Which teams, which moment made this stick. Two or three sentences, specific. This is the one a club will read twice.]</span></p><p>A lot of football analysis rests on claims nobody has actually checked — that possession wins matches, that the crowd drives home advantage, that Europe's big five out-compete MLS. Each of those is testable, and each one weakens or reverses when you run it properly. I find that more interesting than confirming what people already believe.</p><p>That includes my own work. One project opened from an assumption printed on slide two of the deck, and I coded it straight into the target variable before going back and finding the data said the opposite. Admitting that is what made the project worth anything.</p><p>Alongside the analysis, two seasons inside sports performance — building athlete pipelines, working on readiness monitoring, and making tools the coaching staff kept using after I left. That part taught me that a finding nobody can act on isn't finished.</p></div>
 <section><div class="kicker">What I bring</div><h2>Beyond tools and titles</h2><div class="brings"><div class="bring"><div class="n">01</div><div><h4>Structured problem solving</h4><p>Starting from the decision someone actually needs to make, then working back to what the data has to answer — rather than starting from whatever is in the file.</p></div></div><div class="bring"><div class="n">02</div><div><h4>Data with context</h4><p>A number means little without knowing how it was collected, what it leaves out, and who is going to act on it. I spend as much time on that as on the modelling.</p></div></div><div class="bring"><div class="n">03</div><div><h4>Communication that translates</h4><p>Most of the people who need an answer aren't analysts. Getting a finding across to a coach, a manager or a room that doesn't share your vocabulary is part of the job, not an extra.</p></div></div><div class="bring"><div class="n">04</div><div><h4>Collaborative mindset</h4><p>I've worked inside performance teams and run projects across a 200+ member lab. The useful work almost always comes from the conversation, not from someone analysing alone.</p></div></div><div class="bring"><div class="n">05</div><div><h4>Curiosity that keeps expanding</h4><p>Sports, business, performance, new tooling. I'd rather learn a new domain properly than stay in one lane, and most of what I've found interesting came from that.</p></div></div></div></section>
-<section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling</span></div><div class="row"><span>Sports data</span><span>Team & player evaluation · Match analysis · Performance & tracking data · Schedule and travel analysis</span></div><div class="row"><span>Tooling & BI</span><span>Power BI · Tableau · R Shiny · Streamlit · APIs · ETL · Data validation · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div><section><div class="kicker">Education</div><h2>Where I trained</h2><div class="xp"><div class="xp-item">
-  <h4>University of Southern California, Marshall School of Business</h4>
-  <div class="meta">Master of Science in Business Analytics (STEM) · Los Angeles, CA · May 2026</div>
-  <ul><li>GPA 3.78 · Dean's Honor List, 3 semesters</li></ul>
-</div><div class="xp-item">
-  <h4>University of California, Irvine</h4>
-  <div class="meta">Bachelor of Arts in Business Economics, Minor in Management · Irvine, CA · June 2024</div>
-  <ul><li>GPA 3.92 · Dean's Honor List, 9 quarters · Phi Beta Kappa</li></ul>
-</div></div></section>
+<section><div class="kicker">Skills</div><h2>What I work with</h2><div class="rows"><div class="row"><span>Analytics & modelling</span><span>Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling</span></div><div class="row"><span>Sports data</span><span>Team & player evaluation · Match analysis · Performance & tracking data · Schedule and travel analysis</span></div><div class="row"><span>Tooling & BI</span><span>Power BI · Tableau · R Shiny · Streamlit · APIs · ETL · Data validation · Git/GitHub</span></div><div class="row"><span>Languages</span><span>English and Chinese (bilingual) · Spanish (intermediate)</span></div></div></section></div>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·
@@ -267,36 +278,48 @@ document.querySelectorAll('.viz').forEach(v=>io.observe(v));
 (function(){
   let on=false; try{on=new URL(location.href).searchParams.get('edit')==='1'}catch(e){}
   if(!on) return;
-  const PAGE=(location.pathname.split('/').pop()||'index.html').replace('.html','');
-  const SEL='h1,h2,.lede,.prose p,.job p,.job h4,.post h3,.post p,.card h3,.card p,'+
-            '.entry p,.vtitle,.vsub,.vnote,.mini p,.mini h4,.todo,.note';
-  const key=(m,i)=>'ed:'+PAGE+':'+m+':'+i;
-  function mark(){
+  const PAGE=(location.pathname.split('/').pop()||'index.html').replace('.html','')||'index';
+  const INLINE=new Set(['EM','STRONG','B','I','SPAN','A','SMALL','CODE','BR','SUP','SUB','MARK']);
+  const SKIP=new Set(['SCRIPT','STYLE','SVG','PATH','IMG','BUTTON']);
+  /* key off the original wording, so edits survive layout changes */
+  function sig(s){let h=0;s=s.replace(/\s+/g,' ').trim().slice(0,160);
+    for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}return (h>>>0).toString(36);}
+
+  function scan(){
     document.querySelectorAll('[data-mode-block]').forEach(blk=>{
       const m=blk.dataset.modeBlock;
-      blk.querySelectorAll(SEL).forEach((el,i)=>{
+      blk.querySelectorAll('*').forEach(el=>{
         if(el.dataset.ed) return;
-        el.dataset.ed=key(m,i); el.contentEditable='true'; el.spellcheck=true;
-        const saved=localStorage.getItem(el.dataset.ed);
-        if(saved!==null){el.innerHTML=saved;el.classList.add('dirty');}
-        el.addEventListener('input',()=>{
-          localStorage.setItem(el.dataset.ed,el.innerHTML); el.classList.add('dirty');
-        });
+        if(SKIP.has(el.tagName)) return;
+        if(el.closest('#edbar')) return;
+        if(el.classList.contains('btrack')||el.classList.contains('bfill')) return;
+        const txt=el.textContent.trim();
+        if(!txt) return;
+        const blocked=[...el.children].some(c=>!INLINE.has(c.tagName)&&c.textContent.trim());
+        if(blocked) return;
+        const k='ed:'+PAGE+':'+m+':'+sig(txt);
+        el.dataset.ed=k; el.contentEditable='true'; el.spellcheck=true;
+        const saved=localStorage.getItem(k);
+        if(saved!==null&&saved!==el.innerHTML){el.innerHTML=saved;el.classList.add('dirty');}
+        el.addEventListener('input',()=>{localStorage.setItem(k,el.innerHTML);el.classList.add('dirty');});
+        el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&el.tagName!=='P'){e.preventDefault();el.blur();}});
       });
     });
   }
-  document.body.classList.add('editing'); mark();
-  new MutationObserver(mark).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
+  document.body.classList.add('editing'); scan();
+  new MutationObserver(scan).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
 
   const bar=document.createElement('div'); bar.id='edbar';
-  bar.innerHTML='<span><b>Edit mode</b> — click any text and type. Saved in this browser.</span>'+
-    '<span class="sp"><button class="reset">Discard</button>'+
+  const n=()=>Object.keys(localStorage).filter(k=>k.startsWith('ed:')).length;
+  bar.innerHTML='<span><b>Edit mode</b> — click any text and type. <i id="edn"></i></span>'+
+    '<span class="sp"><button class="reset">Discard all</button>'+
     '<button class="save">Download my edits</button></span>';
   document.body.appendChild(bar);
+  const tick=()=>document.getElementById('edn').textContent=n()+' edited so far, saved in this browser.';
+  tick(); setInterval(tick,1500);
   bar.querySelector('.save').onclick=()=>{
     const out={};
-    for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
-      if(k.startsWith('ed:'))out[k]=localStorage.getItem(k);}
+    Object.keys(localStorage).filter(k=>k.startsWith('ed:')).forEach(k=>out[k]=localStorage.getItem(k));
     const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
     a.download='simon-site-edits.json'; a.click();
