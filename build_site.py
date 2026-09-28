@@ -134,6 +134,8 @@ h3{letter-spacing:-.015em}
 .card h3{font-size:17.5px;margin:0 0 9px;line-height:1.3}
 .card p{font-size:14.5px;color:var(--muted);margin:0 0 16px;flex:1}
 .took{border-top:1px solid var(--line);padding-top:13px;font-size:14px;color:#475569;line-height:1.55}
+.privnote{font-size:13.5px;color:var(--muted);font-style:italic;
+  border-left:2px solid var(--line);padding-left:12px}
 .took span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   color:var(--accent);margin-bottom:5px;transition:color var(--swap)}
 .entry .took{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
@@ -156,8 +158,12 @@ h3{letter-spacing:-.015em}
   color:var(--muted);padding-top:4px}
 .job.edu h4 .at{color:var(--muted)}
 .affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
-.aff{border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:var(--card);
-  transition:border-color .2s ease,transform .2s ease}
+.aff{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:11px;
+  padding:10px 15px 10px 11px;background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.aff:hover{box-shadow:0 6px 18px -10px rgba(15,23,42,.3)}
+.aff img{height:30px;width:30px;object-fit:contain;flex-shrink:0}
+.aff .mk{width:30px;height:30px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;color:#fff;font-style:normal;font-weight:700;font-size:10.5px;letter-spacing:.02em}
 .aff:hover{border-color:var(--accent);transform:translateY(-2px)}
 .aff b{display:block;font-size:14px;letter-spacing:-.01em}
 .aff span{font-size:12px;color:var(--muted)}
@@ -420,12 +426,13 @@ def per_mode(render):
 
 
 def card(p):
-    return f"""<a class="card" href="{p['repo']}">
+    tag, attr = ("a", f'href="{p["repo"]}"') if p.get("repo") else ("div", "")
+    return f"""<{tag} class="card" {attr}>
   <div class="tag">{p['tag']}</div>
   <h3>{p['question']}</h3>
   <p>{p['desc']}</p>
   <div class="took"><span>What I took from it</span>{p['took']}</div>
-</a>"""
+</{tag}>"""
 
 
 def entry(p):
@@ -442,7 +449,8 @@ def entry(p):
     <div class="stack">{p['title']} · {p['stack']}</div>
     <p>{p['body']}</p>
     <div class="took"><span>What I took from it</span>{p['took']}</div>
-    <a class="btn btn-ghost" href="{p['repo']}">View the repository →</a>
+    {f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
+       if p.get("repo") else f'<div class="privnote">{p.get("note","")}</div>'}
   </div>
 </div>"""
 
@@ -558,8 +566,17 @@ def page_about():
 
 
 def page_experience():
-    aff = "".join(f'<div class="aff"><b>{n}</b><span>{r}</span></div>'
-                  for n, r in SHARED["affiliations"])
+    def aff_mark(a):
+        for ext in ("svg", "png"):
+            f = ASSETS / "logos" / f"{a['file']}.{ext}"
+            if f.exists():
+                return f'<img src="assets/logos/{a["file"]}.{ext}" alt="{a["name"]}">'
+        initials = "".join(w[0] for w in a["name"].split()[:3]).upper()
+        return f'<i class="mk" style="background:{a["brand"]}">{initials}</i>'
+
+    aff = "".join(f'<div class="aff">{aff_mark(a)}'
+                  f'<div><b>{a["name"]}</b><span>{a["role"]}</span></div></div>'
+                  for a in SHARED["affiliations"])
     edu = "".join(f"""<div class="job edu">
   <div class="when">{e['date']}</div>
   <div>

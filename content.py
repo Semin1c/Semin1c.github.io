@@ -22,12 +22,11 @@ SHARED = dict(
     portrait='<div class="portrait ph">Photo of Simon goes here — drop a file in '
              'assets/ and point this at it</div>',
     affiliations=[
-        ("USC Marshall", "MS Business Analytics"),
-        ("UC Irvine", "BA Business Economics"),
-        ("Ontario Jr. Reign", "Video analytics · ops"),
-        ("Excel Sports Management", "Performance analytics"),
-        ("Trojans Sports Research Lab", "Program manager"),
-        ("China Merchants Securities", "Investment banking"),
+        dict(name="USC Marshall", role="MS Business Analytics", file="usc", brand="#990000"),
+        dict(name="UC Irvine", role="BA Business Economics", file="uci", brand="#0064A4"),
+        dict(name="Ontario Jr. Reign", role="Video analytics · ops", file="ojr", brand="#111111"),
+        dict(name="Excel Sports Management", role="Performance analytics", file="excel", brand="#1F2937"),
+        dict(name="China Merchants Securities", role="Investment banking", file="cms", brand="#B4232A"),
     ],
     faq=[
         ("What kind of role are you looking for?",
@@ -149,15 +148,6 @@ MODES = {
                    "building an event-tracking framework with GMs and coaches so future performance "
                    "data is collected consistently rather than rebuilt each year.",
              tags=["Shopify", "Ops", "Data standards", "Stakeholders"]),
-        dict(org="Sportswear brand · independent consulting", date="Sep 2026 — Present",
-             role="B2C Growth & Inventory Diagnostic",
-             prose="A growth and inventory diagnostic for a sportswear brand, connecting traffic, "
-                   "acquisition, fulfilment and SKU-level data across 4,000+ orders and 3,000+ "
-                   "customers. The finding that changed the plan was geographic: penetration sat at "
-                   "1–2%, but conversion ran about 2.1x higher inside 25-kilometre customer clusters, "
-                   "which argued for geo-targeted acquisition tests before anything broader. I also "
-                   "flagged the CRM and inventory constraints that would cap whatever we tried.",
-             tags=["Growth", "Segmentation", "Inventory", "E-commerce"]),
         dict(org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="Built the pipeline the performance team ran on — five-plus sources and APIs pulled "
@@ -208,6 +198,24 @@ MODES = {
     proj_title="Three that show the range",
     proj_lede="Churn, workforce economics, and the dashboard that talked a budget out of being spent.",
     projects=[
+        dict(tag="E-commerce · Side project", title="Sportswear B2C Diagnostic",
+             question="Can you trust the data before you trust the answer?",
+             desc="A growth and inventory diagnostic for a US sportswear brand. Most of the work "
+                  "wasn't the analysis — it was finding the nine ways the raw export lied, each of "
+                  "which had already produced a confident wrong conclusion.",
+             took="Every dataset has traps like these. The difference is whether you find them or "
+                  "your client does, six weeks later.",
+             body="A product renamed mid-life meant joining on name lost 98% of the volume. Three "
+                  "separate fan-out joins inflated figures by up to 5x. Placeholder customer IDs "
+                  "invented a repeat buyer who didn't exist. Most of the inventory table was filler, "
+                  "which made the store look like it held decades of stock. I catalogued all nine, "
+                  "banned six tables from being summed, and wrote a guard script so the same mistakes "
+                  "couldn't come back. The final audit recomputes 57 checks from source rather than "
+                  "from any intermediate file. The brand's own B2B flag was unusable — it read False "
+                  "for every order — so the two business lines got separated on geographic signature "
+                  "instead and validated three ways. They turned out to share almost no customers.",
+             stack="Python · Shopify data · data integrity", repo=None,
+             note="Client work — figures and identifying details withheld."),
         dict(tag="Churn · Streaming", title="Netflix Subscriber Churn",
              question="Who actually cancels a streaming subscription?",
              desc="I expected price and plan tier to matter most. They barely register — how much someone watches separates leavers from stayers so cleanly that taking viewing behaviour out collapses three different models to near guesswork.",
@@ -316,15 +324,6 @@ MODES = {
                    "instead of starting from nothing every season. Alongside that, the unglamorous "
                    "operational side: schedules, team sites, and standing up merchandise storefronts.",
              tags=["Event tracking", "Hockey", "Ops", "Shopify"]),
-        dict(org="Sportswear brand · independent consulting", date="Sep 2026 — Present",
-             role="B2C Growth & Inventory Diagnostic",
-             prose="A growth and inventory diagnostic for a sportswear brand, connecting traffic, "
-                   "acquisition, fulfilment and SKU-level data across 4,000+ orders and 3,000+ "
-                   "customers. The finding that changed the plan was geographic: penetration sat at "
-                   "1–2%, but conversion ran about 2.1x higher inside 25-kilometre customer clusters, "
-                   "which argued for geo-targeted acquisition tests before anything broader. I also "
-                   "flagged the CRM and inventory constraints that would cap whatever we tried.",
-             tags=["Growth", "Segmentation", "Inventory", "E-commerce"]),
         dict(org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="A summer inside a performance team, modelling how neuromuscular, sprint, strength, "
@@ -372,6 +371,19 @@ MODES = {
     proj_title="Four findings that reversed the assumption",
     proj_lede="Possession, home advantage, competitive balance, and what a schedule is actually worth.",
     projects=[
+        dict(tag="Hockey · Current", title="In-Game Event Tracking",
+             question="What should a junior hockey programme actually be recording?",
+             desc="Three affiliated programmes with no shared standard for what gets tracked during "
+                  "a game. I'm building that framework with the GMs and coaches rather than handing "
+                  "them a schema.",
+             took="A collection standard nobody follows is worth nothing. Designing it with the people "
+                  "holding the clipboard is the whole job.",
+             body="The goal is a foundation for recurring performance analysis — agreeing which events "
+                  "matter, who records them, and in what form, so next season's data is comparable to "
+                  "this one. Most analytics problems at this level aren't modelling problems; they're "
+                  "the absence of anything consistent to model.",
+             stack="Event design · stakeholder work · hockey", repo=None,
+             note="In progress with Ontario Jr. Reign."),
         dict(tag="Premier League · 8 seasons", title="Possession vs. Box Entry",
              question="Does having the ball more actually create more chances?",
              desc="I tested 23 possession metrics across eight Premier League seasons. On clubs the model hadn't seen, touches in the opposition box alone did better than the whole set together.",
@@ -382,6 +394,15 @@ MODES = {
                   "involvement held up across clubs better than xG+xAG output did.",
              fig=f"{BASE}/DSO 579 - Premier League Possession Analysis (2025 Spring)/Git Version/figures/what_predicts_chances.png",
              repo="https://github.com/Semin1c/pl-possession-and-box-entry", stack="Python · cross-validation · recruitment analytics"),
+        dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
+             question="How much of a result is decided by the calendar?",
+             desc="Across ten NBA seasons, separating rest, travel and opponent sequencing from how good a team actually is. A meaningful rest edge is worth a lot more than I'd have guessed.",
+             took="Some of what looks like form is just scheduling, and it's measurable before tip-off.",
+             body="Rest advantage, back-to-backs and schedule compression translate into differences "
+                  "of up to roughly five wins across a regular season — enough to matter for planning "
+                  "and for reading a standings table honestly.",
+             fig=None,
+             repo="https://github.com/Semin1c", stack="Python · schedule modelling"),
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
              question="Is home advantage the crowd, or the referee, or something else?",
              desc="Neither, as far as I can tell. Attendance predicts home points right up until you account for which clubs fill big stadiums. The referee spread sits inside what random shuffling produces. What's left is territorial — home sides create more, they don't finish better.",
@@ -414,15 +435,6 @@ MODES = {
                        ("Serie A", 0.476, "0.476", False)],
                  note="Points <em>per match</em>, because MLS and the Bundesliga play 34 games "
                       "while the rest play 38. Over the same period Bayern won 11 of 14 Bundesliga titles.")),
-        dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
-             question="How much of a result is decided by the calendar?",
-             desc="Across ten NBA seasons, separating rest, travel and opponent sequencing from how good a team actually is. A meaningful rest edge is worth a lot more than I'd have guessed.",
-             took="Some of what looks like form is just scheduling, and it's measurable before tip-off.",
-             body="Rest advantage, back-to-backs and schedule compression translate into differences "
-                  "of up to roughly five wins across a regular season — enough to matter for planning "
-                  "and for reading a standings table honestly.",
-             fig=None,
-             repo="https://github.com/Semin1c", stack="Python · schedule modelling"),
     ],
     skills=[
         ("Analytics & modelling", "Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling"),
