@@ -115,6 +115,18 @@ h3{letter-spacing:-.015em}
   color:var(--muted);padding-top:4px}
 .job.edu h4 .at{color:var(--muted)}
 .affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
+.strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:clamp(26px,5vw,54px);padding:30px 24px;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-top:8px}
+.strip .it{display:flex;flex-direction:column;align-items:center;gap:9px;
+  filter:grayscale(1);opacity:.62;transition:filter .25s ease,opacity .25s ease,transform .25s ease}
+.strip .it:hover{filter:none;opacity:1;transform:translateY(-2px)}
+.strip img{height:40px;width:auto;max-width:112px;object-fit:contain;display:block}
+.strip .mk{height:40px;min-width:40px;padding:0 11px;border-radius:9px;display:flex;
+  align-items:center;justify-content:center;color:#fff;font-style:normal;font-weight:700;
+  font-size:12px;letter-spacing:.03em}
+.strip .nm{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;
+  text-align:center;max-width:116px;line-height:1.35}
 .aff{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:11px;
   padding:10px 15px 10px 11px;background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
 .aff:hover{box-shadow:0 6px 18px -10px rgba(15,23,42,.3)}
@@ -246,7 +258,7 @@ footer a{color:var(--muted)}
     <a class="btn btn-primary" href="about.html" data-keepmode>More about me</a>
     <a class="btn btn-ghost" href="projects.html" data-keepmode>Selected work</a>
   </div>
-</div></div><section><div data-mode-block="analyst" hidden><div class="kicker">What I bring</div><h2>Beyond tools and titles</h2><p class="prose">This is the kind of perspective I bring to the work.</p><div class="brings"><div class="bring"><div class="n">01</div><div><h4>Structured problem solving</h4><p>Starting from the decision someone actually needs to make, then working back to what the data has to answer — rather than starting from whatever is in the file.</p></div></div><div class="bring"><div class="n">02</div><div><h4>Data with context</h4><p>A number means little without knowing how it was collected, what it leaves out, and who is going to act on it. I spend as much time on that as on the modelling.</p></div></div><div class="bring"><div class="n">03</div><div><h4>Communication that translates</h4><p>Most of the people who need an answer aren't analysts. Getting a finding across to a coach, a manager or a room that doesn't share your vocabulary is part of the job, not an extra.</p></div></div><div class="bring"><div class="n">04</div><div><h4>Collaborative mindset</h4><p>I've worked inside performance teams and run projects across a 200+ member lab. The useful work almost always comes from the conversation, not from someone analysing alone.</p></div></div><div class="bring"><div class="n">05</div><div><h4>Curiosity that keeps expanding</h4><p>Sports, business, performance, new tooling. I'd rather learn a new domain properly than stay in one lane, and most of what I've found interesting came from that.</p></div></div></div></div><div data-mode-block="sports" hidden><div class="kicker">What I bring</div><h2>Beyond tools and titles</h2><p class="prose">This is the kind of perspective I bring to the work.</p><div class="brings"><div class="bring"><div class="n">01</div><div><h4>Structured problem solving</h4><p>Starting from the decision someone actually needs to make, then working back to what the data has to answer — rather than starting from whatever is in the file.</p></div></div><div class="bring"><div class="n">02</div><div><h4>Data with context</h4><p>A number means little without knowing how it was collected, what it leaves out, and who is going to act on it. I spend as much time on that as on the modelling.</p></div></div><div class="bring"><div class="n">03</div><div><h4>Communication that translates</h4><p>Most of the people who need an answer aren't analysts. Getting a finding across to a coach, a manager or a room that doesn't share your vocabulary is part of the job, not an extra.</p></div></div><div class="bring"><div class="n">04</div><div><h4>Collaborative mindset</h4><p>I've worked inside performance teams and run projects across a 200+ member lab. The useful work almost always comes from the conversation, not from someone analysing alone.</p></div></div><div class="bring"><div class="n">05</div><div><h4>Curiosity that keeps expanding</h4><p>Sports, business, performance, new tooling. I'd rather learn a new domain properly than stay in one lane, and most of what I've found interesting came from that.</p></div></div></div></div></section><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
+</div></div><div class="strip"><div class="it"><img src="assets/logos/usc.png" alt="USC Marshall"><span class="nm">USC Marshall</span></div><div class="it"><img src="assets/logos/uci.png" alt="UC Irvine"><span class="nm">UC Irvine</span></div><div class="it"><i class="mk" style="background:#111111">OJR</i><span class="nm">Ontario Jr. Reign</span></div><div class="it"><i class="mk" style="background:#1F2937">ESM</i><span class="nm">Excel Sports Management</span></div><div class="it"><i class="mk" style="background:#B4232A">CMS</i><span class="nm">China Merchants Securities</span></div></div><section><div data-mode-block="analyst" hidden><div class="kicker">Selected work</div>
 <h2>Three that show the range</h2>
 <p class="prose">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
 <div class="cards"><div class="card" >
@@ -286,11 +298,7 @@ a portfolio should be read, not scrolled past.</div></div><div data-mode-block="
   <div class="took"><span>What I took from it</span>Some of what looks like form is just scheduling, and it's measurable before tip-off.</div>
 </a></div>
 <div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
-a portfolio should be read, not scrolled past.</div></div></section><section><div class="kicker">Outside the work</div><h2>What I'm up to right now</h2><div class="now">
-  <div class="nowhead"><span class="dot"></span><h3>Currently</h3>
-    <span class="when">Updated September 2026</span></div>
-  <div class="nowlist"><div class="nowrow"><dt>Finishing</dt><dd>My Master's at USC Marshall — graduating May 2026.</dd></div><div class="nowrow"><dt>Looking for</dt><dd>Analyst roles starting next summer, in business or in sport.</dd></div><div class="nowrow"><dt>Watching</dt><dd>Real Madrid, and whatever else is on. I'll take a live game over almost anything.</dd></div><div class="nowrow"><dt>Weekends</dt><dd>A pickup game, football or basketball. A film in an actual cinema. A good meal.</dd></div><div class="nowrow"><dt>Recently</dt><dd>The 2026 World Cup, in person.</dd></div></div>
-</div></section>
+a portfolio should be read, not scrolled past.</div></div></section>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·

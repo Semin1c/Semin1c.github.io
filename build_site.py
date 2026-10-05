@@ -158,6 +158,18 @@ h3{letter-spacing:-.015em}
   color:var(--muted);padding-top:4px}
 .job.edu h4 .at{color:var(--muted)}
 .affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
+.strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:clamp(26px,5vw,54px);padding:30px 24px;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-top:8px}
+.strip .it{display:flex;flex-direction:column;align-items:center;gap:9px;
+  filter:grayscale(1);opacity:.62;transition:filter .25s ease,opacity .25s ease,transform .25s ease}
+.strip .it:hover{filter:none;opacity:1;transform:translateY(-2px)}
+.strip img{height:40px;width:auto;max-width:112px;object-fit:contain;display:block}
+.strip .mk{height:40px;min-width:40px;padding:0 11px;border-radius:9px;display:flex;
+  align-items:center;justify-content:center;color:#fff;font-style:normal;font-weight:700;
+  font-size:12px;letter-spacing:.03em}
+.strip .nm{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;
+  text-align:center;max-width:116px;line-height:1.35}
 .aff{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:11px;
   padding:10px 15px 10px 11px;background:#fff;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
 .aff:hover{box-shadow:0 6px 18px -10px rgba(15,23,42,.3)}
@@ -467,6 +479,21 @@ def xp_item(e):
 </div>"""
 
 
+def logo_strip():
+    out = []
+    for a in SHARED["affiliations"]:
+        mark = None
+        for ext in ("svg", "png"):
+            if (ASSETS / "logos" / f"{a['file']}.{ext}").exists():
+                mark = f'<img src="assets/logos/{a["file"]}.{ext}" alt="{a["name"]}">'
+                break
+        if not mark:
+            initials = "".join(w[0] for w in a["name"].split()[:3]).upper()
+            mark = f'<i class="mk" style="background:{a["brand"]}">{initials}</i>'
+        out.append(f'<div class="it">{mark}<span class="nm">{a["name"]}</span></div>')
+    return f'<div class="strip">{"".join(out)}</div>'
+
+
 def currently():
     rows = "".join(f'<div class="nowrow"><dt>{k}</dt><dd>{v}</dd></div>'
                    for k, v in SHARED["currently"])
@@ -538,10 +565,8 @@ a portfolio should be read, not scrolled past.</div>"""
 
     return shell("Analytics Portfolio", "index",
                  per_mode(hero)
-                 + "<section>" + per_mode(what_i_bring) + "</section>"
-                 + "<section>" + per_mode(feat) + "</section>"
-                 + '<section><div class="kicker">Outside the work</div>'
-                   '<h2>What I\'m up to right now</h2>' + currently() + "</section>")
+                 + logo_strip()
+                 + "<section>" + per_mode(feat) + "</section>")
 
 
 def page_about():
@@ -592,7 +617,6 @@ def page_experience():
   <h1 style="font-size:clamp(28px,4vw,42px)">{m['xp_title']}</h1>
   <div class="rule"></div>
 </div>
-<div class="affil">{aff}</div>
 <div class="xp">{items}</div>"""
 
     return shell("Experience", "experience",
