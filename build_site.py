@@ -155,7 +155,12 @@ h3{letter-spacing:-.015em}
   border-radius:12px;transition:background .2s ease}
 .job:hover{background:var(--card)}
 .job .when{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--muted);padding-top:4px}
+  color:var(--muted);padding-top:2px;display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+.jlogo{display:flex;align-items:center;justify-content:center;width:46px;height:46px;
+  border:1px solid var(--line);border-radius:10px;background:#fff;padding:5px}
+.jlogo img{max-width:100%;max-height:100%;object-fit:contain}
+.jlogo .mk{width:100%;height:100%;border-radius:6px;display:flex;align-items:center;
+  justify-content:center;color:#fff;font-style:normal;font-weight:700;font-size:10px}
 .job.edu h4 .at{color:var(--muted)}
 .affil{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
 .strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
@@ -484,13 +489,21 @@ def entry(p):
 def xp_item(e):
     chips = "".join(f'<span class="chip">{c}</span>' for c in e.get("tags", []))
     return f"""<div class="job">
-  <div class="when">{e['date']}</div>
+  <div class="when"><span class="jlogo">{mark_for(e.get("logo"), name=e["org"])}</span>{e['date']}</div>
   <div>
     <h4>{e['role']} <span class="at">· {e['org']}</span></h4>
     <p>{e['prose']}</p>
     <div class="chips">{chips}</div>
   </div>
 </div>"""
+
+
+def mark_for(key, brand="#334155", name=""):
+    for ext in ("svg", "png"):
+        if key and (ASSETS / "logos" / f"{key}.{ext}").exists():
+            return f'<img src="assets/logos/{key}.{ext}" alt="{name}">'
+    initials = "".join(w[0] for w in (name or key or "?").split()[:3]).upper()
+    return f'<i class="mk" style="background:{brand}">{initials}</i>'
 
 
 def logo_strip():
@@ -579,7 +592,6 @@ a portfolio should be read, not scrolled past.</div>"""
 
     return shell("Analytics Portfolio", "index",
                  per_mode(hero)
-                 + logo_strip()
                  + "<section>" + per_mode(feat) + "</section>")
 
 
@@ -617,7 +629,7 @@ def page_experience():
                   f'<div><b>{a["name"]}</b><span>{a["role"]}</span></div></div>'
                   for a in SHARED["affiliations"])
     edu = "".join(f"""<div class="job edu">
-  <div class="when">{e['date']}</div>
+  <div class="when"><span class="jlogo">{mark_for(e.get("logo"), name=e["school"])}</span>{e['date']}</div>
   <div>
     <h4>{e['degree']} <span class="at">· {e['school'].split(',')[0]}</span></h4>
     <p>{e['note']}</p>

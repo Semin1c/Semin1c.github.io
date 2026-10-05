@@ -25,6 +25,7 @@ SHARED = dict(
         dict(name="USC Marshall", role="MS Business Analytics", file="usc", brand="#990000"),
         dict(name="UC Irvine", role="BA Business Economics", file="uci", brand="#0064A4"),
         dict(name="Ontario Jr. Reign", role="Video analytics · ops", file="ojr", brand="#111111"),
+        dict(name="Trojans Sports Research Lab", role="Program manager", file="tsrl", brand="#990000"),
         dict(name="Excel Sports Management", role="Performance analytics", file="excel", brand="#1F2937"),
         dict(name="China Merchants Securities", role="Investment banking", file="cms", brand="#B4232A"),
     ],
@@ -62,11 +63,11 @@ SHARED = dict(
     linkedin="https://www.linkedin.com/in/simonxy-chen",
     github="https://github.com/Semin1c",
     education=[
-        dict(school="University of Southern California, Marshall School of Business",
+        dict(logo="usc", school="University of Southern California, Marshall School of Business",
              place="Los Angeles, CA", date="May 2026",
              degree="Master of Science in Business Analytics (STEM)",
              note="GPA 3.78 · Dean's Honor List, 3 semesters"),
-        dict(school="University of California, Irvine", place="Irvine, CA", date="June 2024",
+        dict(logo="uci", school="University of California, Irvine", place="Irvine, CA", date="June 2024",
              degree="Bachelor of Arts in Business Economics, Minor in Management",
              note="GPA 3.92 · Dean's Honor List, 9 quarters · Phi Beta Kappa"),
     ],
@@ -139,7 +140,7 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
-        dict(org="Ontario Jr. Reign", date="Aug 2026 — Present",
+        dict(logo="ojr", org="Ontario Jr. Reign", date="Aug 2026 — Present",
              role="Video Analytics Intern · Digital Operations",
              prose="Three affiliated hockey programs, and a job that runs from data standards to "
                    "revenue. I'm co-leading Shopify and Printful storefronts across all three — 30+ "
@@ -148,21 +149,21 @@ MODES = {
                    "building an event-tracking framework with GMs and coaches so future performance "
                    "data is collected consistently rather than rebuilt each year.",
              tags=["Shopify", "Ops", "Data standards", "Stakeholders"]),
-        dict(org="Excel Sports Management", date="Jun — Aug 2025",
+        dict(logo="excel", org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="Built the pipeline the performance team ran on — five-plus sources and APIs pulled "
                    "together, cleaned, ID-matched and turned into reporting for 200+ athletes, which took "
                    "about 80% of the recurring work out. I also built the R Shiny and Streamlit tools they "
                    "kept using after I left, which I care about more than the percentage.",
              tags=["R", "Python", "APIs", "ETL", "R Shiny", "Streamlit"]),
-        dict(org="Trojans Sports Research Lab", date="Jan 2025 — Present",
+        dict(logo="tsrl", org="Trojans Sports Research Lab", date="Jan 2025 — Present",
              role="Program & Project Manager",
              prose="I run analytics projects inside a 200+ member lab — five or more at a time, five to ten "
                    "people each. Most of the job is unglamorous: writing the data-collection standards, "
                    "building the templates, recording the tutorial so thirty-odd people stop asking the same "
                    "question. Getting that right is what makes the analysis possible.",
              tags=["Python", "SQL", "Data standards", "Project management"]),
-        dict(org="China Merchants Securities", date="Apr — Aug 2023",
+        dict(logo="cms", org="China Merchants Securities", date="Apr — Aug 2023",
              role="Investment Banking Analyst Intern",
              prose="A summer in investment banking in Beijing. I went through 2020–2023 financials for eight "
                    "companies, then dug properly into two of them — subsidiary listings, and whether the "
@@ -316,7 +317,7 @@ MODES = {
 
     xp_title="Where I've done this",
     experience=[
-        dict(org="Ontario Jr. Reign", date="Aug 2026 — Present",
+        dict(logo="ojr", org="Ontario Jr. Reign", date="Aug 2026 — Present",
              role="Video Analytics Intern · Digital Operations",
              prose="Working across three affiliated junior hockey programs. The part I care most about "
                    "is building an in-game event-tracking framework with the GMs and coaches — agreeing "
@@ -324,20 +325,20 @@ MODES = {
                    "instead of starting from nothing every season. Alongside that, the unglamorous "
                    "operational side: schedules, team sites, and standing up merchandise storefronts.",
              tags=["Event tracking", "Hockey", "Ops", "Shopify"]),
-        dict(org="Excel Sports Management", date="Jun — Aug 2025",
+        dict(logo="excel", org="Excel Sports Management", date="Jun — Aug 2025",
              role="Sports Performance Associate, Analytics",
              prose="A summer inside a performance team, modelling how neuromuscular, sprint, strength, "
                    "pitch-speed and bat-speed measures actually relate to each other, and building the "
                    "pipeline that fed three to ten athlete reviews a week for 200+ athletes. The R Shiny "
                    "and Streamlit dashboards I built are still in use, which is the part I'd point at.",
              tags=["R", "Python", "Athlete monitoring", "R Shiny", "Streamlit"]),
-        dict(org="Trojans Sports Research Lab", date="Jan 2025 — Present",
+        dict(logo="tsrl", org="Trojans Sports Research Lab", date="Jan 2025 — Present",
              role="Program & Project Manager",
              prose="I manage sports research projects inside a 200+ member lab — five or more at a time, "
                    "five to ten people each, built around student schedules. Two of the projects I worked "
                    "on had abstracts accepted by ACSM, and I presented both posters on site.",
              tags=["Python", "SQL", "Research design", "ACSM"]),
-        dict(org="China Merchants Securities", date="Apr — Aug 2023",
+        dict(logo="cms", org="China Merchants Securities", date="Apr — Aug 2023",
              role="Investment Banking Analyst Intern",
              prose="A summer in investment banking in Beijing, going through 2020–2023 financials for eight "
                    "companies and digging properly into two of them. Not sports, but it's where I learned to "
