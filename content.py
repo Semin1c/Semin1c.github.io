@@ -234,7 +234,7 @@ MODES = {
                   "overtime and promotion timing carry the signal. Turning risk scores into a "
                   "156-employee pilot covers 35% of predicted departures — and re-costing the programme "
                   "per employee and per role replaced a benchmark-driven 13x with a defensible $83K.",
-             fig=f"{BASE}/DSO 550 - IBM Employee Attrition ROI (2026 Spring)/Git Version/outputs/figures/exec/step3_segment_playbook_onepager.png",
+             fig=f"{BASE}/DSO 550 - IBM Employee Attrition ROI (2026 Spring)/Git Version/outputs/figures/exec/step2_driver_odds_ratio.png",
              repo="https://github.com/Semin1c/ibm-attrition-roi", stack="Python · scikit-learn · statsmodels"),
         dict(tag="BI · What-if modelling", title="Sales Performance Dashboards",
              question="Would training this sales team actually pay for itself?",
