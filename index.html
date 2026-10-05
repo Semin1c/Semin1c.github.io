@@ -119,8 +119,8 @@ h3{letter-spacing:-.015em}
   gap:clamp(26px,5vw,54px);padding:30px 24px;border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);margin-top:8px}
 .strip .it{display:flex;flex-direction:column;align-items:center;gap:9px;
-  filter:grayscale(1);opacity:.62;transition:filter .25s ease,opacity .25s ease,transform .25s ease}
-.strip .it:hover{filter:none;opacity:1;transform:translateY(-2px)}
+  opacity:.78;transition:opacity .25s ease,transform .25s ease}
+.strip .it:hover{opacity:1;transform:translateY(-2px)}
 .strip img{height:40px;width:auto;max-width:112px;object-fit:contain;display:block}
 .strip .mk{height:40px;min-width:40px;padding:0 11px;border-radius:9px;display:flex;
   align-items:center;justify-content:center;color:#fff;font-style:normal;font-weight:700;
@@ -216,6 +216,12 @@ body.editing [data-ed].dirty{background:#ECFDF5;outline-color:#059669}
 .note{margin-top:24px;padding:15px 17px;background:var(--card);border-left:3px solid var(--accent);
   border-radius:0 8px 8px 0;font-size:14.5px;color:#475569;transition:border-color var(--swap)}
 footer{padding:38px 0 54px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.cstrip{border-top:1px solid var(--line);margin-top:10px;padding:44px 0 6px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.cstrip .lead{flex:1;min-width:260px}
+.cstrip h3{margin:0 0 5px;font-size:21px;letter-spacing:-.018em}
+.cstrip p{margin:0;color:var(--muted);font-size:15px}
+.cstrip .acts{display:flex;gap:10px;flex-wrap:wrap}
 footer a{color:var(--muted)}
 .rows{margin-top:20px}
 .row{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;flex-wrap:wrap}
@@ -299,6 +305,14 @@ a portfolio should be read, not scrolled past.</div></div><div data-mode-block="
 </a></div>
 <div class="note">Three here, the rest on <a href="https://github.com/Semin1c">GitHub</a> —
 a portfolio should be read, not scrolled past.</div></div></section>
+<div class="cstrip">
+  <div class="lead"><h3>Get in touch</h3>
+    <p>Open to analyst roles from May 2026. Email is the quickest way to reach me.</p></div>
+  <div class="acts">
+    <a class="btn btn-primary" href="mailto:xingyang@marshall.usc.edu">Email me</a>
+    <a class="btn btn-ghost" href="contact.html" data-keepmode>All contact details</a>
+  </div>
+</div>
 </main>
 <footer class="wrap">
   <div>&copy; 2026 Simon Chen ·
