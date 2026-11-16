@@ -196,7 +196,7 @@ MODES = {
              status="Idea"),
     ],
 
-    proj_title="Three that show the range",
+    proj_title="Work that reached a decision",
     proj_lede="Churn, workforce economics, and the dashboard that talked a budget out of being spent.",
     projects=[
         dict(tag="E-commerce · Side project", title="Sportswear B2C Diagnostic",
@@ -369,8 +369,8 @@ MODES = {
              status="Outline"),
     ],
 
-    proj_title="Four findings that reversed the assumption",
-    proj_lede="Possession, home advantage, competitive balance, and what a schedule is actually worth.",
+    proj_title="Questions about how the game actually works",
+    proj_lede="Possession, home advantage, competitive balance, the calendar — and the tracking groundwork that has to exist before any of it is possible.",
     projects=[
         dict(tag="Hockey · Current", title="In-Game Event Tracking",
              question="What should a junior hockey programme actually be recording?",
@@ -397,13 +397,17 @@ MODES = {
              repo="https://github.com/Semin1c/pl-possession-and-box-entry", stack="Python · cross-validation · recruitment analytics"),
         dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
              question="How much of a result is decided by the calendar?",
-             desc="Across ten NBA seasons, separating rest, travel and opponent sequencing from how good a team actually is. A meaningful rest edge is worth a lot more than I'd have guessed.",
-             took="Some of what looks like form is just scheduling, and it's measurable before tip-off.",
-             body="Rest advantage, back-to-backs and schedule compression translate into differences "
-                  "of up to roughly five wins across a regular season — enough to matter for planning "
-                  "and for reading a standings table honestly.",
-             fig=None,
-             repo="https://github.com/Semin1c", stack="Python · schedule modelling"),
+             desc="Rest matters and travel doesn't, which is the opposite of how people talk about the NBA schedule. A team with two extra days off wins 57% of the time. Miles flown predicts nothing once you look properly.",
+             took="I had the travel finding backwards in my own write-up for months before I rechecked the regression.",
+             body="Ten seasons of every game, built as seven modules: schedule density, travel load, "
+                  "fatigue against defence and offence, opponent sequencing, a win-impact model, and "
+                  "k-means that sorts all 300 team-seasons into five schedule archetypes. Rest is the "
+                  "real effect — 57% at a two-day edge against 50% at parity, and back-to-back night "
+                  "two measurably worsens defence. Travel is not: the load index explains essentially "
+                  "none of a team's home-away split. Added up, the whole schedule separates the "
+                  "luckiest and unluckiest franchise by about 1.7 wins across five seasons.",
+             repo="https://github.com/Semin1c/NBA_Schedule_Difficulty",
+             stack="R · GLM · k-means · geospatial"),
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
              question="Is home advantage the crowd, or the referee, or something else?",
              desc="Neither, as far as I can tell. Attendance predicts home points right up until you account for which clubs fill big stadiums. The referee spread sits inside what random shuffling produces. What's left is territorial — home sides create more, they don't finish better.",
