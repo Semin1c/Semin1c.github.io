@@ -484,7 +484,7 @@ MODES = {
                     "300 team-seasons into five schedule archetypes. Added up, the whole schedule "
                     "separates the luckiest and unluckiest franchise by about 1.7 wins across "
                     "five seasons, which is an order of magnitude below team quality.",
-             repo="https://github.com/Semin1c/NBA_Schedule_Difficulty"),
+             repo="https://github.com/Semin1c/nba-schedule-difficulty"),
 
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
              scale="A full season, every match",
