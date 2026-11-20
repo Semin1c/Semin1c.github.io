@@ -119,6 +119,10 @@ h3{letter-spacing:-.015em}
    caveat, with method folded away after the conclusion ------------------- */
 .proj{border-top:1px solid var(--line);padding:44px 0 40px}
 .proj:first-of-type{border-top:0;padding-top:12px}
+.proj .cover{margin:0 0 22px;border-radius:12px;overflow:hidden;background:#fff;
+  border:1px solid var(--line);line-height:0}
+.proj .cover img{width:100%;height:130px;object-fit:cover;object-position:center;display:block}
+@media(max-width:640px){.proj .cover img{height:92px}}
 .proj .ptag{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   color:var(--accent);margin-bottom:9px;transition:color var(--swap)}
 .proj h3{font-size:clamp(22px,2.6vw,28px);margin:0 0 10px;line-height:1.22;letter-spacing:-.015em}
@@ -309,6 +313,7 @@ footer a{color:var(--muted)}
 </div>
 <div class="jump"><a href="#sportswear-b2c-diagnostic">Sportswear B2C Diagnostic</a><a href="#netflix-subscriber-churn">Netflix Subscriber Churn</a><a href="#employee-attrition---retention-roi">Employee Attrition & Retention ROI</a><a href="#sales-performance-dashboards">Sales Performance Dashboards</a><a href="#athlete-data-pipeline---reporting-tools">Athlete Data Pipeline & Reporting Tools</a></div>
 <article class="proj" id="sportswear-b2c-diagnostic">
+  
   <div class="ptag">E-commerce · Side project</div>
   <h3>Sportswear B2C Diagnostic</h3>
   <div class="spine"><b>A brand's full order and inventory history</b> · Python · Shopify export · data integrity</div>
@@ -318,6 +323,7 @@ footer a{color:var(--muted)}
   <details class="method"><summary>How it was done</summary><p>A product renamed mid-life meant joining on name lost 98% of the volume. Three separate fan-out joins inflated figures by up to 5x. Placeholder customer IDs invented a repeat buyer who didn't exist. Most of the inventory table was filler, which made the store look like it held decades of stock. I catalogued all nine, banned six tables from being summed, and wrote a guard script so they couldn't come back. The final audit recomputes 57 checks from source rather than from any intermediate file. The brand's own B2B flag was unusable — it read False for every order — so the two business lines got separated on geographic signature instead and validated three ways.</p></details>
   <div class="foot"><p class="privnote">Client work — figures and identifying details withheld.</p></div>
 </article><article class="proj" id="netflix-subscriber-churn">
+  <div class="cover"><img src="assets/covers/netflix_churn.png" alt="" aria-hidden="true"></div>
   <div class="ptag">Churn · Streaming</div>
   <h3>Netflix Subscriber Churn</h3>
   <div class="spine"><b>5,000 subscribers</b> · Python · scikit-learn · XGBoost</div>
@@ -327,6 +333,7 @@ footer a{color:var(--muted)}
   <details class="method"><summary>How it was done</summary><p>Logistic regression, random forest and XGBoost, compared with and without the engagement block. The retention play that comes out of it targets disengaged Basic-plan subscribers, because that's where spend has somewhere to go.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/netflix-churn-engagement">View the repository →</a></div>
 </article><article class="proj" id="employee-attrition---retention-roi">
+  <div class="cover"><img src="assets/covers/ibm_attrition.png" alt="" aria-hidden="true"></div>
   <div class="ptag">People analytics · ROI</div>
   <h3>Employee Attrition & Retention ROI</h3>
   <div class="spine"><b>1,470 employees · 31 features</b> · Python · scikit-learn · statsmodels</div>
@@ -336,6 +343,7 @@ footer a{color:var(--muted)}
   <details class="method"><summary>How it was done</summary><p>Regularised logistic regression, then the risk scores turned into a 156-employee pilot that covers 35% of predicted departures — small enough to fund, large enough to measure.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/ibm-attrition-roi">View the repository →</a></div>
 </article><article class="proj" id="sales-performance-dashboards">
+  
   <div class="ptag">BI · What-if modelling</div>
   <h3>Sales Performance Dashboards</h3>
   <div class="spine"><b>$25.7M in sales · ~45 reps · 10,889 transactions</b> · Power BI · DAX · What-if parameters</div>
@@ -345,6 +353,7 @@ footer a{color:var(--muted)}
   <details class="method"><summary>How it was done</summary><p>Three dashboards, from a descriptive baseline to a direct test of each rep attribute. Both costings of the training programme come back negative, at −36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast baseline down and inflating any uplift measured against it.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/people-analytics-dashboards">View the repository →</a></div>
 </article><article class="proj" id="athlete-data-pipeline---reporting-tools">
+  
   <div class="ptag">Sports performance · Internship</div>
   <h3>Athlete Data Pipeline & Reporting Tools</h3>
   <div class="spine"><b>200+ athletes · 5+ sources and APIs</b> · R · Python · R Shiny · Streamlit · ETL</div>
@@ -363,6 +372,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
 </div>
 <div class="jump"><a href="#in-game-event-tracking">In-Game Event Tracking</a><a href="#possession-vs--box-entry">Possession vs. Box Entry</a><a href="#schedule--travel---rest">Schedule, Travel & Rest</a><a href="#where-home-advantage-comes-from">Where Home Advantage Comes From</a><a href="#competitive-balance--reversed">Competitive Balance, Reversed</a><a href="#athlete-data-pipeline---reporting-tools">Athlete Data Pipeline & Reporting Tools</a></div>
 <article class="proj" id="in-game-event-tracking">
+  
   <div class="ptag">Hockey · Current</div>
   <h3>In-Game Event Tracking</h3>
   <div class="spine"><b>Three affiliated junior programmes</b> · Event design · stakeholder work · hockey</div>
@@ -372,6 +382,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <details class="method"><summary>How it was done</summary><p>The goal is a foundation for analysis that recurs — agreeing which events matter, who records them and in what form, so next season's data is comparable to this one. Most analytics problems at this level aren't modelling problems. They're the absence of anything consistent to model.</p></details>
   <div class="foot"><p class="privnote">In progress with Ontario Jr. Reign.</p></div>
 </article><article class="proj" id="possession-vs--box-entry">
+  
   <div class="ptag">Premier League · 8 seasons</div>
   <h3>Possession vs. Box Entry</h3>
   <div class="spine"><b>160 squad-seasons · 23 possession metrics</b> · Python · cross-validation · recruitment analytics</div>
@@ -381,6 +392,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <details class="method"><summary>How it was done</summary><p>Comparing 168 transfers against same-position benchmarks, final-third involvement held up across clubs better than xG+xAG output did, which is the part that would matter for recruitment.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/pl-possession-and-box-entry">View the repository →</a></div>
 </article><article class="proj" id="schedule--travel---rest">
+  <div class="cover"><img src="assets/covers/nba_schedule.png" alt="" aria-hidden="true"></div>
   <div class="ptag">NBA · 10 seasons</div>
   <h3>Schedule, Travel & Rest</h3>
   <div class="spine"><b>23,636 games · 300 team-seasons</b> · R · logistic GLM · k-means · geospatial</div>
@@ -390,6 +402,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <details class="method"><summary>How it was done</summary><p>Seven modules — schedule density, travel load, fatigue against defence and offence, opponent sequencing, a win-impact GLM, and k-means that sorts all 300 team-seasons into five schedule archetypes. Added up, the whole schedule separates the luckiest and unluckiest franchise by about 1.7 wins across five seasons, which is an order of magnitude below team quality.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/nba-schedule-difficulty">View the repository →</a></div>
 </article><article class="proj" id="where-home-advantage-comes-from">
+  <div class="cover"><img src="assets/covers/laliga_home.png" alt="" aria-hidden="true"></div>
   <div class="ptag">La Liga · 380 matches</div>
   <h3>Where Home Advantage Comes From</h3>
   <div class="spine"><b>A full season, every match</b> · Python · permutation testing · xG</div>
@@ -399,6 +412,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <details class="method"><summary>How it was done</summary><p>A data-quality pass came first and caught a broken column: the field meant to record who scored first never names the home team, in any of the 380 matches. Anything built on it would have been wrong.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/laliga-home-advantage">View the repository →</a></div>
 </article><article class="proj" id="competitive-balance--reversed">
+  <div class="cover"><img src="assets/covers/mls_parity.png" alt="" aria-hidden="true"></div>
   <div class="ptag">MLS · Europe's big five</div>
   <h3>Competitive Balance, Reversed</h3>
   <div class="spine"><b>1,510 team-seasons · 14 seasons · 6 leagues</b> · Python · scikit-learn · SHAP</div>
@@ -408,6 +422,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <details class="method"><summary>How it was done</summary><p>1,510 team-seasons, of which only 217 are MLS. My first classifier hit 88–90% accuracy and I was pleased with it — but 86% of the rows are European, so a model answering "European" every time scores about the same, and mine was identifying fewer than half the MLS seasons, the ones the question was actually about. Weighting the classes and scoring on AUC and MLS recall separately takes it to 92% at 0.954 AUC, and it survives holding out whole clubs and whole seasons rather than random folds.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/mls-vs-european-leagues">View the repository →</a></div>
 </article><article class="proj" id="athlete-data-pipeline---reporting-tools">
+  
   <div class="ptag">Sports performance · Internship</div>
   <h3>Athlete Data Pipeline & Reporting Tools</h3>
   <div class="spine"><b>200+ athletes · 5+ sources and APIs</b> · R · Python · R Shiny · Streamlit · athlete monitoring</div>

@@ -228,6 +228,7 @@ MODES = {
 
         dict(tag="Churn · Streaming", title="Netflix Subscriber Churn",
              scale="5,000 subscribers", stack="Python · scikit-learn · XGBoost",
+             cover="assets/covers/netflix_churn.png",
              lead="I expected price and plan tier to do most of the work. They barely register. "
                   "How much someone watches separates leavers from stayers so cleanly that if you "
                   "take viewing behaviour out, three different models collapse to near guesswork.",
@@ -247,6 +248,7 @@ MODES = {
 
         dict(tag="People analytics · ROI", title="Employee Attrition & Retention ROI",
              scale="1,470 employees · 31 features",
+             cover="assets/covers/ibm_attrition.png",
              stack="Python · scikit-learn · statsmodels",
              lead="Attrition concentrates much harder than I'd assumed — two employee groups "
                   "account for roughly a third of all departures. Business travel, overtime and "
@@ -465,6 +467,7 @@ MODES = {
 
         dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
              scale="23,636 games · 300 team-seasons",
+             cover="assets/covers/nba_schedule.png",
              stack="R · logistic GLM · k-means · geospatial",
              lead="People talk about the NBA schedule as one thing — the grind, the road trip, "
                   "the back-to-back in a third city in four nights. Split it into rest and travel "
@@ -488,6 +491,7 @@ MODES = {
 
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
              scale="A full season, every match",
+             cover="assets/covers/laliga_home.png",
              stack="Python · permutation testing · xG",
              lead="Not the crowd, and not the referee. Attendance predicts home points right up "
                   "until you account for which clubs fill big stadiums, and then it's nothing. "
@@ -509,6 +513,7 @@ MODES = {
 
         dict(tag="MLS · Europe's big five", title="Competitive Balance, Reversed",
              scale="1,510 team-seasons · 14 seasons · 6 leagues",
+             cover="assets/covers/mls_parity.png",
              stack="Python · scikit-learn · SHAP",
              lead="Basically every football fan will tell you MLS isn't as competitive as Europe. "
                   "It depends completely on what you mean by competitive. I measured it as how "
