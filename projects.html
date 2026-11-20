@@ -340,8 +340,8 @@ shared, and a full write-up. More at <a href="https://github.com/Semin1c">github
     <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">MLS · Europe's big five</div>
     <h3>Are Europe's big five really more competitive than MLS?</h3>
     <div class="stack">Competitive Balance, Reversed · Python · scikit-learn · SHAP</div>
-    <p>The project started by assuming the opposite and coding it into the target variable. Tested properly, MLS runs the tightest spread of the six leagues while Bayern took 11 of 14 Bundesliga titles. The classifier I first reported at 88–90% accuracy was riding an 85.6% majority class; corrected, it reaches 0.954 AUC.</p>
-    <div class="took"><span>What I took from it</span>The assumption I never questioned was the one doing the most damage. Going back to check it is where the whole project came from.</div>
+    <p>Fourteen seasons, six leagues, 1,510 team-seasons — of which only 217 are MLS. Weighting the classes, scoring on AUC and tracking MLS recall separately takes it from under half the MLS seasons identified to 92%, at 0.954 AUC, and it holds up when whole clubs and whole seasons are held out. On parity itself MLS runs the tightest spread of the six.</p><p>The part I'd want argued with: MLS is built differently. Draft picks, a lottery, and a title decided in the playoffs rather than over the table. A club already safe in the playoff places has little reason to chase one more league position, and a club out of them has a reason to lose. That compresses the table without the football necessarily being more even. The measurement is solid; what causes it needs more work.</p>
+    <div class="took"><span>What I took from it</span>My first model hit 88–90% accuracy and I was happy with it. 86% of the data was European, so a model that answers 'European' every time scores about the same — and mine was getting fewer than half the MLS seasons right. The ones the whole question was about.</div>
     <a class="btn btn-ghost" href="https://github.com/Semin1c/mls-vs-european-leagues">View the repository →</a>
   </div>
 </div>

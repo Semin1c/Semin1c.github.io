@@ -283,9 +283,10 @@ MODES = {
         "matches, that the crowd drives home advantage, that Europe's big five out-compete MLS. Each of "
         "those is testable, and each one weakens or reverses when you run it properly. I find that more "
         "interesting than confirming what people already believe.",
-        "That includes my own work. One project opened from an assumption printed on slide two of the "
-        "deck, and I coded it straight into the target variable before going back and finding the data "
-        "said the opposite. Admitting that is what made the project worth anything.",
+        "That includes my own work. I once reported a classifier at 88–90% accuracy before noticing "
+        "that 86% of the data sat in one class — the model was mostly just answering with the "
+        "majority and missing more than half of the cases I actually cared about. Going back and "
+        "rebuilding the way it was scored is the part of that project I'd defend.",
         "Alongside the analysis, two seasons inside sports performance — building athlete pipelines, "
         "working on readiness monitoring, and making tools the coaching staff kept using after I left. "
         "That part taught me that a finding nobody can act on isn't finished.",
@@ -420,12 +421,18 @@ MODES = {
              repo="https://github.com/Semin1c/laliga-home-advantage", stack="Python · permutation testing · xG"),
         dict(tag="MLS · Europe's big five", title="Competitive Balance, Reversed",
              question="Are Europe's big five really more competitive than MLS?",
-             desc="I assumed yes, and coded that assumption straight into the target variable before I thought to test it. On parity MLS is the tightest of the six leagues — while Bayern took 11 of 14 Bundesliga titles over the same stretch.",
-             took="The assumption I never questioned was the one doing the most damage. Going back to check it is where the whole project came from.",
-             body="The project started by assuming the opposite and coding it into the target variable. "
-                  "Tested properly, MLS runs the tightest spread of the six leagues while Bayern took "
-                  "11 of 14 Bundesliga titles. The classifier I first reported at 88–90% accuracy was "
-                  "riding an 85.6% majority class; corrected, it reaches 0.954 AUC.",
+             desc="Everyone says MLS isn't as competitive as Europe. It depends completely on what you mean by competitive. I measured it as how far apart the teams finish, and on that MLS is the tightest of the six — while Bayern took 11 of 14 Bundesliga titles over the same stretch.",
+             took="My first model hit 88–90% accuracy and I was happy with it. 86% of the data was European, so a model that answers 'European' every time scores about the same — and mine was getting fewer than half the MLS seasons right. The ones the whole question was about.",
+             body="Fourteen seasons, six leagues, 1,510 team-seasons — of which only 217 are MLS. "
+                  "Weighting the classes, scoring on AUC and tracking MLS recall separately takes it "
+                  "from under half the MLS seasons identified to 92%, at 0.954 AUC, and it holds up "
+                  "when whole clubs and whole seasons are held out. On parity itself MLS runs the "
+                  "tightest spread of the six.</p><p>The part I'd want argued with: MLS is built "
+                  "differently. Draft picks, a lottery, and a title decided in the playoffs rather "
+                  "than over the table. A club already safe in the playoff places has little reason "
+                  "to chase one more league position, and a club out of them has a reason to lose. "
+                  "That compresses the table without the football necessarily being more even. The "
+                  "measurement is solid; what causes it needs more work.",
              fig=f"{BASE}/DSO 579 - MLS vs European League Analysis (2025 Spring)/Git Version/figures/competitive_balance.png",
              repo="https://github.com/Semin1c/mls-vs-european-leagues", stack="Python · scikit-learn · SHAP",
              viz=dict(
