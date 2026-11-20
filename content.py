@@ -492,17 +492,25 @@ MODES = {
                   "It depends completely on what you mean by competitive. I measured it as how "
                   "far apart the teams finish, and on that MLS is the tightest of the six — while "
                   "Bayern took 11 of 14 Bundesliga titles over the same stretch.",
-             catch="My first classifier hit 88–90% accuracy and I was pleased with it. 86% of the "
-                   "team-seasons are European, so a model that answers \"European\" every time "
-                   "scores about the same, and mine was identifying fewer than half the MLS "
-                   "seasons — the ones the question was actually about. Weighting the classes and "
-                   "scoring on AUC and MLS recall takes it to 92% at 0.954 AUC.",
-             method="MLS is also built differently: a draft, a lottery, and a title decided in "
-                    "the playoffs rather than over the table. A club already safe in the playoff "
-                    "places has little reason to chase one more league position, and a club out "
-                    "of them has a reason to lose. That compresses a table without the football "
-                    "being more even. The measurement holds up under held-out clubs and held-out "
-                    "seasons; what causes it needs more work.",
+             catch="Competitive and good are not the same thing, and this only measures the "
+                   "first one. A local community game can be tight and still be nowhere near "
+                   "MLS, and what fans actually turn up for is the standard — the stars, the "
+                   "level — where MLS clearly isn\'t at the top. So a close table is not a claim "
+                   "about quality.<br><br>MLS is also built differently: a draft, a lottery, and "
+                   "a title decided in the playoffs rather than over the table. A club already "
+                   "safe in the playoff places has little reason to chase one more league "
+                   "position, and a club out of them has a reason to lose. That compresses a "
+                   "table without the football being more even.<br><br>The measurement holds up. "
+                   "What causes it doesn\'t, yet — and the more interesting question is how you "
+                   "would define and quantify quality in the first place, which I haven\'t "
+                   "answered and would like to.",
+             method="1,510 team-seasons, of which only 217 are MLS. My first classifier hit "
+                    "88–90% accuracy and I was pleased with it — but 86% of the rows are "
+                    "European, so a model answering \"European\" every time scores about the "
+                    "same, and mine was identifying fewer than half the MLS seasons, the ones "
+                    "the question was actually about. Weighting the classes and scoring on AUC "
+                    "and MLS recall separately takes it to 92% at 0.954 AUC, and it survives "
+                    "holding out whole clubs and whole seasons rather than random folds.",
              repo="https://github.com/Semin1c/mls-vs-european-leagues",
              viz=dict(
                  title="How evenly matched is each league?",
