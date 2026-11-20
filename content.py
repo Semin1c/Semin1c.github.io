@@ -407,23 +407,31 @@ MODES = {
     proj_title="Questions about how the game actually works",
     proj_lede="Possession, home advantage, competitive balance, the calendar — and the tracking groundwork that has to exist before any of it is possible.",
     projects=[
-        dict(tag="Hockey · Current", title="In-Game Event Tracking",
+        dict(tag="Hockey · Current", title="Ontario Jr. Reign — Digital & Event Tracking",
              scale="Three affiliated junior programmes",
-             stack="Event design · stakeholder work · hockey",
-             lead="Three programmes, no shared standard for what gets recorded during a game. "
-                  "I'm building that framework with the GMs and coaches rather than handing them "
-                  "a schema and hoping.",
+             stack="Shopify · Printful · web ops · event design",
+             lead="Two halves of the same job. The public one is shipped and you can click it: "
+                  "the club's ticketing and team store, and a schedule that pulls from the "
+                  "official USPHL feed rather than being retyped each week. The internal one is "
+                  "a standard for what gets recorded during a game, built with the GMs and "
+                  "coaches rather than handed to them.",
              useful=(
-                     "Everything downstream depends on this existing first. Agreeing what gets "
-                     "recorded, by whom and in what form is the difference between a programme "
-                     "that can run the same analysis every season and one that starts from "
-                     "nothing each year. "),
-             method="The goal is a foundation for analysis that recurs — agreeing which events "
-                    "matter, who records them and in what form, so next season's data is "
-                    "comparable to this one. Most analytics problems at this level aren't "
-                    "modelling problems. They're the absence of anything consistent to model.",
+                 "Everything analytical downstream depends on the second half existing first. "
+                 "Agreeing which events matter, who records them and in what form is the "
+                 "difference between a programme that can run the same analysis every season "
+                 "and one that starts from nothing each year — and at this level that groundwork "
+                 "is usually the whole problem, not the modelling."),
+             method="<span class='todo'>[Simon — these are public so they can carry your name, "
+                    "but I don't want to overstate what's yours on a real club's site. Tell me "
+                    "which parts you built or led: the storefronts across all three programmes, "
+                    "the ticketing pages, the schedule automation, the site itself? And roughly "
+                    "what it replaced — manual updates, no store at all, tickets handled "
+                    "elsewhere? I'll write it to match.]</span>",
+             links=[("Team store", "https://www.ontariojrreign.com/team-store"),
+                    ("Tickets", "https://www.ontariojrreign.com/tickets"),
+                    ("Schedule", "https://www.ontariojrreign.com/schedule1")],
              repo=None,
-             note="In progress with Ontario Jr. Reign."),
+             note="Club work — the public pages are linked above; the tracking framework is in progress."),
 
         dict(tag="Premier League · 8 seasons", title="Possession vs. Box Entry",
              scale="160 squad-seasons · 23 possession metrics",

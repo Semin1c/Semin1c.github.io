@@ -552,8 +552,15 @@ def entry(p):
               f'</span><p>{p["useful"]}</p></div>' if p.get("useful") else "")
     method = (f'<details class="method"><summary>How it was done</summary>'
               f'<p>{p["method"]}</p></details>' if p.get("method") else "")
-    foot = (f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
-            if p.get("repo") else f'<p class="privnote">{p.get("note", "")}</p>')
+    if p.get("repo"):
+        foot = f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
+    elif p.get("links"):
+        foot = "".join(f'<a class="btn btn-ghost" href="{u}">{label} →</a>'
+                       for label, u in p["links"])
+    else:
+        foot = f'<p class="privnote">{p.get("note", "")}</p>'
+    if p.get("links") and p.get("note"):
+        foot += f'<p class="privnote">{p["note"]}</p>'
     scale = f'<b>{p["scale"]}</b> · {p["stack"]}' if p.get("scale") else p["stack"]
 
     cover = (f'<div class="cover"><img src="{p["cover"]}" alt="" aria-hidden="true"></div>'
