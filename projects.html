@@ -309,20 +309,10 @@ footer a{color:var(--muted)}
   <span class="eyebrow">Data &amp; Business Analytics</span>
   <h1 style="font-size:clamp(28px,4vw,42px)">Work that reached a decision</h1>
   <div class="rule"></div>
-  <p class="lede">Churn, workforce economics, and the dashboard that talked a budget out of being spent.</p>
+  <p class="lede">Churn, workforce economics, and a dashboard that ended up arguing against every budget it was built to justify.</p>
 </div>
-<div class="jump"><a href="#sportswear-b2c-diagnostic">Sportswear B2C Diagnostic</a><a href="#netflix-subscriber-churn">Netflix Subscriber Churn</a><a href="#employee-attrition---retention-roi">Employee Attrition & Retention ROI</a><a href="#sales-performance-dashboards">Sales Performance Dashboards</a><a href="#athlete-data-pipeline---reporting-tools">Athlete Data Pipeline & Reporting Tools</a></div>
-<article class="proj" id="sportswear-b2c-diagnostic">
-  
-  <div class="ptag">E-commerce · Side project</div>
-  <h3>Sportswear B2C Diagnostic</h3>
-  <div class="spine"><b>A brand's full order and inventory history</b> · Python · Shopify export · data integrity</div>
-  <p class="lead">A growth and inventory diagnostic for a US sportswear brand. Most of the time didn't go on the analysis — it went on finding nine ways the raw export was lying, and each one of them had already produced a confident wrong answer.</p>
-  
-  <div class="useful"><span>What it is good for</span><p>The nine traps transfer to almost any order-level export — renamed products, fan-out joins, placeholder IDs and filler inventory turn up everywhere. The part I'd reuse on day one somewhere else is the audit pattern: recompute every check from source rather than from an intermediate file, and ban the tables that can't be summed. </p></div>
-  <details class="method"><summary>How it was done</summary><p>A product renamed mid-life meant joining on name lost 98% of the volume. Three separate fan-out joins inflated figures by up to 5x. Placeholder customer IDs invented a repeat buyer who didn't exist. Most of the inventory table was filler, which made the store look like it held decades of stock. I catalogued all nine, banned six tables from being summed, and wrote a guard script so they couldn't come back. The final audit recomputes 57 checks from source rather than from any intermediate file. The brand's own B2B flag was unusable — it read False for every order — so the two business lines got separated on geographic signature instead and validated three ways.</p></details>
-  <div class="foot"><p class="privnote">Client work — figures and identifying details withheld.</p></div>
-</article><article class="proj" id="netflix-subscriber-churn">
+<div class="jump"><a href="#netflix-subscriber-churn">Netflix Subscriber Churn</a><a href="#employee-attrition---retention-roi">Employee Attrition & Retention ROI</a><a href="#sales-performance-dashboards">Sales Performance Dashboards</a><a href="#athlete-data-pipeline---reporting-tools">Athlete Data Pipeline & Reporting Tools</a></div>
+<article class="proj" id="netflix-subscriber-churn">
   <div class="cover"><img src="assets/covers/netflix_churn.png" alt="" aria-hidden="true"></div>
   <div class="ptag">Churn · Streaming</div>
   <h3>Netflix Subscriber Churn</h3>
@@ -347,10 +337,10 @@ footer a{color:var(--muted)}
   <div class="ptag">BI · What-if modelling</div>
   <h3>Sales Performance Dashboards</h3>
   <div class="spine"><b>$25.7M in sales · ~45 reps · 10,889 transactions</b> · Power BI · DAX · What-if parameters</div>
-  <p class="lead">Training looks like the answer in a decomposition tree, so I built the case for funding it. Tested directly, rep attributes correlate near zero with sales per rep. What actually separates reps is which manager they report to.</p>
-  <figure><img src="assets/analyst_what_actually_drives_sales.png" alt="Sales Performance Dashboards"><figcaption>Training, age and tenure against sales per rep: all three sit on top of zero. The supervisor gap is $134K.</figcaption></figure>
-  <div class="useful"><span>What it is good for</span><p>A dashboard that stops money being spent is doing its job. The what-if parameters let a manager re-price the programme live, so the conversation moves off whether training is a good idea and onto what uplift rate would be needed to make it pay — which is a question a pilot can actually answer. </p></div>
-  <details class="method"><summary>How it was done</summary><p>Three dashboards, from a descriptive baseline to a direct test of each rep attribute. Both costings of the training programme come back negative, at −36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast baseline down and inflating any uplift measured against it.</p></details>
+  <p class="lead">Training looks like the answer in a decomposition tree, so I built the case for funding it. Tested directly, rep attributes correlate near zero with sales per rep — and when I went back and tested the manager effect I had recommended instead, that didn't hold either. Nothing in this book separates reps.</p>
+  <figure><img src="assets/analyst_what_actually_drives_sales.png" alt="Sales Performance Dashboards"><figcaption>Training, age and tenure against sales per rep: all three sit on top of zero.</figcaption></figure>
+  <div class="useful"><span>What it is good for</span><p>A dashboard that stops money being spent is doing its job, and this one ended up stopping two. The what-if parameters let a manager re-price the programme live, so the conversation moves off whether training is a good idea and onto what uplift rate would be needed to make it pay — which is a question a pilot can answer and a vendor quote cannot.</p></div>
+  <details class="method"><summary>How it was done</summary><p>Three dashboards, from a descriptive baseline to a direct test of each rep attribute. Both costings of the training programme come back negative, at −36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast baseline down and inflating any uplift measured against it.</p><p>The supervisor finding is the one I had to withdraw. A $134K spread between the best and worst manager looked like the answer, until I noticed there are 45 reps across 18 supervisors and six of them have a single rep. Shuffling reps between managers at random gives a median gap of $153K — bigger than the real one — and 67% of shuffles beat it.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/people-analytics-dashboards">View the repository →</a></div>
 </article><article class="proj" id="athlete-data-pipeline---reporting-tools">
   

@@ -200,32 +200,8 @@ MODES = {
     ],
 
     proj_title="Work that reached a decision",
-    proj_lede="Churn, workforce economics, and the dashboard that talked a budget out of being spent.",
+    proj_lede="Churn, workforce economics, and a dashboard that ended up arguing against every budget it was built to justify.",
     projects=[
-        dict(tag="E-commerce · Side project", title="Sportswear B2C Diagnostic",
-             scale="A brand's full order and inventory history",
-             stack="Python · Shopify export · data integrity",
-             lead="A growth and inventory diagnostic for a US sportswear brand. Most of the "
-                  "time didn't go on the analysis — it went on finding nine ways the raw export "
-                  "was lying, and each one of them had already produced a confident wrong answer.",
-             useful=(
-                     "The nine traps transfer to almost any order-level export — renamed "
-                     "products, fan-out joins, placeholder IDs and filler inventory turn up "
-                     "everywhere. The part I'd reuse on day one somewhere else is the audit "
-                     "pattern: recompute every check from source rather than from an "
-                     "intermediate file, and ban the tables that can't be summed. "),
-             method="A product renamed mid-life meant joining on name lost 98% of the volume. "
-                    "Three separate fan-out joins inflated figures by up to 5x. Placeholder "
-                    "customer IDs invented a repeat buyer who didn't exist. Most of the inventory "
-                    "table was filler, which made the store look like it held decades of stock. I "
-                    "catalogued all nine, banned six tables from being summed, and wrote a guard "
-                    "script so they couldn't come back. The final audit recomputes 57 checks from "
-                    "source rather than from any intermediate file. The brand's own B2B flag was "
-                    "unusable — it read False for every order — so the two business lines got "
-                    "separated on geographic signature instead and validated three ways.",
-             repo=None,
-             note="Client work — figures and identifying details withheld."),
-
         dict(tag="Churn · Streaming", title="Netflix Subscriber Churn",
              scale="5,000 subscribers", stack="Python · scikit-learn · XGBoost",
              cover="assets/covers/netflix_churn.png",
@@ -274,20 +250,24 @@ MODES = {
              stack="Power BI · DAX · What-if parameters",
              lead="Training looks like the answer in a decomposition tree, so I built the case "
                   "for funding it. Tested directly, rep attributes correlate near zero with sales "
-                  "per rep. What actually separates reps is which manager they report to.",
+                  "per rep — and when I went back and tested the manager effect I had recommended "
+                  "instead, that didn't hold either. Nothing in this book separates reps.",
              fig=f"{BASE}/DSO 550 - People Analytics Power BI Dashboards (2026 Spring)/Git Version/figures/what_actually_drives_sales.png",
-             cap="Training, age and tenure against sales per rep: all three sit on top of zero. "
-                 "The supervisor gap is $134K.",
+             cap="Training, age and tenure against sales per rep: all three sit on top of zero.",
              useful=(
-                     "A dashboard that stops money being spent is doing its job. The what-if "
-                     "parameters let a manager re-price the programme live, so the conversation "
-                     "moves off whether training is a good idea and onto what uplift rate would "
-                     "be needed to make it pay — which is a question a pilot can actually "
-                     "answer. "),
+                     "A dashboard that stops money being spent is doing its job, and this one "
+                     "ended up stopping two. The what-if parameters let a manager re-price the "
+                     "programme live, so the conversation moves off whether training is a good "
+                     "idea and onto what uplift rate would be needed to make it pay — which is "
+                     "a question a pilot can answer and a vendor quote cannot."),
              method="Three dashboards, from a descriptive baseline to a direct test of each rep "
                     "attribute. Both costings of the training programme come back negative, at "
                     "−36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast "
-                    "baseline down and inflating any uplift measured against it.",
+                    "baseline down and inflating any uplift measured against it.</p><p>The supervisor finding is the one I had to withdraw. A $134K spread between the "
+                    "best and worst manager looked like the answer, until I noticed there are "
+                    "45 reps across 18 supervisors and six of them have a single rep. Shuffling "
+                    "reps between managers at random gives a median gap of $153K — bigger than "
+                    "the real one — and 67% of shuffles beat it.",
              repo="https://github.com/Semin1c/people-analytics-dashboards"),
 
         dict(tag="Sports performance · Internship", title="Athlete Data Pipeline & Reporting Tools",

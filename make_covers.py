@@ -122,6 +122,50 @@ def cover_ibm():
     save(fig, "ibm_attrition")
 
 
+
+# ---- Possession: 23 metrics across 160 squad-seasons, one carries it ------
+def cover_possession():
+    d = pd.read_csv(f"{BASE}/DSO 579 - Premier League Possession Analysis (2025 Spring)"
+                    "/Git Version/data/combined_pl_squad_possession.csv")
+    cols = [c for c in d.columns
+            if pd.api.types.is_numeric_dtype(d[c]) and c not in ("# Pl", "90s")][:23]
+    z = (d[cols] - d[cols].mean()) / d[cols].std(ddof=0)
+    fig, ax = canvas()
+    ax.set_xlim(-0.4, len(cols) - 0.6); ax.set_ylim(-3.1, 3.1)
+    hot = cols.index("Att Pen") if "Att Pen" in cols else len(cols) - 1
+    # every squad-season is one line across all 23 metrics
+    for _, row in z.iterrows():
+        ax.plot(range(len(cols)), row.values, color=FAINT, lw=.8, alpha=.55, zorder=2)
+    ax.plot([hot, hot], [-3.1, 3.1], color="white", lw=9, zorder=3)
+    ax.scatter([hot] * len(z), z[cols[hot]], s=16, color=UCI_BLUE, alpha=.8,
+               edgecolor="none", zorder=4)
+    ax.plot([hot, hot], [-3.1, 3.1], color=GOLD_S, lw=2.4, alpha=.9, zorder=3)
+    save(fig, "possession_metrics")
+
+
+# ---- Power BI: 45 reps, every transaction, and who they report to ---------
+def cover_salesreps():
+    x = pd.ExcelFile(f"{BASE}/DSO 550 - People Analytics Power BI Dashboards (2026 Spring)"
+                     "/Git Version/data/DSO550_Power_BI_Bootcamp___Data.xlsx")
+    sales = pd.concat([x.parse(s) for s in x.sheet_names
+                       if "Sales" in s and s != "Sales People"])
+    sales["rev"] = sales.Quantity * sales.Price
+    per = sales.groupby("Sales Person ID").rev.sum().sort_values()
+    people = x.parse("Sales People")
+    sup_col = next((c for c in people.columns if "upervisor" in c), None)
+    sup = (people.set_index(people.columns[0])[sup_col].to_dict() if sup_col else {})
+    tops = {s for s in list(dict.fromkeys(sup.values()))[:1]}
+    fig, ax = canvas()
+    ax.set_xlim(-1, len(per)); ax.set_ylim(0, per.max() * 1.08)
+    for i, (rep, total) in enumerate(per.items()):
+        lead = sup.get(rep) in tops
+        ax.vlines(i, 0, total, color=CARDINAL if lead else FAINT,
+                  lw=9, alpha=.9 if lead else .8)
+    ax.hlines(per.mean(), -1, len(per), color=GOLD_A, lw=2.6, zorder=4)
+    save(fig, "sales_reps")
+
+
 if __name__ == "__main__":
     print("covers ->", OUT)
     cover_mls(); cover_laliga(); cover_nba(); cover_netflix(); cover_ibm()
+    cover_possession(); cover_salesreps()
