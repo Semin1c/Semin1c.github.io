@@ -200,52 +200,91 @@ MODES = {
     proj_lede="Churn, workforce economics, and the dashboard that talked a budget out of being spent.",
     projects=[
         dict(tag="E-commerce · Side project", title="Sportswear B2C Diagnostic",
-             question="Can you trust the data before you trust the answer?",
-             desc="A growth and inventory diagnostic for a US sportswear brand. Most of the work "
-                  "wasn't the analysis — it was finding the nine ways the raw export lied, each of "
-                  "which had already produced a confident wrong conclusion.",
-             took="Every dataset has traps like these. The difference is whether you find them or "
-                  "your client does, six weeks later.",
-             body="A product renamed mid-life meant joining on name lost 98% of the volume. Three "
-                  "separate fan-out joins inflated figures by up to 5x. Placeholder customer IDs "
-                  "invented a repeat buyer who didn't exist. Most of the inventory table was filler, "
-                  "which made the store look like it held decades of stock. I catalogued all nine, "
-                  "banned six tables from being summed, and wrote a guard script so the same mistakes "
-                  "couldn't come back. The final audit recomputes 57 checks from source rather than "
-                  "from any intermediate file. The brand's own B2B flag was unusable — it read False "
-                  "for every order — so the two business lines got separated on geographic signature "
-                  "instead and validated three ways. They turned out to share almost no customers.",
-             stack="Python · Shopify data · data integrity", repo=None,
+             scale="A brand's full order and inventory history",
+             stack="Python · Shopify export · data integrity",
+             lead="A growth and inventory diagnostic for a US sportswear brand. Most of the "
+                  "time didn't go on the analysis — it went on finding nine ways the raw export "
+                  "was lying, and each one of them had already produced a confident wrong answer.",
+             catch="I can't show the numbers on this one, so you're taking the method on trust. "
+                   "That's fair to be sceptical about.",
+             method="A product renamed mid-life meant joining on name lost 98% of the volume. "
+                    "Three separate fan-out joins inflated figures by up to 5x. Placeholder "
+                    "customer IDs invented a repeat buyer who didn't exist. Most of the inventory "
+                    "table was filler, which made the store look like it held decades of stock. I "
+                    "catalogued all nine, banned six tables from being summed, and wrote a guard "
+                    "script so they couldn't come back. The final audit recomputes 57 checks from "
+                    "source rather than from any intermediate file. The brand's own B2B flag was "
+                    "unusable — it read False for every order — so the two business lines got "
+                    "separated on geographic signature instead and validated three ways.",
+             repo=None,
              note="Client work — figures and identifying details withheld."),
+
         dict(tag="Churn · Streaming", title="Netflix Subscriber Churn",
-             question="Who actually cancels a streaming subscription?",
-             desc="I expected price and plan tier to matter most. They barely register — how much someone watches separates leavers from stayers so cleanly that taking viewing behaviour out collapses three different models to near guesswork.",
-             took="Feature importance can be a warning, not a win. When one input carries everything, the interesting question is why the others don't.",
-             body="Across 5,000 subscribers, how much someone watches separates churners from stayers "
-                  "so cleanly that everything else is noise. The retention play targets disengaged "
-                  "Basic-plan subscribers specifically, because that's where spend has somewhere to go.",
+             scale="5,000 subscribers", stack="Python · scikit-learn · XGBoost",
+             lead="I expected price and plan tier to do most of the work. They barely register. "
+                  "How much someone watches separates leavers from stayers so cleanly that if you "
+                  "take viewing behaviour out, three different models collapse to near guesswork.",
              fig=f"{BASE}/MKT 566 - Netflix Churn Prediction (2025 Fall)/Git Version/figures/churn_by_engagement.png",
-             repo="https://github.com/Semin1c/netflix-churn-engagement", stack="Python · scikit-learn · XGBoost"),
+             cap="Subscribers who barely watch churn at 61%. Regular watchers, 1%. "
+                 "Nothing else in the dataset comes close to separating them like this.",
+             catch="One feature carrying everything is usually a warning rather than a win. It's "
+                   "worth asking whether engagement predicts churn or just measures it — someone "
+                   "who has already decided to leave probably stops watching first. I'd want a "
+                   "time-lagged version before anyone spent money on it.",
+             method="Logistic regression, random forest and XGBoost, compared with and without "
+                    "the engagement block. The retention play that comes out of it targets "
+                    "disengaged Basic-plan subscribers, because that's where spend has somewhere "
+                    "to go.",
+             repo="https://github.com/Semin1c/netflix-churn-engagement"),
+
         dict(tag="People analytics · ROI", title="Employee Attrition & Retention ROI",
-             question="Is it worth paying to keep people?",
-             desc="Attrition concentrates far harder than I assumed — two employee groups account for about a third of departures. The part I got wrong first was the money: my initial return was built on an industry benchmark and it was off by an order of magnitude.",
-             took="Costing something properly is slower and less flattering than benchmarking it, and it's the only version you could defend to a CFO.",
-             body="1,470 employees, 31 features, regularised logistic regression. Business travel, "
-                  "overtime and promotion timing carry the signal. Turning risk scores into a "
-                  "156-employee pilot covers 35% of predicted departures — and re-costing the programme "
-                  "per employee and per role replaced a benchmark-driven 13x with a defensible $83K.",
+             scale="1,470 employees · 31 features",
+             stack="Python · scikit-learn · statsmodels",
+             lead="Attrition concentrates much harder than I'd assumed — two employee groups "
+                  "account for roughly a third of all departures. Business travel, overtime and "
+                  "how long since someone was promoted carry most of the signal that survives "
+                  "controls.",
              fig=f"{BASE}/DSO 550 - IBM Employee Attrition ROI (2026 Spring)/Git Version/outputs/figures/exec/step2_driver_odds_ratio.png",
-             repo="https://github.com/Semin1c/ibm-attrition-roi", stack="Python · scikit-learn · statsmodels"),
+             cap="Odds of leaving, against the company baseline. Frequent travel roughly "
+                 "doubles it; the factors below the line are the ones that hold someone.",
+             catch="My first costing said the retention programme returned 13x. That number came "
+                   "from an industry benchmark rather than this company's actual headcount, and "
+                   "once I re-costed it per employee and per role it came out at $83K. The "
+                   "benchmark version would have been the better-looking slide.",
+             method="Regularised logistic regression, then the risk scores turned into a "
+                    "156-employee pilot that covers 35% of predicted departures — small enough "
+                    "to fund, large enough to measure.",
+             repo="https://github.com/Semin1c/ibm-attrition-roi"),
+
         dict(tag="BI · What-if modelling", title="Sales Performance Dashboards",
-             question="Would training this sales team actually pay for itself?",
-             desc="Training looks like the answer in a decomposition tree, so I built the case for funding it. Tested directly, rep attributes barely correlate with performance at all. What separates reps is which manager they report to.",
-             took="A dashboard that talks you out of spending money is doing its job. It just doesn't feel like a win while you're building it.",
-             body="Training looks like a driver in a decomposition tree, so the instinct is to fund it. "
-                  "Tested directly, rep attributes correlate near zero with sales per rep. What "
-                  "separates reps is who they report to — a $134K supervisor gap. Both costings of the "
-                  "training programme come back negative.",
+             scale="$25.7M in sales · ~45 reps · 10,889 transactions",
+             stack="Power BI · DAX · What-if parameters",
+             lead="Training looks like the answer in a decomposition tree, so I built the case "
+                  "for funding it. Tested directly, rep attributes correlate near zero with sales "
+                  "per rep. What actually separates reps is which manager they report to.",
              fig=f"{BASE}/DSO 550 - People Analytics Power BI Dashboards (2026 Spring)/Git Version/figures/what_actually_drives_sales.png",
-             repo="https://github.com/Semin1c/people-analytics-dashboards", stack="Power BI · DAX · What-if parameters"),
+             cap="Training, age and tenure against sales per rep: all three sit on top of zero. "
+                 "The supervisor gap is $134K.",
+             catch="Supervisor assignment isn't random, so that $134K has territory and account "
+                   "quality baked into it. It tells you where to look. It doesn't prove managers "
+                   "cause the difference, and I'd want to see the territories before spending "
+                   "anything on it.",
+             method="Three dashboards, from a descriptive baseline to a direct test of each rep "
+                    "attribute. Both costings of the training programme come back negative, at "
+                    "−36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast "
+                    "baseline down and inflating any uplift measured against it.",
+             repo="https://github.com/Semin1c/people-analytics-dashboards"),
+
+        dict(tag="Sports performance · Internship", title="Athlete Data Pipeline & Reporting Tools",
+             scale="200+ athletes · 5+ sources and APIs",
+             stack="R · Python · R Shiny · Streamlit · ETL",
+             lead="<span class='todo'>[Simon — this is the ESM slot you asked for. You said this "
+                  "is the work you're actually proud of, because it got used. Tell me what you "
+                  "can say about it: what the team couldn't do before, what you built, what "
+                  "changed after. No athlete data and no client identifiers — I'll write it as a "
+                  "case study from whatever you're comfortable sharing.]</span>",
+             repo=None,
+             note="Employer work — case study, no athlete data or client identifiers."),
     ],
     skills=[
         ("Analytics & modelling", "SQL · Python · R · Regression · Classification · Clustering · Forecasting · A/B testing"),
@@ -374,67 +413,97 @@ MODES = {
     proj_lede="Possession, home advantage, competitive balance, the calendar — and the tracking groundwork that has to exist before any of it is possible.",
     projects=[
         dict(tag="Hockey · Current", title="In-Game Event Tracking",
-             question="What should a junior hockey programme actually be recording?",
-             desc="Three affiliated programmes with no shared standard for what gets tracked during "
-                  "a game. I'm building that framework with the GMs and coaches rather than handing "
-                  "them a schema.",
-             took="A collection standard nobody follows is worth nothing. Designing it with the people "
-                  "holding the clipboard is the whole job.",
-             body="The goal is a foundation for recurring performance analysis — agreeing which events "
-                  "matter, who records them, and in what form, so next season's data is comparable to "
-                  "this one. Most analytics problems at this level aren't modelling problems; they're "
-                  "the absence of anything consistent to model.",
-             stack="Event design · stakeholder work · hockey", repo=None,
+             scale="Three affiliated junior programmes",
+             stack="Event design · stakeholder work · hockey",
+             lead="Three programmes, no shared standard for what gets recorded during a game. "
+                  "I'm building that framework with the GMs and coaches rather than handing them "
+                  "a schema and hoping.",
+             catch="A collection standard nobody follows is worth nothing, so most of this is "
+                   "conversations rather than analysis. It's also unfinished, which is why "
+                   "there's nothing to show yet.",
+             method="The goal is a foundation for analysis that recurs — agreeing which events "
+                    "matter, who records them and in what form, so next season's data is "
+                    "comparable to this one. Most analytics problems at this level aren't "
+                    "modelling problems. They're the absence of anything consistent to model.",
+             repo=None,
              note="In progress with Ontario Jr. Reign."),
+
         dict(tag="Premier League · 8 seasons", title="Possession vs. Box Entry",
-             question="Does having the ball more actually create more chances?",
-             desc="I tested 23 possession metrics across eight Premier League seasons. On clubs the model hadn't seen, touches in the opposition box alone did better than the whole set together.",
-             took="Most of what we measure about possession is describing the same thing several times over.",
-             body="Across 160 Premier League squad-seasons, one variable outperformed the full metric "
-                  "set out of sample, which argues for a simpler chance-creation KPI than most models "
-                  "use. Comparing 168 transfers against same-position benchmarks, final-third "
-                  "involvement held up across clubs better than xG+xAG output did.",
+             scale="160 squad-seasons · 23 possession metrics",
+             stack="Python · cross-validation · recruitment analytics",
+             lead="I tested 23 possession metrics across eight Premier League seasons. On clubs "
+                  "the model had never seen, touches in the opposition box on their own did "
+                  "better than all 23 together.",
              fig=f"{BASE}/DSO 579 - Premier League Possession Analysis (2025 Spring)/Git Version/figures/what_predicts_chances.png",
-             repo="https://github.com/Semin1c/pl-possession-and-box-entry", stack="Python · cross-validation · recruitment analytics"),
+             cap="One variable against the full metric set, scored out of sample. Most of what "
+                 "we measure about possession is describing the same thing several times over.",
+             catch="This says box touches predict chances, which is close to saying a thing "
+                   "predicts itself — they're both measuring territory. It argues for a simpler "
+                   "KPI, not for a new insight about football.",
+             method="Comparing 168 transfers against same-position benchmarks, final-third "
+                    "involvement held up across clubs better than xG+xAG output did, which is "
+                    "the part that would matter for recruitment.",
+             repo="https://github.com/Semin1c/pl-possession-and-box-entry"),
+
         dict(tag="NBA · 10 seasons", title="Schedule, Travel & Rest",
-             question="How much of a result is decided by the calendar?",
-             desc="Rest matters and travel doesn't, which is the opposite of how people talk about the NBA schedule. A team with two extra days off wins 57% of the time. Miles flown predicts nothing once you look properly.",
-             took="I had the travel finding backwards in my own write-up for months before I rechecked the regression.",
-             body="Ten seasons of every game, built as seven modules: schedule density, travel load, "
-                  "fatigue against defence and offence, opponent sequencing, a win-impact model, and "
-                  "k-means that sorts all 300 team-seasons into five schedule archetypes. Rest is the "
-                  "real effect — 57% at a two-day edge against 50% at parity, and back-to-back night "
-                  "two measurably worsens defence. Travel is not: the load index explains essentially "
-                  "none of a team's home-away split. Added up, the whole schedule separates the "
-                  "luckiest and unluckiest franchise by about 1.7 wins across five seasons.",
-             repo="https://github.com/Semin1c/NBA_Schedule_Difficulty",
-             stack="R · GLM · k-means · geospatial"),
+             scale="23,636 games · 300 team-seasons",
+             stack="R · logistic GLM · k-means · geospatial",
+             lead="People talk about the NBA schedule as one thing — the grind, the road trip, "
+                  "the back-to-back in a third city in four nights. Split it into rest and travel "
+                  "and only one of them is real. A team with two more days off wins 57% of the "
+                  "time. Miles flown predicts essentially nothing.",
+             fig=f"{BASE}/NBA Schedule Difficulty (2026 Spring)/Git Version/figures/rest_advantage.png",
+             cap="Win rate by rest advantage, every regular-season game 2014–2023. Monotonic "
+                 "across every step, and decided before anyone takes a shot.",
+             catch="I had the travel finding backwards in my own write-up for months. The summary "
+                   "called travel load a significant predictor of the home-away gap; recomputed, "
+                   "it's p = 0.76 with an R² of 0.0005, and the coefficient points the wrong way. "
+                   "The chart underneath had been right the whole time.",
+             method="Seven modules — schedule density, travel load, fatigue against defence and "
+                    "offence, opponent sequencing, a win-impact GLM, and k-means that sorts all "
+                    "300 team-seasons into five schedule archetypes. Added up, the whole schedule "
+                    "separates the luckiest and unluckiest franchise by about 1.7 wins across "
+                    "five seasons, which is an order of magnitude below team quality.",
+             repo="https://github.com/Semin1c/NBA_Schedule_Difficulty"),
+
         dict(tag="La Liga · 380 matches", title="Where Home Advantage Comes From",
-             question="Is home advantage the crowd, or the referee, or something else?",
-             desc="Neither, as far as I can tell. Attendance predicts home points right up until you account for which clubs fill big stadiums. The referee spread sits inside what random shuffling produces. What's left is territorial — home sides create more, they don't finish better.",
-             took="Two of the three explanations everyone repeats didn't survive a control and a shuffle test.",
-             body="Home sides create 1.484 expected goals to 1.121 while converting at an identical "
-                  "rate — so the advantage is about where the ball goes, not what happens when it "
-                  "arrives. Attendance looks like an explanation until club quality is held constant. "
-                  "The referee spread sits inside what random shuffling produces.",
+             scale="A full season, every match",
+             stack="Python · permutation testing · xG",
+             lead="Not the crowd, and not the referee. Attendance predicts home points right up "
+                  "until you account for which clubs fill big stadiums, and then it's nothing. "
+                  "The referee spread sits inside what random shuffling produces. What's left is "
+                  "territorial — home sides create more, they don't finish better.",
              fig=f"{BASE}/DSO 579 - First Goal Scoring Analysis (2025 Spring)/Git Version/figures/crowd_confound.png",
-             repo="https://github.com/Semin1c/laliga-home-advantage", stack="Python · permutation testing · xG"),
+             cap="Attendance against home points, before and after holding club quality "
+                 "constant. The relationship is the clubs, not the crowd.",
+             catch="One season, one league. Home sides create 1.484 expected goals to 1.121 at an "
+                   "identical conversion rate, which is a clean result — but 380 matches is not a "
+                   "lot to rule two explanations out on, and I'd want several seasons before "
+                   "saying it with confidence.",
+             method="A data-quality pass came first and caught a broken column: the field meant "
+                    "to record who scored first never names the home team, in any of the 380 "
+                    "matches. Anything built on it would have been wrong.",
+             repo="https://github.com/Semin1c/laliga-home-advantage"),
+
         dict(tag="MLS · Europe's big five", title="Competitive Balance, Reversed",
-             question="Are Europe's big five really more competitive than MLS?",
-             desc="Everyone says MLS isn't as competitive as Europe. It depends completely on what you mean by competitive. I measured it as how far apart the teams finish, and on that MLS is the tightest of the six — while Bayern took 11 of 14 Bundesliga titles over the same stretch.",
-             took="My first model hit 88–90% accuracy and I was happy with it. 86% of the data was European, so a model that answers 'European' every time scores about the same — and mine was getting fewer than half the MLS seasons right. The ones the whole question was about.",
-             body="Fourteen seasons, six leagues, 1,510 team-seasons — of which only 217 are MLS. "
-                  "Weighting the classes, scoring on AUC and tracking MLS recall separately takes it "
-                  "from under half the MLS seasons identified to 92%, at 0.954 AUC, and it holds up "
-                  "when whole clubs and whole seasons are held out. On parity itself MLS runs the "
-                  "tightest spread of the six.</p><p>The part I'd want argued with: MLS is built "
-                  "differently. Draft picks, a lottery, and a title decided in the playoffs rather "
-                  "than over the table. A club already safe in the playoff places has little reason "
-                  "to chase one more league position, and a club out of them has a reason to lose. "
-                  "That compresses the table without the football necessarily being more even. The "
-                  "measurement is solid; what causes it needs more work.",
-             fig=f"{BASE}/DSO 579 - MLS vs European League Analysis (2025 Spring)/Git Version/figures/competitive_balance.png",
-             repo="https://github.com/Semin1c/mls-vs-european-leagues", stack="Python · scikit-learn · SHAP",
+             scale="1,510 team-seasons · 14 seasons · 6 leagues",
+             stack="Python · scikit-learn · SHAP",
+             lead="Basically every football fan will tell you MLS isn't as competitive as Europe. "
+                  "It depends completely on what you mean by competitive. I measured it as how "
+                  "far apart the teams finish, and on that MLS is the tightest of the six — while "
+                  "Bayern took 11 of 14 Bundesliga titles over the same stretch.",
+             catch="My first classifier hit 88–90% accuracy and I was pleased with it. 86% of the "
+                   "team-seasons are European, so a model that answers \"European\" every time "
+                   "scores about the same, and mine was identifying fewer than half the MLS "
+                   "seasons — the ones the question was actually about. Weighting the classes and "
+                   "scoring on AUC and MLS recall takes it to 92% at 0.954 AUC.",
+             method="MLS is also built differently: a draft, a lottery, and a title decided in "
+                    "the playoffs rather than over the table. A club already safe in the playoff "
+                    "places has little reason to chase one more league position, and a club out "
+                    "of them has a reason to lose. That compresses a table without the football "
+                    "being more even. The measurement holds up under held-out clubs and held-out "
+                    "seasons; what causes it needs more work.",
+             repo="https://github.com/Semin1c/mls-vs-european-leagues",
              viz=dict(
                  title="How evenly matched is each league?",
                  sub="Spread of points per match within a season, averaged 2010–2023. Lower means closer.",
@@ -447,6 +516,17 @@ MODES = {
                        ("Serie A", 0.476, "0.476", False)],
                  note="Points <em>per match</em>, because MLS and the Bundesliga play 34 games "
                       "while the rest play 38. Over the same period Bayern won 11 of 14 Bundesliga titles.")),
+
+        dict(tag="Sports performance · Internship", title="Athlete Data Pipeline & Reporting Tools",
+             scale="200+ athletes · 5+ sources and APIs",
+             stack="R · Python · R Shiny · Streamlit · athlete monitoring",
+             lead="<span class='todo'>[Simon — this is the ESM slot you asked for. You said this "
+                  "is the work you're actually proud of, because it got used. Tell me what you "
+                  "can say about it: what the team couldn't do before, what you built, what "
+                  "changed after. No athlete data and no client identifiers — I'll write it as a "
+                  "case study from whatever you're comfortable sharing.]</span>",
+             repo=None,
+             note="Employer work — case study, no athlete data or client identifiers."),
     ],
     skills=[
         ("Analytics & modelling", "Python · SQL · R · Regression · Classification · Clustering · Time series · Predictive modelling"),

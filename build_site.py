@@ -133,6 +133,9 @@ h3{letter-spacing:-.015em}
   margin-bottom:9px;transition:color var(--swap)}
 .card h3{font-size:17.5px;margin:0 0 9px;line-height:1.3}
 .card p{font-size:14.5px;color:var(--muted);margin:0 0 16px;flex:1}
+.card .cmore{border-top:1px solid var(--line);padding-top:12px;font-size:12.5px;
+  color:var(--muted);font-weight:600}
+.card:hover .cmore{color:var(--accent)}
 .took{border-top:1px solid var(--line);padding-top:13px;font-size:14px;color:#475569;line-height:1.55}
 .privnote{font-size:13.5px;color:var(--muted);font-style:italic;
   border-left:2px solid var(--line);padding-left:12px}
@@ -141,14 +144,50 @@ h3{letter-spacing:-.015em}
 .entry .took{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
   border-radius:0 10px 10px 0;padding:15px 17px;margin-top:4px}
 
-.entry{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:26px;background:#fff}
-.entry .shot{background:var(--card);border-bottom:1px solid var(--line);padding:20px;text-align:center}
-.entry .shot img{border-radius:8px;display:block;margin:0 auto}
-.entry .meat{padding:24px}
-.entry h3{font-size:21px;margin:0 0 8px}
-.entry .stack{font-size:12.5px;color:var(--muted);margin-bottom:14px}
-.entry p{margin:0 0 16px;color:#334155}
-.entry .figures{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px}
+/* --- project entry: name first, then the finding, then one chart, then the
+   caveat, with method folded away after the conclusion ------------------- */
+.proj{border-top:1px solid var(--line);padding:44px 0 40px}
+.proj:first-of-type{border-top:0;padding-top:12px}
+.proj .ptag{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:9px;transition:color var(--swap)}
+.proj h3{font-size:clamp(22px,2.6vw,28px);margin:0 0 10px;line-height:1.22;letter-spacing:-.015em}
+.proj .spine{font-size:13px;color:var(--muted);margin-bottom:20px;
+  padding-bottom:16px;border-bottom:1px solid var(--line)}
+.proj .spine b{color:var(--ink);font-weight:600}
+.proj .lead{font-size:18.5px;line-height:1.62;color:var(--ink);margin:0 0 26px;max-width:62ch}
+.proj .lead .todo{font-size:15px}
+.proj figure{margin:0 0 26px}
+.proj figure img{width:100%;height:auto;display:block;border:1px solid var(--line);
+  border-radius:10px;background:#fff}
+.proj figcaption{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:11px;
+  padding-left:13px;border-left:2px solid var(--gold);max-width:68ch}
+.proj .catch{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 20px;max-width:72ch;
+  transition:border-color var(--swap)}
+.proj .catch span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px;transition:color var(--swap)}
+.proj .catch p{margin:0;font-size:14.5px;line-height:1.6;color:#475569}
+.proj details.method{margin:0 0 20px;max-width:72ch}
+.proj details.method summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted);
+  list-style:none;display:inline-flex;align-items:center;gap:7px;padding:6px 0}
+.proj details.method summary::-webkit-details-marker{display:none}
+.proj details.method summary::before{content:'+';font-size:15px;color:var(--accent);
+  font-weight:700;transition:color var(--swap)}
+.proj details.method[open] summary::before{content:'\2013'}
+.proj details.method summary:hover{color:var(--accent)}
+.proj details.method p{margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#475569}
+.proj .foot{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.proj .privnote{font-size:13.5px;color:var(--muted);font-style:italic;margin:0}
+/* project jump nav */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;padding:0 0 30px;
+  border-bottom:1px solid var(--line)}
+.jump a{font-size:13px;color:var(--muted);text-decoration:none;padding:6px 13px;
+  border:1px solid var(--line);border-radius:100px;transition:all .18s ease}
+.jump a:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+@media(max-width:640px){
+  .proj .lead{font-size:16.5px}
+  .proj{padding:34px 0 30px}
+}
 
 .xp{margin-top:26px}
 .job{display:grid;grid-template-columns:132px 1fr;gap:22px;padding:22px;margin:0 -22px 6px;
@@ -457,33 +496,47 @@ def per_mode(render):
 
 
 def card(p):
-    tag, attr = ("a", f'href="{p["repo"]}"') if p.get("repo") else ("div", "")
-    return f"""<{tag} class="card" {attr}>
+    """Home-page teaser: the name, the finding, and a way into the full entry."""
+    return f"""<a class="card" href="projects.html#{slug(p['title'])}" data-keepmode>
   <div class="tag">{p['tag']}</div>
-  <h3>{p['question']}</h3>
-  <p>{p['desc']}</p>
-  <div class="took"><span>What I took from it</span>{p['took']}</div>
-</{tag}>"""
+  <h3>{p['title']}</h3>
+  <p>{p['lead']}</p>
+  <div class="cmore">{p.get('scale', p['stack'])} →</div>
+</a>"""
+
+
+def slug(title):
+    return "".join(c.lower() if c.isalnum() else "-" for c in title).strip("-")
 
 
 def entry(p):
+    """One project: what it is, what it found, one chart, the caveat, method last."""
     if p.get("viz"):
-        shot = barchart(p["viz"])
+        visual = barchart(p["viz"])
     elif p.get("img"):
-        shot = f'<div class="shot"><img src="{p["img"]}" alt="{p["title"]}"></div>'
+        cap = f'<figcaption>{p["cap"]}</figcaption>' if p.get("cap") else ""
+        visual = f'<figure><img src="{p["img"]}" alt="{p["title"]}">{cap}</figure>'
     else:
-        shot = ""
-    return f"""<div class="entry">{shot}
-  <div class="meat">
-    <div class="tag" style="font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">{p['tag']}</div>
-    <h3>{p['question']}</h3>
-    <div class="stack">{p['title']} · {p['stack']}</div>
-    <p>{p['body']}</p>
-    <div class="took"><span>What I took from it</span>{p['took']}</div>
-    {f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
-       if p.get("repo") else f'<div class="privnote">{p.get("note","")}</div>'}
-  </div>
-</div>"""
+        visual = ""
+
+    catch = (f'<div class="catch"><span>Where it could be wrong</span><p>{p["catch"]}</p></div>'
+             if p.get("catch") else "")
+    method = (f'<details class="method"><summary>How it was done</summary>'
+              f'<p>{p["method"]}</p></details>' if p.get("method") else "")
+    foot = (f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
+            if p.get("repo") else f'<p class="privnote">{p.get("note", "")}</p>')
+    scale = f'<b>{p["scale"]}</b> · {p["stack"]}' if p.get("scale") else p["stack"]
+
+    return f"""<article class="proj" id="{slug(p['title'])}">
+  <div class="ptag">{p['tag']}</div>
+  <h3>{p['title']}</h3>
+  <div class="spine">{scale}</div>
+  <p class="lead">{p['lead']}</p>
+  {visual}
+  {catch}
+  {method}
+  <div class="foot">{foot}</div>
+</article>"""
 
 
 def xp_item(e):
@@ -659,9 +712,10 @@ def page_projects():
   <div class="rule"></div>
   <p class="lede">{m['proj_lede']}</p>
 </div>
+<div class="jump">{''.join(f'<a href="#{slug(p["title"])}">{p["title"]}</a>' for p in m['projects'])}</div>
 {''.join(entry(p) for p in m['projects'])}
-<div class="note">Every project here has a repository with the code, the data where it can be
-shared, and a full write-up. More at <a href="{SHARED['github']}">github.com/Semin1c</a>.</div>"""
+<div class="note">Most of these have a repository with the code, the data where it can be
+shared, and a longer write-up. More at <a href="{SHARED['github']}">github.com/Semin1c</a>.</div>"""
 
     return shell("Projects", "projects", per_mode(block))
 
@@ -695,7 +749,7 @@ BUILDERS = {"index": page_index, "about": page_about, "experience": page_experie
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     copy_figures()
-    for slug, _ in PAGES:
-        (OUT / f"{slug}.html").write_text(BUILDERS[slug]())
-        print(f"  wrote {slug}.html")
+    for page, _ in PAGES:
+        (OUT / f"{page}.html").write_text(BUILDERS[page]())
+        print(f"  wrote {page}.html")
     print(f"done -> {OUT}")
