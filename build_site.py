@@ -20,6 +20,14 @@ from content import SHARED, MODES
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 ASSETS = OUT / "assets"
 
+SITE = "https://semin1c.github.io"
+# inline favicon: a cardinal square with a gold bar, no extra request
+FAVICON = ("%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
+           "%3Crect width='32' height='32' rx='7' fill='%23990000'/%3E"
+           "%3Crect x='7' y='21' width='18' height='4' fill='%23FFCC00'/%3E"
+           "%3Ctext x='16' y='19' font-family='Helvetica,Arial' font-size='17' "
+           "font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E")
+
 PAGES = [("index", "Home"), ("about", "About"), ("experience", "Experience"),
          ("projects", "Projects"), ("contact", "Contact")]
 
@@ -161,12 +169,11 @@ h3{letter-spacing:-.015em}
   border-radius:10px;background:#fff}
 .proj figcaption{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:11px;
   padding-left:13px;border-left:2px solid var(--gold);max-width:68ch}
-.proj .catch{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
-  border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 20px;max-width:72ch;
-  transition:border-color var(--swap)}
-.proj .catch span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+.proj .useful{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 20px;max-width:72ch}
+.proj .useful span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:var(--accent);margin-bottom:6px;transition:color var(--swap)}
-.proj .catch p{margin:0;font-size:14.5px;line-height:1.6;color:#475569}
+.proj .useful p{margin:0;font-size:14.5px;line-height:1.6;color:#475569}
 .proj details.method{margin:0 0 20px;max-width:72ch}
 .proj details.method summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted);
   list-style:none;display:inline-flex;align-items:center;gap:7px;padding:6px 0}
@@ -449,6 +456,10 @@ def switch():
 
 
 def shell(title, active, body):
+    # Link previews can't switch on ?mode=, so they show the default identity.
+    og_key = "analyst"
+    og_tag = MODES[og_key]["nav_tag"]   # already HTML-escaped
+    desc = SHARED["share_desc"]
     accents = "{" + ",".join(
         f'"{k}":{{accent:"{m["accent"]}",gold:"{m["gold"]}",title:"{m["nav_tag"].replace("&amp;", "&")}"}}'
         for k, m in MODES.items()) + "}"
@@ -458,7 +469,21 @@ def shell(title, active, body):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{SHARED['name']} — {title}</title>
-<meta name="description" content="{SHARED['name']} — analytics portfolio.">
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{SITE}/{active}.html">
+<link rel="icon" href="data:image/svg+xml,{FAVICON}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{SHARED['name']}">
+<meta property="og:title" content="{SHARED['name']} — {og_tag}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{SITE}/{active}.html">
+<meta property="og:image" content="{SITE}/assets/og_{og_key}.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{SHARED['name']} — {og_tag}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{SITE}/assets/og_{og_key}.png">
 <style>{CSS}</style>
 </head>
 <body>
@@ -519,8 +544,8 @@ def entry(p):
     else:
         visual = ""
 
-    catch = (f'<div class="catch"><span>Where it could be wrong</span><p>{p["catch"]}</p></div>'
-             if p.get("catch") else "")
+    useful = (f'<div class="useful"><span>{p.get("useful_label", "What it is good for")}'
+              f'</span><p>{p["useful"]}</p></div>' if p.get("useful") else "")
     method = (f'<details class="method"><summary>How it was done</summary>'
               f'<p>{p["method"]}</p></details>' if p.get("method") else "")
     foot = (f'<a class="btn btn-ghost" href="{p["repo"]}">View the repository →</a>'
@@ -533,7 +558,7 @@ def entry(p):
   <div class="spine">{scale}</div>
   <p class="lead">{p['lead']}</p>
   {visual}
-  {catch}
+  {useful}
   {method}
   <div class="foot">{foot}</div>
 </article>"""

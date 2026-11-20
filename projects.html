@@ -4,7 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Simon Chen — Projects</title>
-<meta name="description" content="Simon Chen — analytics portfolio.">
+<meta name="description" content="Business and sports analyst finishing an MS in Business Analytics at USC Marshall. Churn and retention, workforce economics, match and season analysis, and athlete performance data — with the working shown.">
+<link rel="canonical" href="https://semin1c.github.io/projects.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23990000'/%3E%3Crect x='7' y='21' width='18' height='4' fill='%23FFCC00'/%3E%3Ctext x='16' y='19' font-family='Helvetica,Arial' font-size='17' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simon Chen">
+<meta property="og:title" content="Simon Chen — Data &amp; Business Analytics">
+<meta property="og:description" content="Business and sports analyst finishing an MS in Business Analytics at USC Marshall. Churn and retention, workforce economics, match and season analysis, and athlete performance data — with the working shown.">
+<meta property="og:url" content="https://semin1c.github.io/projects.html">
+<meta property="og:image" content="https://semin1c.github.io/assets/og_analyst.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Simon Chen — Data &amp; Business Analytics">
+<meta name="twitter:description" content="Business and sports analyst finishing an MS in Business Analytics at USC Marshall. Churn and retention, workforce economics, match and season analysis, and athlete performance data — with the working shown.">
+<meta name="twitter:image" content="https://semin1c.github.io/assets/og_analyst.png">
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -118,12 +132,11 @@ h3{letter-spacing:-.015em}
   border-radius:10px;background:#fff}
 .proj figcaption{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:11px;
   padding-left:13px;border-left:2px solid var(--gold);max-width:68ch}
-.proj .catch{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
-  border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 20px;max-width:72ch;
-  transition:border-color var(--swap)}
-.proj .catch span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+.proj .useful{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:0 0 20px;max-width:72ch}
+.proj .useful span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:var(--accent);margin-bottom:6px;transition:color var(--swap)}
-.proj .catch p{margin:0;font-size:14.5px;line-height:1.6;color:#475569}
+.proj .useful p{margin:0;font-size:14.5px;line-height:1.6;color:#475569}
 .proj details.method{margin:0 0 20px;max-width:72ch}
 .proj details.method summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted);
   list-style:none;display:inline-flex;align-items:center;gap:7px;padding:6px 0}
@@ -301,7 +314,7 @@ footer a{color:var(--muted)}
   <div class="spine"><b>A brand's full order and inventory history</b> · Python · Shopify export · data integrity</div>
   <p class="lead">A growth and inventory diagnostic for a US sportswear brand. Most of the time didn't go on the analysis — it went on finding nine ways the raw export was lying, and each one of them had already produced a confident wrong answer.</p>
   
-  <div class="catch"><span>Where it could be wrong</span><p>I can't show the numbers on this one, so you're taking the method on trust. That's fair to be sceptical about.</p></div>
+  <div class="useful"><span>What it is good for</span><p>The nine traps transfer to almost any order-level export — renamed products, fan-out joins, placeholder IDs and filler inventory turn up everywhere. The part I'd reuse on day one somewhere else is the audit pattern: recompute every check from source rather than from an intermediate file, and ban the tables that can't be summed. </p></div>
   <details class="method"><summary>How it was done</summary><p>A product renamed mid-life meant joining on name lost 98% of the volume. Three separate fan-out joins inflated figures by up to 5x. Placeholder customer IDs invented a repeat buyer who didn't exist. Most of the inventory table was filler, which made the store look like it held decades of stock. I catalogued all nine, banned six tables from being summed, and wrote a guard script so they couldn't come back. The final audit recomputes 57 checks from source rather than from any intermediate file. The brand's own B2B flag was unusable — it read False for every order — so the two business lines got separated on geographic signature instead and validated three ways.</p></details>
   <div class="foot"><p class="privnote">Client work — figures and identifying details withheld.</p></div>
 </article><article class="proj" id="netflix-subscriber-churn">
@@ -310,7 +323,7 @@ footer a{color:var(--muted)}
   <div class="spine"><b>5,000 subscribers</b> · Python · scikit-learn · XGBoost</div>
   <p class="lead">I expected price and plan tier to do most of the work. They barely register. How much someone watches separates leavers from stayers so cleanly that if you take viewing behaviour out, three different models collapse to near guesswork.</p>
   <figure><img src="assets/analyst_churn_by_engagement.png" alt="Netflix Subscriber Churn"><figcaption>Subscribers who barely watch churn at 61%. Regular watchers, 1%. Nothing else in the dataset comes close to separating them like this.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>One feature carrying everything is usually a warning rather than a win. It's worth asking whether engagement predicts churn or just measures it — someone who has already decided to leave probably stops watching first. I'd want a time-lagged version before anyone spent money on it.</p></div>
+  <div class="useful"><span>What it is good for</span><p>The output is a targeting rule rather than a score — disengaged Basic-plan subscribers, where retention spend actually has somewhere to go. Knowing that three different models collapse without the engagement block also tells you what to instrument first if you're building this from scratch. </p></div>
   <details class="method"><summary>How it was done</summary><p>Logistic regression, random forest and XGBoost, compared with and without the engagement block. The retention play that comes out of it targets disengaged Basic-plan subscribers, because that's where spend has somewhere to go.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/netflix-churn-engagement">View the repository →</a></div>
 </article><article class="proj" id="employee-attrition---retention-roi">
@@ -319,7 +332,7 @@ footer a{color:var(--muted)}
   <div class="spine"><b>1,470 employees · 31 features</b> · Python · scikit-learn · statsmodels</div>
   <p class="lead">Attrition concentrates much harder than I'd assumed — two employee groups account for roughly a third of all departures. Business travel, overtime and how long since someone was promoted carry most of the signal that survives controls.</p>
   <figure><img src="assets/analyst_step2_driver_odds_ratio.png" alt="Employee Attrition & Retention ROI"><figcaption>Odds of leaving, against the company baseline. Frequent travel roughly doubles it; the factors below the line are the ones that hold someone.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>My first costing said the retention programme returned 13x. That number came from an industry benchmark rather than this company's actual headcount, and once I re-costed it per employee and per role it came out at $83K. The benchmark version would have been the better-looking slide.</p></div>
+  <div class="useful"><span>What it is good for</span><p>Costing the programme bottom-up, per employee and per role, is what makes it defensible to a CFO — my first pass used an industry benchmark and came out an order of magnitude too high. What it produces is a 156-employee pilot covering 35% of predicted departures: small enough to fund, large enough to measure. That's the form a retention proposal has to take before anyone signs it. </p></div>
   <details class="method"><summary>How it was done</summary><p>Regularised logistic regression, then the risk scores turned into a 156-employee pilot that covers 35% of predicted departures — small enough to fund, large enough to measure.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/ibm-attrition-roi">View the repository →</a></div>
 </article><article class="proj" id="sales-performance-dashboards">
@@ -328,7 +341,7 @@ footer a{color:var(--muted)}
   <div class="spine"><b>$25.7M in sales · ~45 reps · 10,889 transactions</b> · Power BI · DAX · What-if parameters</div>
   <p class="lead">Training looks like the answer in a decomposition tree, so I built the case for funding it. Tested directly, rep attributes correlate near zero with sales per rep. What actually separates reps is which manager they report to.</p>
   <figure><img src="assets/analyst_what_actually_drives_sales.png" alt="Sales Performance Dashboards"><figcaption>Training, age and tenure against sales per rep: all three sit on top of zero. The supervisor gap is $134K.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>Supervisor assignment isn't random, so that $134K has territory and account quality baked into it. It tells you where to look. It doesn't prove managers cause the difference, and I'd want to see the territories before spending anything on it.</p></div>
+  <div class="useful"><span>What it is good for</span><p>A dashboard that stops money being spent is doing its job. The what-if parameters let a manager re-price the programme live, so the conversation moves off whether training is a good idea and onto what uplift rate would be needed to make it pay — which is a question a pilot can actually answer. </p></div>
   <details class="method"><summary>How it was done</summary><p>Three dashboards, from a descriptive baseline to a direct test of each rep attribute. Both costings of the training programme come back negative, at −36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast baseline down and inflating any uplift measured against it.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/people-analytics-dashboards">View the repository →</a></div>
 </article><article class="proj" id="athlete-data-pipeline---reporting-tools">
@@ -355,7 +368,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <div class="spine"><b>Three affiliated junior programmes</b> · Event design · stakeholder work · hockey</div>
   <p class="lead">Three programmes, no shared standard for what gets recorded during a game. I'm building that framework with the GMs and coaches rather than handing them a schema and hoping.</p>
   
-  <div class="catch"><span>Where it could be wrong</span><p>A collection standard nobody follows is worth nothing, so most of this is conversations rather than analysis. It's also unfinished, which is why there's nothing to show yet.</p></div>
+  <div class="useful"><span>What it is good for</span><p>Everything downstream depends on this existing first. Agreeing what gets recorded, by whom and in what form is the difference between a programme that can run the same analysis every season and one that starts from nothing each year. </p></div>
   <details class="method"><summary>How it was done</summary><p>The goal is a foundation for analysis that recurs — agreeing which events matter, who records them and in what form, so next season's data is comparable to this one. Most analytics problems at this level aren't modelling problems. They're the absence of anything consistent to model.</p></details>
   <div class="foot"><p class="privnote">In progress with Ontario Jr. Reign.</p></div>
 </article><article class="proj" id="possession-vs--box-entry">
@@ -364,7 +377,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <div class="spine"><b>160 squad-seasons · 23 possession metrics</b> · Python · cross-validation · recruitment analytics</div>
   <p class="lead">I tested 23 possession metrics across eight Premier League seasons. On clubs the model had never seen, touches in the opposition box on their own did better than all 23 together.</p>
   <figure><img src="assets/sports_what_predicts_chances.png" alt="Possession vs. Box Entry"><figcaption>One variable against the full metric set, scored out of sample. Most of what we measure about possession is describing the same thing several times over.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>This says box touches predict chances, which is close to saying a thing predicts itself — they're both measuring territory. It argues for a simpler KPI, not for a new insight about football.</p></div>
+  <div class="useful"><span>What it is good for</span><p>A chance-creation KPI that holds up on clubs the model has never seen is directly usable in recruitment. Comparing 168 transfers against same- position benchmarks, final-third involvement travelled between clubs better than xG+xAG output did — which is the number you'd want when the question is whether a player's output will survive a move. </p></div>
   <details class="method"><summary>How it was done</summary><p>Comparing 168 transfers against same-position benchmarks, final-third involvement held up across clubs better than xG+xAG output did, which is the part that would matter for recruitment.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/pl-possession-and-box-entry">View the repository →</a></div>
 </article><article class="proj" id="schedule--travel---rest">
@@ -373,7 +386,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <div class="spine"><b>23,636 games · 300 team-seasons</b> · R · logistic GLM · k-means · geospatial</div>
   <p class="lead">People talk about the NBA schedule as one thing — the grind, the road trip, the back-to-back in a third city in four nights. Split it into rest and travel and only one of them is real. A team with two more days off wins 57% of the time. Miles flown predicts essentially nothing.</p>
   <figure><img src="assets/sports_rest_advantage.png" alt="Schedule, Travel & Rest"><figcaption>Win rate by rest advantage, every regular-season game 2014–2023. Monotonic across every step, and decided before anyone takes a shot.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>I had the travel finding backwards in my own write-up for months. The summary called travel load a significant predictor of the home-away gap; recomputed, it's p = 0.76 with an R² of 0.0005, and the coefficient points the wrong way. The chart underneath had been right the whole time.</p></div>
+  <div class="useful"><span>What it is good for</span><p>This splits the schedule into the part you can act on and the part you can't. Rest is manageable — rotation, load, which games to prioritise, and it's visible before tip-off. Travel isn't worth spending against, which settles an argument that comes up every year. The five archetypes give a fast read on what kind of season a team has been handed. </p></div>
   <details class="method"><summary>How it was done</summary><p>Seven modules — schedule density, travel load, fatigue against defence and offence, opponent sequencing, a win-impact GLM, and k-means that sorts all 300 team-seasons into five schedule archetypes. Added up, the whole schedule separates the luckiest and unluckiest franchise by about 1.7 wins across five seasons, which is an order of magnitude below team quality.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/NBA_Schedule_Difficulty">View the repository →</a></div>
 </article><article class="proj" id="where-home-advantage-comes-from">
@@ -382,7 +395,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <div class="spine"><b>A full season, every match</b> · Python · permutation testing · xG</div>
   <p class="lead">Not the crowd, and not the referee. Attendance predicts home points right up until you account for which clubs fill big stadiums, and then it's nothing. The referee spread sits inside what random shuffling produces. What's left is territorial — home sides create more, they don't finish better.</p>
   <figure><img src="assets/sports_crowd_confound.png" alt="Where Home Advantage Comes From"><figcaption>Attendance against home points, before and after holding club quality constant. The relationship is the clubs, not the crowd.</figcaption></figure>
-  <div class="catch"><span>Where it could be wrong</span><p>One season, one league. Home sides create 1.484 expected goals to 1.121 at an identical conversion rate, which is a clean result — but 380 matches is not a lot to rule two explanations out on, and I'd want several seasons before saying it with confidence.</p></div>
+  <div class="useful"><span>What it is good for</span><p>If the advantage is territorial rather than crowd or referee, the lever is tactical, not atmospheric — it points at how home sides work the ball into dangerous areas rather than at the stadium. It's also a template for testing a popular explanation properly: control for the obvious confounder first, then shuffle to see what random noise alone produces. </p></div>
   <details class="method"><summary>How it was done</summary><p>A data-quality pass came first and caught a broken column: the field meant to record who scored first never names the home team, in any of the 380 matches. Anything built on it would have been wrong.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/laliga-home-advantage">View the repository →</a></div>
 </article><article class="proj" id="competitive-balance--reversed">
@@ -391,7 +404,7 @@ shared, and a longer write-up. More at <a href="https://github.com/Semin1c">gith
   <div class="spine"><b>1,510 team-seasons · 14 seasons · 6 leagues</b> · Python · scikit-learn · SHAP</div>
   <p class="lead">Basically every football fan will tell you MLS isn't as competitive as Europe. It depends completely on what you mean by competitive. I measured it as how far apart the teams finish, and on that MLS is the tightest of the six — while Bayern took 11 of 14 Bundesliga titles over the same stretch.</p>
   <div class="viz"><div class="vtitle">How evenly matched is each league?</div><div class="vsub">Spread of points per match within a season, averaged 2010–2023. Lower means closer.</div><div class="bars"><div class="brow hot"><div class="bl">MLS</div><div class="btrack"><div class="bfill" data-w="63.0"></div></div><div class="bv">0.315</div></div><div class="brow"><div class="bl">Ligue 1</div><div class="btrack"><div class="bfill" data-w="83.0"></div></div><div class="bv">0.415</div></div><div class="brow"><div class="bl">Bundesliga</div><div class="btrack"><div class="bfill" data-w="89.8"></div></div><div class="bv">0.449</div></div><div class="brow"><div class="bl">La Liga</div><div class="btrack"><div class="bfill" data-w="92.8"></div></div><div class="bv">0.464</div></div><div class="brow"><div class="bl">Premier League</div><div class="btrack"><div class="bfill" data-w="94.6"></div></div><div class="bv">0.473</div></div><div class="brow"><div class="bl">Serie A</div><div class="btrack"><div class="bfill" data-w="95.2"></div></div><div class="bv">0.476</div></div></div><div class="vnote">Points <em>per match</em>, because MLS and the Bundesliga play 34 games while the rest play 38. Over the same period Bayern won 11 of 14 Bundesliga titles.</div></div>
-  <div class="catch"><span>Where it could be wrong</span><p>Competitive and good are not the same thing, and this only measures the first one. A local community game can be tight and still be nowhere near MLS, and what fans actually turn up for is the standard — the stars, the level — where MLS clearly isn't at the top. So a close table is not a claim about quality.<br><br>MLS is also built differently: a draft, a lottery, and a title decided in the playoffs rather than over the table. A club already safe in the playoff places has little reason to chase one more league position, and a club out of them has a reason to lose. That compresses a table without the football being more even.<br><br>The measurement holds up. What causes it doesn't, yet — and the more interesting question is how you would define and quantify quality in the first place, which I haven't answered and would like to.</p></div>
+  <div class="useful"><span>What it measures, and what comes next</span><p>Competitive and good are two different measurements and this one only covers the first. A local community game can be tight and still be nowhere near MLS; what fans turn up for is the standard. That makes <em>how you define and quantify quality</em> the more interesting question, and it's the one I'd want to work on next.<br><br>MLS is also built differently — a draft, a lottery, and a title decided in the playoffs rather than over the table. A club already safe in the playoff places has little reason to chase one more league position, and a club out of them has a reason to lose. Reading a compressed table without that context would be a mistake. </p></div>
   <details class="method"><summary>How it was done</summary><p>1,510 team-seasons, of which only 217 are MLS. My first classifier hit 88–90% accuracy and I was pleased with it — but 86% of the rows are European, so a model answering "European" every time scores about the same, and mine was identifying fewer than half the MLS seasons, the ones the question was actually about. Weighting the classes and scoring on AUC and MLS recall separately takes it to 92% at 0.954 AUC, and it survives holding out whole clubs and whole seasons rather than random folds.</p></details>
   <div class="foot"><a class="btn btn-ghost" href="https://github.com/Semin1c/mls-vs-european-leagues">View the repository →</a></div>
 </article><article class="proj" id="athlete-data-pipeline---reporting-tools">

@@ -57,6 +57,9 @@ SHARED = dict(
          "about. The methods are the same either way — the difference is whether I'm interested at "
          "eleven at night, and with sport I always am."),
     ],
+    share_desc="Business and sports analyst finishing an MS in Business Analytics at USC "
+               "Marshall. Churn and retention, workforce economics, match and season "
+               "analysis, and athlete performance data — with the working shown.",
     email="xingyang@marshall.usc.edu",
     phone="(949) 591-3777",
     location="Los Angeles, CA",
@@ -205,8 +208,12 @@ MODES = {
              lead="A growth and inventory diagnostic for a US sportswear brand. Most of the "
                   "time didn't go on the analysis — it went on finding nine ways the raw export "
                   "was lying, and each one of them had already produced a confident wrong answer.",
-             catch="I can't show the numbers on this one, so you're taking the method on trust. "
-                   "That's fair to be sceptical about.",
+             useful=(
+                     "The nine traps transfer to almost any order-level export — renamed "
+                     "products, fan-out joins, placeholder IDs and filler inventory turn up "
+                     "everywhere. The part I'd reuse on day one somewhere else is the audit "
+                     "pattern: recompute every check from source rather than from an "
+                     "intermediate file, and ban the tables that can't be summed. "),
              method="A product renamed mid-life meant joining on name lost 98% of the volume. "
                     "Three separate fan-out joins inflated figures by up to 5x. Placeholder "
                     "customer IDs invented a repeat buyer who didn't exist. Most of the inventory "
@@ -227,10 +234,11 @@ MODES = {
              fig=f"{BASE}/MKT 566 - Netflix Churn Prediction (2025 Fall)/Git Version/figures/churn_by_engagement.png",
              cap="Subscribers who barely watch churn at 61%. Regular watchers, 1%. "
                  "Nothing else in the dataset comes close to separating them like this.",
-             catch="One feature carrying everything is usually a warning rather than a win. It's "
-                   "worth asking whether engagement predicts churn or just measures it — someone "
-                   "who has already decided to leave probably stops watching first. I'd want a "
-                   "time-lagged version before anyone spent money on it.",
+             useful=(
+                     "The output is a targeting rule rather than a score — disengaged Basic-plan "
+                     "subscribers, where retention spend actually has somewhere to go. Knowing "
+                     "that three different models collapse without the engagement block also "
+                     "tells you what to instrument first if you're building this from scratch. "),
              method="Logistic regression, random forest and XGBoost, compared with and without "
                     "the engagement block. The retention play that comes out of it targets "
                     "disengaged Basic-plan subscribers, because that's where spend has somewhere "
@@ -247,10 +255,13 @@ MODES = {
              fig=f"{BASE}/DSO 550 - IBM Employee Attrition ROI (2026 Spring)/Git Version/outputs/figures/exec/step2_driver_odds_ratio.png",
              cap="Odds of leaving, against the company baseline. Frequent travel roughly "
                  "doubles it; the factors below the line are the ones that hold someone.",
-             catch="My first costing said the retention programme returned 13x. That number came "
-                   "from an industry benchmark rather than this company's actual headcount, and "
-                   "once I re-costed it per employee and per role it came out at $83K. The "
-                   "benchmark version would have been the better-looking slide.",
+             useful=(
+                     "Costing the programme bottom-up, per employee and per role, is what makes "
+                     "it defensible to a CFO — my first pass used an industry benchmark and came "
+                     "out an order of magnitude too high. What it produces is a 156-employee "
+                     "pilot covering 35% of predicted departures: small enough to fund, large "
+                     "enough to measure. That's the form a retention proposal has to take before "
+                     "anyone signs it. "),
              method="Regularised logistic regression, then the risk scores turned into a "
                     "156-employee pilot that covers 35% of predicted departures — small enough "
                     "to fund, large enough to measure.",
@@ -265,10 +276,12 @@ MODES = {
              fig=f"{BASE}/DSO 550 - People Analytics Power BI Dashboards (2026 Spring)/Git Version/figures/what_actually_drives_sales.png",
              cap="Training, age and tenure against sales per rep: all three sit on top of zero. "
                  "The supervisor gap is $134K.",
-             catch="Supervisor assignment isn't random, so that $134K has territory and account "
-                   "quality baked into it. It tells you where to look. It doesn't prove managers "
-                   "cause the difference, and I'd want to see the territories before spending "
-                   "anything on it.",
+             useful=(
+                     "A dashboard that stops money being spent is doing its job. The what-if "
+                     "parameters let a manager re-price the programme live, so the conversation "
+                     "moves off whether training is a good idea and onto what uplift rate would "
+                     "be needed to make it pay — which is a question a pilot can actually "
+                     "answer. "),
              method="Three dashboards, from a descriptive baseline to a direct test of each rep "
                     "attribute. Both costings of the training programme come back negative, at "
                     "−36% and −15%, and a COVID toggle keeps 2020 from dragging the forecast "
@@ -418,9 +431,11 @@ MODES = {
              lead="Three programmes, no shared standard for what gets recorded during a game. "
                   "I'm building that framework with the GMs and coaches rather than handing them "
                   "a schema and hoping.",
-             catch="A collection standard nobody follows is worth nothing, so most of this is "
-                   "conversations rather than analysis. It's also unfinished, which is why "
-                   "there's nothing to show yet.",
+             useful=(
+                     "Everything downstream depends on this existing first. Agreeing what gets "
+                     "recorded, by whom and in what form is the difference between a programme "
+                     "that can run the same analysis every season and one that starts from "
+                     "nothing each year. "),
              method="The goal is a foundation for analysis that recurs — agreeing which events "
                     "matter, who records them and in what form, so next season's data is "
                     "comparable to this one. Most analytics problems at this level aren't "
@@ -437,9 +452,12 @@ MODES = {
              fig=f"{BASE}/DSO 579 - Premier League Possession Analysis (2025 Spring)/Git Version/figures/what_predicts_chances.png",
              cap="One variable against the full metric set, scored out of sample. Most of what "
                  "we measure about possession is describing the same thing several times over.",
-             catch="This says box touches predict chances, which is close to saying a thing "
-                   "predicts itself — they're both measuring territory. It argues for a simpler "
-                   "KPI, not for a new insight about football.",
+             useful=(
+                     "A chance-creation KPI that holds up on clubs the model has never seen is "
+                     "directly usable in recruitment. Comparing 168 transfers against same- "
+                     "position benchmarks, final-third involvement travelled between clubs "
+                     "better than xG+xAG output did — which is the number you'd want when the "
+                     "question is whether a player's output will survive a move. "),
              method="Comparing 168 transfers against same-position benchmarks, final-third "
                     "involvement held up across clubs better than xG+xAG output did, which is "
                     "the part that would matter for recruitment.",
@@ -455,10 +473,12 @@ MODES = {
              fig=f"{BASE}/NBA Schedule Difficulty (2026 Spring)/Git Version/figures/rest_advantage.png",
              cap="Win rate by rest advantage, every regular-season game 2014–2023. Monotonic "
                  "across every step, and decided before anyone takes a shot.",
-             catch="I had the travel finding backwards in my own write-up for months. The summary "
-                   "called travel load a significant predictor of the home-away gap; recomputed, "
-                   "it's p = 0.76 with an R² of 0.0005, and the coefficient points the wrong way. "
-                   "The chart underneath had been right the whole time.",
+             useful=(
+                     "This splits the schedule into the part you can act on and the part you "
+                     "can't. Rest is manageable — rotation, load, which games to prioritise, and "
+                     "it's visible before tip-off. Travel isn't worth spending against, which "
+                     "settles an argument that comes up every year. The five archetypes give a "
+                     "fast read on what kind of season a team has been handed. "),
              method="Seven modules — schedule density, travel load, fatigue against defence and "
                     "offence, opponent sequencing, a win-impact GLM, and k-means that sorts all "
                     "300 team-seasons into five schedule archetypes. Added up, the whole schedule "
@@ -476,10 +496,12 @@ MODES = {
              fig=f"{BASE}/DSO 579 - First Goal Scoring Analysis (2025 Spring)/Git Version/figures/crowd_confound.png",
              cap="Attendance against home points, before and after holding club quality "
                  "constant. The relationship is the clubs, not the crowd.",
-             catch="One season, one league. Home sides create 1.484 expected goals to 1.121 at an "
-                   "identical conversion rate, which is a clean result — but 380 matches is not a "
-                   "lot to rule two explanations out on, and I'd want several seasons before "
-                   "saying it with confidence.",
+             useful=(
+                     "If the advantage is territorial rather than crowd or referee, the lever is "
+                     "tactical, not atmospheric — it points at how home sides work the ball into "
+                     "dangerous areas rather than at the stadium. It's also a template for "
+                     "testing a popular explanation properly: control for the obvious confounder "
+                     "first, then shuffle to see what random noise alone produces. "),
              method="A data-quality pass came first and caught a broken column: the field meant "
                     "to record who scored first never names the home team, in any of the 380 "
                     "matches. Anything built on it would have been wrong.",
@@ -492,18 +514,17 @@ MODES = {
                   "It depends completely on what you mean by competitive. I measured it as how "
                   "far apart the teams finish, and on that MLS is the tightest of the six — while "
                   "Bayern took 11 of 14 Bundesliga titles over the same stretch.",
-             catch="Competitive and good are not the same thing, and this only measures the "
-                   "first one. A local community game can be tight and still be nowhere near "
-                   "MLS, and what fans actually turn up for is the standard — the stars, the "
-                   "level — where MLS clearly isn\'t at the top. So a close table is not a claim "
-                   "about quality.<br><br>MLS is also built differently: a draft, a lottery, and "
-                   "a title decided in the playoffs rather than over the table. A club already "
-                   "safe in the playoff places has little reason to chase one more league "
-                   "position, and a club out of them has a reason to lose. That compresses a "
-                   "table without the football being more even.<br><br>The measurement holds up. "
-                   "What causes it doesn\'t, yet — and the more interesting question is how you "
-                   "would define and quantify quality in the first place, which I haven\'t "
-                   "answered and would like to.",
+             useful_label="What it measures, and what comes next",
+             useful=(
+                     "Competitive and good are two different measurements and this one only "
+                     "covers the first. A local community game can be tight and still be nowhere "
+                     "near MLS; what fans turn up for is the standard. That makes <em>how you "
+                     "define and quantify quality</em> the more interesting question, and it's "
+                     "the one I'd want to work on next.<br><br>MLS is also built differently — a "
+                     "draft, a lottery, and a title decided in the playoffs rather than over the "
+                     "table. A club already safe in the playoff places has little reason to "
+                     "chase one more league position, and a club out of them has a reason to "
+                     "lose. Reading a compressed table without that context would be a mistake. "),
              method="1,510 team-seasons, of which only 217 are MLS. My first classifier hit "
                     "88–90% accuracy and I was pleased with it — but 86% of the rows are "
                     "European, so a model answering \"European\" every time scores about the "
